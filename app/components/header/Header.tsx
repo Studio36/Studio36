@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'motion/react'
 import { quadEaseInOut } from '@/app/lib/utils';
+import Link from 'next/link';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -85,8 +86,8 @@ export default function Header() {
         <motion.div className="col-start-7 col-span-1 relative w-full z-50" variants={menuContainerVariants} animate={menuActive ? "animate" : menuHover ? "animate" : "initial"} initial={false}>
           <motion.div className='bg-black h-fit w-[27rem] rounded-lg mr-auto -z-10 absolute -right-2 top-6 overflow-hidden' variants={menuVariants} animate={open ? "animate" : "initial"}>
             <motion.div className='absolute left-2 top-2 flex text-white text-2xl gap-1' variants={menuItemVariants}>
-              <a href="/">[RO] /</a>
-              <a href="/">EN</a>
+              <Link href="/">[RO] /</Link>
+              <Link href="/">EN</Link>
             </motion.div>
             <div className='w-full h-full pb-6 pt-16 px-8'>
                 <motion.a variants={menuItemVariants} href="/" className='w-fit text-[3.5rem]  text-white block mb-2'>INDEX</motion.a>
@@ -96,19 +97,19 @@ export default function Header() {
                 <div className='my-12 h-[1px] w-[calc(100%+4rem)] bg-white -ml-8'></div>
                 <motion.div variants={menuItemVariants} className='mb-2 flex text-2xl text-white  gap-3'>
                   <p>IG:</p>
-                  <a href="/">@studio36</a>
+                  <Link href="/">@studio36</Link>
                 </motion.div>
                 <motion.div variants={menuItemVariants} className='mb-2 flex text-2xl text-white  gap-3'>
                   <p>FB:</p>
-                  <a href="/">Studio 36</a>
+                  <Link href="/">Studio 36</Link>
                 </motion.div>
                 <motion.div variants={menuItemVariants} className='mb-2 flex text-2xl text-white  gap-3'>
                   <p>E:</p>
-                  <a href="/">hello@studio36.md</a>
+                  <Link href="/">hello@studio36.md</Link>
                 </motion.div>
                 <motion.div variants={menuItemVariants} className='mb-2 flex text-2xl text-white  gap-3'>
                   <p>T:</p>
-                  <a href="/">+373 (68) 12 34 56</a>
+                  <Link href="/">+373 (68) 12 34 56</Link>
                 </motion.div>
             </div>
           </motion.div>

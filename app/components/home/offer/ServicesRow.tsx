@@ -3,7 +3,6 @@
 import { useState } from "react";
 import ParallaxImage from "../../ParallaxImage";
 import ArrowAnimation from "./ArrowAnimation";
-import {motion} from 'motion/react'
 
 interface ServicesRowProps {
     service1: string,

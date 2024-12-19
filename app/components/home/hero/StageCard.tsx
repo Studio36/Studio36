@@ -1,4 +1,4 @@
-import { cubicBezier, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import ParallaxImage from '../../ParallaxImage'
 import { quadEaseInOut } from '@/app/lib/utils'
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { TypingText } from './TypingText'
 import { AnimationControls } from 'motion/react'
 import { motion } from 'motion/react'
 

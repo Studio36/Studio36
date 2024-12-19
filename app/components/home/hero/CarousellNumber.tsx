@@ -1,5 +1,5 @@
 import { quadEaseInOut } from '@/app/lib/utils';
-import { animate, AnimationControls, cubicBezier, easeOut, motion } from 'motion/react'
+import { AnimationControls, motion } from 'motion/react'
 
 interface CarousellNumberProps {
   text: string,

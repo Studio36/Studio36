@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useRef, useState } from "react";
 
 interface ParallaxImageProps {

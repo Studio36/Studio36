@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, useAnimationControls } from "motion/react";
 import { quadEaseInOut } from "@/app/lib/utils";
 import { useLenis } from "lenis/react";
+import Link from 'next/link';
 
 const texts = [
   ["Ai un proiect unde te putem ajuta?", "Oferă-ne mai multe detalii,", "numele tău"],
@@ -90,7 +91,7 @@ export default function Footer() {
                 <motion.div variants={textVariants} className="flex items-end gap-4">
                   <p className='text-[3.5rem] text-white font-hedwig'>{texts[slide][1]}</p>
                   <div className='flex-1'>
-                    <input size={0} className={`bg-transparent text-white p-0 m-0 h-fit w-full focus:outline-none font-hedwig text-[3.5rem] placeholder:opacity-25 ${slide === 2 ? "hidden" : ""}`} type="text" placeholder={texts[slide][2]} value={slide === 0 ? name : tel} onChange={(e) => {slide === 0 ? setName(e.currentTarget.value) : setTel(e.currentTarget.value)}}/>
+                    <input size={0} className={`bg-transparent text-white p-0 m-0 h-fit w-full focus:outline-none font-hedwig text-[3.5rem] placeholder:opacity-25 ${slide === 2 ? "hidden" : ""}`} type="text" placeholder={texts[slide][2]} value={slide === 0 ? name : tel} onChange={(e) => {if (slide === 0) setName(e.currentTarget.value); else setTel(e.currentTarget.value)}}/>
                   </div>
                 </motion.div>
                 <div className={`flex ${slide === 2 ? "justify-end" : "justify-between"} mt-24`}>
@@ -103,11 +104,11 @@ export default function Footer() {
                 <div className="col-span-2">
                   <div className="flex gap-3 mb-2 text-white text-2xl">
                     <p>E:</p>
-                    <a href="/">hello@studio36.md</a>
+                    <Link href="/">hello@studio36.md</Link>
                   </div>
                   <div className="flex gap-3 mb-2 text-white text-2xl">
                     <p>T:</p>
-                    <a href="/">+373 (68) 12 34 56</a>
+                    <Link href="/">+373 (68) 12 34 56</Link>
                   </div>
                   <div className="flex gap-3 text-white text-2xl">
                     <p>A:</p>
@@ -117,11 +118,11 @@ export default function Footer() {
                 <div className="col-start-3 col-span-2">
                   <div className="flex gap-3 mb-2 text-white text-2xl">
                     <p>IG:</p>
-                    <a href="/">@studio36</a>
+                    <Link href="/">@studio36</Link>
                   </div>
                   <div className="flex gap-3 mb-2 text-white text-2xl">
                     <p>FB:</p>
-                    <a href="/">Studio 36</a>
+                    <Link href="/">Studio 36</Link>
                   </div>
                 </div>
             </div>

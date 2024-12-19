@@ -9,24 +9,6 @@ export function TypingText({ text, className, animate }: {
     className?: string 
 }) {
 
-    const contVariants = {
-        initial: {
-            transition: {
-                staggerChildren: 0.2
-              },
-        },
-        animate: {
-            transition: {
-                staggerChildren: 0.2
-              },
-        },
-        exit: {
-            transition: {
-                staggerChildren: 0.2
-              },
-        }
-    }
-
     const variants = {
         initial: {
             opacity: 0,

@@ -5,7 +5,7 @@ import StageCard from './StageCard';
 import { useAnimationControls } from 'motion/react';
 import CarousellNumber from './CarousellNumber';
 import CarousellText from './CarousellText';
-import { delay, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const texts = ["01", "02"];
 
@@ -34,7 +34,7 @@ export default function StageCarousell() {
     setTimeout(() => {
       controls.start('animate')
     }, 200)
-  }, [])
+  }, [controls])
 
   const slideVariants = {
     initial: {
