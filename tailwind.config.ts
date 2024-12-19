@@ -11,8 +11,14 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        black: "#181818",
+        white: '#f1f1f1',
+        purewhite: "#ffffff"
       },
     },
+    fontFamily: {
+      "hedwig" : "Hedvig Letters Serif",
+    }
   },
   plugins: [],
 } satisfies Config;

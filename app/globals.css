@@ -1,21 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  font-family: 'Hedvig Letters Sans', sans-serif;
+  color: #181818;
+  background-color: #f1f1f1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+nextjs-portal {
+  background-color: #f1f1f1;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 13px;
+  }
+
+  input, textarea {
+    font-size: 14px;
+  }
+  
+}
+
+@media (min-width: 1636px) {
+  html {
+    font-size: 14px;
+  }
+
+  input, textarea {
+    font-size: 16px;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@media (min-width: 1900px) {
+  html {
+    font-size: 16px;
+  }
+
+  input, textarea {
+    font-size: 16px;
+  }
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: .5fr 1fr 1fr 1fr 1fr 1fr 1fr .5fr;
+}
+
+.stage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr .5fr;
+}
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: .5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+:host {
+  background-color: #f1f1f1 !important;
 }
