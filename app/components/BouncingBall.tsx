@@ -19,8 +19,8 @@ export default function BouncingBall( { startX, startY, velocityX, velocityY, in
         let cx = startX,
             cy = startY,
             vx = velocityX,
-            vy = velocityY,
-            radius = 5,
+            vy = velocityY;
+        const radius = 5,
             gravity = 0.5,
             damping = 0.5,
             traction = 0.8,
@@ -62,7 +62,7 @@ export default function BouncingBall( { startX, startY, velocityX, velocityY, in
         }
 
         circle();
-    }, [startX, startY]);
+    }, [startX, startY, velocityX, velocityY]);
 
     return <canvas ref={canvasRef} className={`fixed top-0 left-0 w-full h-[calc(100vh+12px)] pointer-events-none z-[100] ${inFrame ? "hidden" : ""}`}></canvas>;
 }

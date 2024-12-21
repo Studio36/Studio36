@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 import Header from "./components/header/Header";
-import CustomCursour from "./components/CustomCursour";
 
 export const metadata: Metadata = {
   title: "Studio 36",
