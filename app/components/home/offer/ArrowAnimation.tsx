@@ -36,7 +36,7 @@ export default function ArrowAnimation({ animate }: ArrowAnimationProps) {
     <motion.div className="relative transition duration-300 flex items-center mix-blend-difference flex-1">
         <motion.div variants={lineVariants} animate={animate ? "animate" : "initial"} className="h-[2px] w-0 absolute top-1/2 -translate-y-1/2 left-0 bg-purewhite"></motion.div>
         <motion.div className='absolute left-0 size-[1.375rem] z-10' animate={animate ? "animate" : "initial"} variants={arrowVariants}>
-          <Image src="/icons/arrow-right.svg" alt="right arrow" className="absolute left-0 top-0 w-full h-full" color="#fff" />
+          <Image src="/icons/arrow-right.svg" width={22} height={22} alt="right arrow" className="absolute left-0 top-0 w-full h-full" color="#fff" />
         </motion.div>
     </motion.div>
   )

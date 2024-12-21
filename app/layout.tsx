@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 import Header from "./components/header/Header";
+import CustomCursour from "./components/CustomCursour";
 
 export const metadata: Metadata = {
   title: "Studio 36",
@@ -22,7 +23,6 @@ export default function RootLayout({
               <div key={index} className={`-z-10 pointer-events-none relative w-full before:w-full before:absolute ${index === 0 ? "" : "before:border-l"}  before:border-black before:border-opacity-15 before:h-full ${index === 6 ? "before:border-r" : ""}`}></div>
             ))}
           </div>
-
           <Header />
           {children}
         </SmoothScroll>

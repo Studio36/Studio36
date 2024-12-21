@@ -9,7 +9,11 @@ import { motion } from 'framer-motion';
 
 const texts = ["01", "02"];
 
-export default function StageCarousell() {
+interface StageCarousellProps {
+  setIsActive: (isActive: boolean) => void
+}
+
+export default function StageCarousell({ setIsActive }: StageCarousellProps) {
   const [slide, setSlide] = useState(0);
   const [text, setText] = useState(texts[0]);
   
@@ -64,7 +68,7 @@ export default function StageCarousell() {
   
   return (
     <div className='col-start-2 col-span-7 stage-grid mt-24 mb-48 relative'>
-        <div className='col-span-4 h-full w-full relative rounded-lg overflow-hidden'>
+        <div className='col-span-4 h-full w-full relative rounded-lg overflow-hidden' onMouseEnter={() => {setIsActive(true)}} onMouseLeave={() => {setIsActive(false)}}>
             <motion.div className='absolute h-full w-full overflow-hidden top-0 right-0' variants={slideVariants} animate='appear'>
               <div className="absolute h-full w-[57vw] top-0 right-0">
                 <div className="h-full w-full relative rounded-lg overflow-hidden">

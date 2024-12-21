@@ -42,9 +42,9 @@ export default function CarousellText({ animate, slide }: CarousellTextProps) {
   return (
     <div className='col-span-1 pl-4 mb-[10rem] h-[40rem]'>
         <motion.p className='font-hedwig mb-4 text-2xl' variants={variants} initial="initial" animate={animate}>{text[0]}</motion.p>
-        <p className='font-hedwig mb-2'>[DESCRIERE]</p>
+        <p className='mb-2'>[DESCRIERE]</p>
         <motion.p className='font-hedwig mb-6' variants={variants} initial="initial" animate={animate}>{text[1]}</motion.p>
-        <p className='font-hedwig mb-2'>[UTILIZĂRI]</p>
+        <p className='mb-2'>[UTILIZĂRI]</p>
         <motion.p className='font-hedwig' variants={variants} initial="initial" animate={animate}>{text[2]}</motion.p>
     </div>
   )

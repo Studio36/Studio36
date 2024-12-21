@@ -13,7 +13,8 @@ export default {
         foreground: "var(--foreground)",
         black: "#181818",
         white: '#f1f1f1',
-        purewhite: "#ffffff"
+        purewhite: "#ffffff",
+        red: "#FF3F3F"
       },
     },
     fontFamily: {
