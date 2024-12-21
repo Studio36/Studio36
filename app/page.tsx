@@ -10,12 +10,13 @@ import { useState } from "react";
 
 export default function Home() {
   const [isActive, setIsActive] = useState(false);
-
+  const [cursourText, setCursourText] = useState("VEZI MAI MULTE");
+  const [cursourWidth, setCursourWidth] = useState("9.3rem");
 
   return (
     <>
-      <CustomCursour isActive={isActive}/>
-      <StageCarousell setIsActive={setIsActive}/>
+      <CustomCursour isActive={isActive} text={cursourText} width={cursourWidth}/>
+      <StageCarousell setIsActive={setIsActive} setCursourText={setCursourText} setCursourWidth={setCursourWidth}/>
       <Offer />
       <ImageScreen />
       <RulesAndBenefits />

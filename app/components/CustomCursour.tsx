@@ -6,10 +6,12 @@ import BouncingBall from "./BouncingBall";
 import { useEffect, useRef, useState } from "react";
 
 interface CustomCursourProps {
-    isActive: boolean
+    isActive: boolean,
+    text: string,
+    width: string,
 }
 
-export default function CustomCursour({ isActive }: CustomCursourProps) {
+export default function CustomCursour({ isActive, text = 'VEZI MAI MULTE', width = "9.3rem" }: CustomCursourProps) {
     const mousePosition = useMousePosition();
     const [bounceCoordinates, setBounceCoordinates] = useState({ x: 0, y: 0, vx: 0, vy: 0 });
     const [inFrame, setInFrame] = useState(true);
@@ -21,7 +23,7 @@ export default function CustomCursour({ isActive }: CustomCursourProps) {
             borderRadius: '1rem',
         },
         animate: {
-            width: '9.3rem',
+            width: width,
             height: '2.75rem',
             borderRadius: '.5rem',
         }
@@ -86,7 +88,7 @@ export default function CustomCursour({ isActive }: CustomCursourProps) {
                 inFrame={inFrame}
             />
         <motion.div className="fixed left-0 top-0 z-[100] pointer-events-none w-fit h-fit" animate={{x: mousePosition.x, y: mousePosition.y}} transition={{type: 'tween', ease: 'easeOut'}}>
-            <motion.span className="z-10 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 whitespace-nowrap text-white" animate={isActive ? {opacity: 1, transition: {delay: .1}} : {opacity: 0, transition: {duration: 0.01}}}>[AFLĂ MAI MULTE]</motion.span>
+            <motion.span className="z-10 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 whitespace-nowrap text-white" animate={isActive ? {opacity: 1, transition: {delay: .1}} : {opacity: 0, transition: {duration: 0.01}}}>[{text}]</motion.span>
             <motion.div className={`size-[12px] rounded-full bg-red -translate-x-1/2 absolute left-1/2 top-1/2 -translate-y-1/2 ${inFrame ? "" : "hidden"}`} variants={variants} animate={isActive ? "animate" : "initial"}></motion.div>
         </motion.div>
     </>

@@ -16,13 +16,13 @@ export default function BouncingBall( { startX, startY, velocityX, velocityY, in
         const ctx = canvas?.getContext('2d');
         if (!canvas || !ctx) return;
 
-        let cx = startX,
-            cy = startY,
+        let cx = startX + 7,
+            cy = startY + 7,
             vx = velocityX,
             vy = velocityY;
         const radius = 5,
-            gravity = 0.5,
-            damping = 0.5,
+            gravity = 0.3,
+            damping = 0.6,
             traction = 0.8,
             paused = false;
 
