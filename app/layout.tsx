@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 import Header from "./components/header/Header";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Studio 36",
@@ -19,11 +20,12 @@ export default function RootLayout({
         <SmoothScroll>
           <div className="layout-grid absolute top-0 left-0 w-full h-full pointer-events-none">
             {[...Array(7)].map((_, index) => (
-              <div key={index} className={`-z-10 pointer-events-none relative w-full before:w-full before:absolute ${index === 0 ? "" : "before:border-l"}  before:border-black before:border-opacity-15 before:h-full ${index === 6 ? "before:border-r" : ""}`}></div>
+            <div key={index} className={`-z-10 pointer-events-none relative w-full before:w-full before:absolute ${index === 0 ? "" : "before:border-l"}  before:border-black before:border-opacity-15 before:h-full ${index === 6 ? "before:border-r" : ""}`}></div>
             ))}
           </div>
           <Header />
           {children}
+          <Toaster />
         </SmoothScroll>
       </body>
     </html>

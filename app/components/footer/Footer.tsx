@@ -4,7 +4,10 @@ import { useState } from "react";
 import { motion, useAnimationControls } from "motion/react";
 import { quadEaseInOut } from "@/app/lib/utils";
 import { useLenis } from "lenis/react";
-import Link from 'next/link';
+import BracketButton from "../buttons/BracketButton";
+import SwitchBracketButton from "../buttons/SwitchBracketButton";
+import { useToast } from "@/hooks/use-toast";
+import LinkButton from "../buttons/LinkButton";
 
 const texts = [
   ["Ai un proiect unde te putem ajuta?", "Oferă-ne mai multe detalii,", "numele tău"],
@@ -21,6 +24,8 @@ export default function Footer() {
 
   const controls = useAnimationControls();
   const lenis = useLenis();
+
+  const { toast } = useToast();
 
   const parentVariants = {
     animate: {
@@ -58,6 +63,21 @@ export default function Footer() {
   }
 
   const nextSlide = () => {
+    if (slide === 0 && name === "") {
+      toast({
+        title: "Numele nu poate fi gol",
+        duration: 5000,
+      });
+      return;
+    }
+
+    if (slide === 1 && tel === "") {
+      toast({
+        title: "Telefonul nu poate fi gol",
+        duration: 5000,
+      });
+      return;
+    }
     controls.start('exit');
     setLoading(true);
     setTimeout(() => {
@@ -90,13 +110,14 @@ export default function Footer() {
                 <motion.p className='text-[3.5rem] text-white font-hedwig mb-12' variants={textVariants}>{texts[slide][0]}</motion.p>
                 <motion.div variants={textVariants} className="flex items-end gap-4">
                   <p className='text-[3.5rem] text-white font-hedwig'>{texts[slide][1]}</p>
-                  <div className='flex-1'>
-                    <input size={0} className={`bg-transparent text-white p-0 m-0 h-fit w-full focus:outline-none font-hedwig text-[3.5rem] placeholder:opacity-25 ${slide === 2 ? "hidden" : ""}`} type="text" placeholder={texts[slide][2]} value={slide === 0 ? name : tel} onChange={(e) => {if (slide === 0) setName(e.currentTarget.value); else setTel(e.currentTarget.value)}}/>
+                  <div className='flex-1 relative'>
+                    <input size={0} className={`bg-transparent text-white p-0 m-0 h-fit w-full peer focus:outline-none font-hedwig text-[3.5rem] placeholder:opacity-25 ${slide === 2 ? "hidden" : ""}`} type="text" placeholder={texts[slide][2]} value={slide === 0 ? name : tel} onChange={(e) => {if (slide === 0) setName(e.currentTarget.value); else setTel(e.currentTarget.value)}}/>
+                    <motion.div className={`left-0 top-0 h-full w-[1px] bg-white absolute peer-focus:hidden ${(slide === 0 && name !== "" ||  slide === 1 && tel !== "") ? "hidden" : ""}`} animate={{opacity: 0, transition: {repeat: Infinity, repeatType: 'reverse', repeatDelay: .6, duration: .01}}}></motion.div>
                   </div>
                 </motion.div>
                 <div className={`flex ${slide === 2 ? "justify-end" : "justify-between"} mt-24`}>
-                  <button className={`text-white text-2xl underline disabled:opacity-25 transitino duration-200 ${slide === 2 ? "hidden" : ""}`} disabled={slide === 0 || loading} onClick={previousSlide}>ÎNAPOI</button>
-                  <button className="text-white text-2xl underline disabled:opacity-25 transitino duration-200" disabled={loading} onClick={slide === 2 ? () => {lenis?.scrollTo('top')} : nextSlide}>{slide === 2 ? "ÎNAPOI SUS" : "URMĂTOAREA"}</button>
+                  <BracketButton text="ÎNAPOI" width="4.9rem" disabled={slide === 0 || loading} className={`${slide === 2 ? "hidden" : ""}`} onClick={previousSlide}/>
+                  <SwitchBracketButton  width={slide === 2 ? "8.1rem" : "9.9rem"} disabled={loading} isSwitchTime={slide === 2} onClick={slide === 2 ? () => {lenis?.scrollTo('top')} : nextSlide} texts={["URMĂTOAREA", "ÎNAPOI SUS"]}/>
                 </div>
             </div>
             <div className="col-span-8 h-[1px] bg-white self-end"></div>
@@ -104,11 +125,11 @@ export default function Footer() {
                 <div className="col-span-2">
                   <div className="flex gap-3 mb-2 text-white text-2xl">
                     <p>E:</p>
-                    <Link href="/">hello@studio36.md</Link>
+                    <LinkButton text='hello@studio36.md' href='/'/>
                   </div>
                   <div className="flex gap-3 mb-2 text-white text-2xl">
                     <p>T:</p>
-                    <Link href="/">+373 (68) 12 34 56</Link>
+                    <LinkButton text='+373 (68) 12 34 56' href='/'/>
                   </div>
                   <div className="flex gap-3 text-white text-2xl">
                     <p>A:</p>
@@ -118,11 +139,11 @@ export default function Footer() {
                 <div className="col-start-3 col-span-2">
                   <div className="flex gap-3 mb-2 text-white text-2xl">
                     <p>IG:</p>
-                    <Link href="/">@studio36</Link>
+                    <LinkButton text='@studio36' href='/'/>
                   </div>
                   <div className="flex gap-3 mb-2 text-white text-2xl">
                     <p>FB:</p>
-                    <Link href="/">Studio 36</Link>
+                    <LinkButton text='Studio 36' href='/'/>
                   </div>
                 </div>
             </div>

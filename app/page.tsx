@@ -17,7 +17,7 @@ export default function Home() {
     <>
       <CustomCursour isActive={isActive} text={cursourText} width={cursourWidth}/>
       <StageCarousell setIsActive={setIsActive} setCursourText={setCursourText} setCursourWidth={setCursourWidth}/>
-      <Offer />
+      <Offer setIsActive={setIsActive}/>
       <ImageScreen />
       <RulesAndBenefits />
       <Footer />

@@ -64,3 +64,9 @@ nextjs-portal {
 :host {
   background-color: #f1f1f1 !important;
 }
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
