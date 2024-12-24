@@ -164,9 +164,9 @@ export default function Footer() {
           </motion.div>
           <div className="absolute bottom-4 lg:bottom-8 left-0 flex justify-between w-full px-[7.3%]">
             <p className="text-white">© 2024</p>
-            <div className="flex gap-2">
+            <div className="flex gap-2 group">
               <span className="text-white">by Studio Modvis</span>
-              <Image src="/icons/modvis.svg" alt="studio-modvis" width={10} height={10}/>
+              <Image src="/icons/modvis.svg" alt="studio-modvis" className="transition duration-200 group-hover:rotate-[360deg]" width={10} height={10}/>
             </div>
           </div>
     </div>

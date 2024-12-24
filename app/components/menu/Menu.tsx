@@ -21,11 +21,21 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
     height: "3.2rem"
   });
 
+  const [initialDimensions, setInitialDimensions] = useState({
+    width: "6.2rem",
+    height: "3.2rem"
+  });
+
   useEffect(() => {
     const handleResize = () => {
       setDimensions({
         width: window.innerWidth >= responsiveMax ? "27rem" : "100%",
         height: window.innerWidth >= responsiveMax ? "43.5rem" : "calc(100vh - 1rem)"
+      });
+
+      setInitialDimensions({
+        width: window.innerWidth >= responsiveMax ? "6.2rem" : "0rem",
+        height: window.innerWidth >= responsiveMax ? "3.2rem" : "calc(100vh - 1rem)"
       });
     };
 
@@ -39,8 +49,8 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
 
   const menuVariants = {
     initial: {
-      width: '6.2rem',
-      height: '3.2rem',
+      width: initialDimensions.width,
+      height: initialDimensions.height,
       transition: {
         delay: 0.5,
         staggerChildren: 0.04,
@@ -109,10 +119,10 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
                       <span className='h-6'>[RO] /</span>
                       <LinkButton text='EN' href='/'/>
                     </motion.div>
-                    <motion.a variants={menuItemVariants} href="/" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 1 ? "" : "blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(1)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>INDEX</motion.a>
-                    <motion.a variants={menuItemVariants} href="/" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 2 ? "" : "blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(2)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>SERVICII</motion.a>
-                    <motion.a variants={menuItemVariants} href="/" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null  || loading? "" : currentHoverLink === 3 ? "" : "blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(3)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>PROIECTE</motion.a>
-                    <motion.a variants={menuItemVariants} href="/" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block ${currentHoverLink === null || loading ? "" : currentHoverLink === 4 ? "" : "blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(4)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>CONTACT</motion.a>
+                    <motion.a variants={menuItemVariants} href="/" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 1 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(1)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>INDEX</motion.a>
+                    <motion.a variants={menuItemVariants} href="/" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 2 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(2)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>SERVICII</motion.a>
+                    <motion.a variants={menuItemVariants} href="/" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null  || loading? "" : currentHoverLink === 3 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(3)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>PROIECTE</motion.a>
+                    <motion.a variants={menuItemVariants} href="/" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block ${currentHoverLink === null || loading ? "" : currentHoverLink === 4 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(4)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>CONTACT</motion.a>
                   <div className='my-12 h-[1px] w-[calc(100%+3.5rem)] lg:w-[calc(100%+4rem)] bg-white -ml-8'></div>
                   <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white  gap-3'>
                     <p>IG:</p>
