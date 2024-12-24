@@ -87,7 +87,7 @@ export default function CustomCursour({ isActive, text = 'VEZI MAI MULTE', width
                 velocityY={bounceCoordinates.vy}
                 inFrame={inFrame}
             />
-        <motion.div className="fixed left-0 top-0 z-[100] pointer-events-none w-fit h-fit" animate={{x: mousePosition.x, y: mousePosition.y}} transition={{type: 'tween', ease: 'easeOut'}}>
+        <motion.div className="fixed left-0 top-0 z-[100] pointer-events-none w-fit h-fit hidden lg:block" animate={{x: mousePosition.x, y: mousePosition.y}} transition={{type: 'tween', ease: 'easeOut'}}>
             <motion.span className="z-10 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 whitespace-nowrap text-white" animate={isActive ? {opacity: 1, transition: {delay: .1}} : {opacity: 0, transition: {duration: 0.01}}}>[{text}]</motion.span>
             <motion.div className={`size-[12px] rounded-full bg-red -translate-x-1/2 absolute left-1/2 top-1/2 -translate-y-1/2 ${inFrame ? "" : "hidden"}`} variants={variants} animate={isActive ? "animate" : "initial"}></motion.div>
         </motion.div>

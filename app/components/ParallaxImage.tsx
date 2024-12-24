@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 interface ParallaxImageProps {
     src: string,
     alt: string,
-    className: string,
+    className?: string,
 }
 
 export default function ParallaxImage({src, alt, className}: ParallaxImageProps) {

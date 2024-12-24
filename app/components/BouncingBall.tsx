@@ -26,8 +26,12 @@ export default function BouncingBall( { startX, startY, velocityX, velocityY, in
             traction = 0.8,
             paused = false;
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight + 12;
+        const resizeCanvas = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight + 12;
+        };
+
+        resizeCanvas();
 
         function circle() {
             if (!ctx || !canvas) return;
@@ -61,8 +65,13 @@ export default function BouncingBall( { startX, startY, velocityX, velocityY, in
             ctx.fill();
         }
 
+        window.addEventListener('resize', resizeCanvas);
         circle();
+
+        return () => {
+            window.removeEventListener('resize', resizeCanvas);
+        };
     }, [startX, startY, velocityX, velocityY]);
 
-    return <canvas ref={canvasRef} className={`fixed top-0 left-0 w-full h-[calc(100vh+12px)] pointer-events-none z-[100] ${inFrame ? "hidden" : ""}`}></canvas>;
+    return <canvas ref={canvasRef} className={`fixed top-0 left-0 w-full h-[calc(100vh+12px)] pointer-events-none z-[100] ${inFrame ? "hidden" : "lg:block hidden"}`}></canvas>;
 }

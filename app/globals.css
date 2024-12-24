@@ -48,7 +48,14 @@ nextjs-portal {
 
 .layout-grid {
   display: grid;
-  grid-template-columns: .5fr 1fr 1fr 1fr 1fr 1fr 1fr .5fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (min-width: 1024px) {
+  .layout-grid {
+    display: grid;
+    grid-template-columns: .5fr 1fr 1fr 1fr 1fr 1fr 1fr .5fr;
+  }  
 }
 
 .stage-grid {

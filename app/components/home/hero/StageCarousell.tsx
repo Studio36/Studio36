@@ -82,10 +82,10 @@ export default function StageCarousell({ setIsActive, setCursourText, setCursour
             <motion.div className='absolute h-full w-full overflow-hidden top-0 right-0' variants={slideVariants} animate='appear'>
               <div className="absolute h-full w-[57vw] top-0 right-0">
                 <div className="h-full w-full relative rounded-lg overflow-hidden">
-                <StageCard src="/hero-stages/stage4.jpg" alt="stage" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={0} className='h-full w-[57vw] rounded-lg' duration={.9}/>
-                <StageCard src="/hero-stages/stage1.jpg" alt="stage" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={1} className='h-full w-[57vw] rounded-lg' duration={.9}/>
-                <StageCard src="/hero-stages/stage2.jpg" alt="stage" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={2} className='h-full w-[57vw] rounded-lg' duration={.9}/>
-                <StageCard src="/hero-stages/stage3.jpg" alt="stage" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={3} className='h-full w-[57vw] rounded-lg' duration={.9}/>
+                <StageCard src="/hero-stages/stage4.jpg" alt="stage1" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={0} className='h-full w-[57vw] rounded-lg' duration={.9}/>
+                <StageCard src="/hero-stages/stage1.jpg" alt="stage2" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={1} className='h-full w-[57vw] rounded-lg' duration={.9}/>
+                <StageCard src="/hero-stages/stage2.jpg" alt="stage3" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={2} className='h-full w-[57vw] rounded-lg' duration={.9}/>
+                <StageCard src="/hero-stages/stage3.jpg" alt="stage4" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={3} className='h-full w-[57vw] rounded-lg' duration={.9}/>
                 </div>
               </div>
             </motion.div>

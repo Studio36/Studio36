@@ -22,7 +22,7 @@ export default function TextSlide({text}: TextSlideProps) {
 
   return (
     <motion.div ref={ref} className='h-screen flex justify-center items-center' style={{opacity: y}}>
-        <p className='font-hedwig text-white text-[3.5rem] max-w-[70rem] text-center'>{text}</p>
+        <p className='font-hedwig text-white text-2xl lg:leading-tight lg:text-[3.5rem] lg:max-w-[70rem] text-center'>{text}</p>
     </motion.div>
   )
 }

@@ -29,6 +29,8 @@ const useMousePosition = () => {
 
 export default useMousePosition;
 
+export const responsiveMax = 1024;
+
 // Carousell Texts
 
 export const carousellNumbers = ["01", "02", "03", "04"];
