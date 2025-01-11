@@ -1,6 +1,5 @@
 'use client'
 
-import { easeInOutCubic } from "@/app/lib/utils";
 import { motion } from "motion/react";
 
 const images = [
@@ -15,22 +14,22 @@ const images = [
     "woman-9.jpg",
 ]
 
-const imageVariants = {
-    padding: {
-        width: 'calc(100% - 1.5rem)',
-        transition: {
-            duration: 1,
-            ease: easeInOutCubic
-        }
-    },
-    initial: {
-        width: 'calc(100% - 0rem)',
-        transition: {
-            duration: 1,
-            ease: easeInOutCubic
-        }
-    }
-}
+// const imageVariants = {
+//     padding: {
+//         width: 'calc(100% - 1.5rem)',
+//         transition: {
+//             duration: 1,
+//             ease: easeInOutCubic
+//         }
+//     },
+//     initial: {
+//         width: 'calc(100% - 0rem)',
+//         transition: {
+//             duration: 1,
+//             ease: easeInOutCubic
+//         }
+//     }
+// }
 
 export default function MobileGallery() {
   return (

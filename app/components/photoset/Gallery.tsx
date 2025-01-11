@@ -3,8 +3,6 @@
 import { easeInOutCubic } from "@/app/lib/utils";
 import { motion } from "motion/react";
 import { createRef, Fragment, useEffect, useRef, useState } from "react";
-import ParallaxImage from "../ParallaxImage";
-import PhotosetParallax from "./PhotosetParralax";
 
 const images = [
     "woman-1.jpg",
@@ -42,7 +40,7 @@ const imageVariants = {
 export default function Gallery({ gridLayout }: GalleryProps) {
     const container = useRef<HTMLDivElement>(null);
     const [containerHeight, setContainerHeight] = useState(0);
-    const [heights, setHeights] = useState<Number[]>([]);
+    const [heights, setHeights] = useState<number[]>([]);
     const elementsRef = useRef(images.map(() => createRef<HTMLDivElement>()));
 
     useEffect(() => {
@@ -61,21 +59,12 @@ export default function Gallery({ gridLayout }: GalleryProps) {
         Promise.all(imagePromises).then(() => {
             measureHeights();
         });
-
-        return () => window.removeEventListener('resize', () => {
-            setContainerHeight(container.current ? container.current.clientHeight : 0);
-        });
     }, [])
 
     const measureHeights = () => {
         const newHeights = elementsRef.current.map(ref => {
             const element = ref.current;
             if (!element) return 0;
-            
-            // Force layout reflow to get accurate height
-            element.style.display = 'none';
-            element.offsetHeight; // trigger reflow
-            element.style.display = '';
             
             return element.getBoundingClientRect().height;
         });
