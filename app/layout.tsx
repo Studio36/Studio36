@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="relative">
       <body className="layout-grid relative px-4 lg:px-0">
         <SmoothScroll>
           <div className="layout-grid absolute top-0 left-0 w-full h-full pointer-events-none px-4 lg:px-0">

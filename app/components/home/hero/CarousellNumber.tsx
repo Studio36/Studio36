@@ -1,4 +1,4 @@
-import { quadEaseInOut } from '@/app/lib/utils';
+import { easeInOutCubic } from '@/app/lib/utils';
 import { AnimationControls, motion } from 'motion/react'
 
 interface CarousellNumberProps {
@@ -29,14 +29,14 @@ export default function CarousellNumber({ text, animate }: CarousellNumberProps)
     animate: {
       x: ["100%", "0%"],
       transition: {
-        ease: quadEaseInOut,
+        ease: easeInOutCubic,
         duration: .6,
       }
     },
     exit: {
       x: "100%",
       transition: {
-        ease: quadEaseInOut,
+        ease: easeInOutCubic,
         duration: .6,
       }
     }

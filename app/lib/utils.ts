@@ -1,6 +1,9 @@
 import { cubicBezier } from "motion/react";
 
-export const quadEaseInOut = cubicBezier(0.65, 0, 0.35, 1);
+export const easeInOutCubic = cubicBezier(0.65, 0, 0.35, 1);
+export function easeInOutCubicMath (x: number): number {
+  return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  }
 
 import React from 'react';
 

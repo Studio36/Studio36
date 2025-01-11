@@ -26,7 +26,7 @@ export default function StageCarousell({ setIsActive, setCursourText, setCursour
 
     setLoading(true);
     controls.start('exit');
-    setSlide(slide === carousellNumbers.length - 1 ? 0 : slide + 1);
+    setSlide(slide => slide === carousellNumbers.length - 1 ? 0 : slide + 1);
 
     setTimeout(() => {
       controls.start('animate');
@@ -37,6 +37,13 @@ export default function StageCarousell({ setIsActive, setCursourText, setCursour
     }, 1300);
 
   }
+
+  useEffect(() => {
+    console.log()
+    const interval = setInterval(NextSlide, 5000);
+
+    return () => clearInterval(interval);
+  }, [])
 
   useEffect(() => {
     setTimeout(() => {

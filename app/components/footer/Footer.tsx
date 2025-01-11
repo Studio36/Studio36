@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, useAnimationControls } from "motion/react";
-import { quadEaseInOut } from "@/app/lib/utils";
+import { easeInOutCubic } from "@/app/lib/utils";
 import { useLenis } from "lenis/react";
 import BracketButton from "../buttons/BracketButton";
 import SwitchBracketButton from "../buttons/SwitchBracketButton";
@@ -50,7 +50,7 @@ export default function Footer() {
       y: 0,
       transition: {
         duration: .3,
-        ease: quadEaseInOut
+        ease: easeInOutCubic
       }
     },
     exit: {
@@ -58,7 +58,7 @@ export default function Footer() {
         y: 5,
         transition: {
           duration: .3,
-          ease: quadEaseInOut
+          ease: easeInOutCubic
       }
     }
   }

@@ -1,6 +1,6 @@
 'use client'
 
-import { quadEaseInOut, responsiveMax } from '@/app/lib/utils'
+import { easeInOutCubic, responsiveMax } from '@/app/lib/utils'
 import { motion } from 'framer-motion'
 import BracketButton from '../buttons/BracketButton'
 import { useEffect, useState } from 'react'
@@ -62,7 +62,7 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
       height: dimensions.height,
       transition: {
         duration: .5,
-        ease: quadEaseInOut,
+        ease: easeInOutCubic,
         staggerChildren: 0.05,
         delayChildren: 0.3
       }
@@ -79,7 +79,7 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
       y: 0,
       transition: {
         duration: .3,
-        ease: quadEaseInOut
+        ease: easeInOutCubic
       }
     },
   }
@@ -92,7 +92,7 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
       opacity: 1,
       transition: {
         duration: .3,
-        ease: quadEaseInOut
+        ease: easeInOutCubic
       }
     },
   }

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import ParallaxImage from '../../ParallaxImage'
-import { quadEaseInOut } from '@/app/lib/utils'
+import { easeInOutCubic } from '@/app/lib/utils'
 
 interface StageCardProps {
     slide: number,
@@ -33,7 +33,7 @@ export default function StageCard({ slide, src, alt, index, className, duration,
       }
 
   return (
-    <motion.div variants={slideVariants} transition={{ease: quadEaseInOut}} initial={false} animate={slide === index ? "animate" : "initial"} className={`absolute left-0 top-0 overflow-hidden h-full`} style={{zIndex: slide === index ? 4 : nextSlide === index ? 3 : 0}}>
+    <motion.div variants={slideVariants} transition={{ease: easeInOutCubic}} initial={false} animate={slide === index ? "animate" : "initial"} className={`absolute left-0 top-0 overflow-hidden h-full`} style={{zIndex: slide === index ? 4 : nextSlide === index ? 3 : 0}}>
       <ParallaxImage src={src} alt={alt} className={`${className}`}/>
     </motion.div>
   )

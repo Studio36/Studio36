@@ -18,7 +18,7 @@ export default {
   	},
   	fontFamily: {
   		'hedwig': 'Hedvig Letters Serif'
-  	}
+  	},
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

@@ -7,8 +7,8 @@ import { useEffect, useRef, useState } from "react";
 
 interface CustomCursourProps {
     isActive: boolean,
-    text: string,
-    width: string,
+    text?: string,
+    width?: string,
 }
 
 export default function CustomCursour({ isActive, text = 'VEZI MAI MULTE', width = "9.3rem" }: CustomCursourProps) {

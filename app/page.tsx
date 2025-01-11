@@ -35,12 +35,12 @@ export default function Home() {
 
   return (
     <>
-      <CustomCursour isActive={isActive} text={cursourText} width={cursourWidth}/>
-      {isMobile ? <MobileHero /> : <StageCarousell setIsActive={setIsActive} setCursourText={setCursourText} setCursourWidth={setCursourWidth}/>}
-      <Offer setIsActive={setIsActive}/>
-      <ImageScreen />
-      <RulesAndBenefits />
-      <Footer />
+        <CustomCursour isActive={isActive} text={cursourText} width={cursourWidth}/>
+        {isMobile ? <MobileHero /> : <StageCarousell setIsActive={setIsActive} setCursourText={setCursourText} setCursourWidth={setCursourWidth}/>}
+        <Offer setIsActive={setIsActive}/>
+        <ImageScreen />
+        <RulesAndBenefits />
+        <Footer />
     </>
   );
 }
