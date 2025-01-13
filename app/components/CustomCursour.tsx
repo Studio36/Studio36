@@ -29,7 +29,6 @@ export default function CustomCursour({ isActive, text = 'VEZI MAI MULTE', width
         }
     }
 
-     // Track previous position and timestamp
      const prevPosition = useRef({ x: 0, y: 0, timestamp: 0 });
 
      useEffect(() => {
@@ -38,7 +37,6 @@ export default function CustomCursour({ isActive, text = 'VEZI MAI MULTE', width
              const dt = now - prevPosition.current.timestamp;
              
              if (dt > 0) {
-                 // Calculate velocity (pixels per millisecond)
                  const vx = (e.clientX - prevPosition.current.x) / dt;
                  const vy = (e.clientY - prevPosition.current.y) / dt;
                  
@@ -48,7 +46,6 @@ export default function CustomCursour({ isActive, text = 'VEZI MAI MULTE', width
                      timestamp: now
                  };
                  
-                 // Scale velocity for animation
                  setBounceCoordinates(prev => ({
                      ...prev,
                      vx: vx * 10,

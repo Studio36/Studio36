@@ -13,7 +13,6 @@ const images = [
     "woman-6.jpg",
     "woman-7.jpg",
     "woman-8.jpg",
-    "woman-9.jpg",
 ]
 
 interface GalleryProps {
@@ -21,14 +20,19 @@ interface GalleryProps {
 }
 
 const imageVariants = {
+    initial: {
+        opacity: 0,
+    },
     padding: {
+        opacity: 1,
         width: 'calc(100% - 1.5rem)',
         transition: {
             duration: 1,
             ease: easeInOutCubic
         }
     },
-    initial: {
+    nopadding: {
+        opacity: 1,
         width: 'calc(100% - 0rem)',
         transition: {
             duration: 1,
@@ -99,14 +103,14 @@ export default function Gallery({ gridLayout }: GalleryProps) {
                     <motion.div 
                         ref={elementsRef.current[index]} 
                         layout 
-                        initial={false} 
+                        initial={index === 0 ? false : 'initial'} 
                         variants={imageVariants} 
                         animate={gridLayout 
                             ? (index + 1) % 5 === 0 
-                                ? "initial" 
+                                ? "nopadding" 
                                 : "padding" 
                             : isSecond 
-                                ? "initial"
+                                ? "nopadding"
                                 : "padding"
                         } 
                         transition={{duration: 1, ease: easeInOutCubic}} 
@@ -115,12 +119,12 @@ export default function Gallery({ gridLayout }: GalleryProps) {
                                 ? 'col-span-1 h-[18vw]' 
                                 : `${
                                     isFirst 
-                                        ? 'col-span-2' 
+                                        ? `col-span-2 ${index === 0 ? "h-[calc(100vh-17rem)]" : "h-fit"}` 
                                         : isSecond 
-                                            ? 'col-span-3' 
-                                            : 'col-span-2 -mt-[7.75rem]'
-                                } h-fit`
-                        } overflow-hidden rounded-[1.5%] relative`}
+                                            ? 'col-span-3 h-fit' 
+                                            : 'col-span-2 -mt-[7.75rem] h-fit'
+                                }`
+                        } overflow-hidden rounded-[1%] relative`}
                     >
                         <motion.img 
                             layout 
@@ -129,7 +133,7 @@ export default function Gallery({ gridLayout }: GalleryProps) {
                             alt="woman" 
                             width={823} 
                             height={1226} 
-                            className="w-full rounded-[1.5%]"
+                            className={`w-full rounded-[1%]`}
                         />
                     </motion.div>
                     {(isThird || isSecond && heights[index] <= heights[index - 1]) && index !== images.length - 1 && !gridLayout && <div className="col-span-5 mb-[7.75rem]"></div>}

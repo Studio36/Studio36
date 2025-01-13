@@ -37,7 +37,7 @@ export default function Header() {
     <>
       <div className={`col-span-3 lg:col-span-8 layout-grid sticky top-0 z-50 py-4 lg:py-8 mix-blend-difference`}>
         <Image src="/icons/logo.svg" alt="logo" width={64} height={78} className={`w-12 lg:w-16 lg:col-start-2`}/>
-        <p className={`text-white text-2xl col-span-2 hidden lg:block`}>Închiriere Studio & <br/> Servicii Foto & Video</p>
+        <p className={`text-white text-2xl col-span-2 hidden lg:block`}>Închiriere Studio <br/> Servicii Foto & Video</p>
         <div className={`col-start-7 w-fit h-fit ml-auto ${menuActive ? "hidden" : ""}`}>
             <BracketButton disabled={false} className='w-[3.6rem] lg:w-[4.3rem]' onClick={() => {setOpen(!open)}} text='MENU'/>
         </div>

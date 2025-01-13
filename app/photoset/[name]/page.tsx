@@ -6,6 +6,7 @@ import MobileGallery from "@/app/components/photoset/MobileGallery"
 import NextProjectScreen from "@/app/components/photoset/NextProjectScreen"
 import SetDescription from "@/app/components/photoset/SetDescription"
 import { responsiveMax } from "@/app/lib/utils"
+import Head from "next/head"
 import { useEffect, useState } from "react"
 
 export default function Photoset() {
@@ -17,27 +18,31 @@ export default function Photoset() {
         setIsMobile(window.innerWidth < responsiveMax);
       };
       
-      // Initial check
       checkMobile();
       
-      // Add resize listener
       window.addEventListener('resize', checkMobile);
       
-      // Cleanup
       return () => window.removeEventListener('resize', checkMobile);
     }, []);
   
-    if (isMobile === null) return null;
-
   return (
     <>
+    <Head>
+      <link
+        rel="preload"
+        href="/photoset/woman-1.jpg"
+        as="image"
+      />
+    </Head>
       <CustomCursour isActive={false}/>
-      <div className="col-span-3 lg:col-span-8 layout-grid">
-        <div className="layout-grid col-span-3 lg:col-span-8 mt-12 relative min-h-[calc(100vh-11.875rem)]">
+      <div className="col-span-3 lg:col-span-8 layout-grid min-h-[101vh]">
+        <div className="flex flex-col col-span-3 lg:col-span-8 mt-12 relative min-h-[calc(100vh-11.875rem)]">
+          <div className="layout-grid w-full relative">
             <SetDescription gridLayout={gridLayout} setGridLayout={setGridLayout}/>
-            {isMobile ? <MobileGallery /> : <Gallery gridLayout={gridLayout}/>}
+            {isMobile === null ? <></> : isMobile ? <MobileGallery /> : <Gallery gridLayout={gridLayout}/>}
+          </div>
         </div>
-        <NextProjectScreen isMobile={isMobile}/>
+        {isMobile !== null && <NextProjectScreen isMobile={isMobile}/>}
       </div>
     </>
   )

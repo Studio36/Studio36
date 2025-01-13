@@ -42,7 +42,7 @@ export default function RulesAndBenefits() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-      setY(latest * 30)
+      setY(latest * 20)
   })
   return (
     <div className='col-span-8 mt-12 lg:mt-48 relative layout-grid' ref={ref}>

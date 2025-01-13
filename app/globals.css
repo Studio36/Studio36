@@ -77,3 +77,20 @@ nextjs-portal {
     --radius: 0.5rem;
   }
 }
+
+body::-webkit-scrollbar-track
+{
+	background-color: #f1f1f1;
+}
+
+body::-webkit-scrollbar
+{
+	width: 10px;
+}
+
+body::-webkit-scrollbar-thumb
+{
+  border: #f1f1f1 solid 2px;
+	border-radius: 7px;
+	background-color: #6b6b6b90;
+}

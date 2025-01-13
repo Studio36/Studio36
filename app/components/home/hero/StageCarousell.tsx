@@ -39,7 +39,6 @@ export default function StageCarousell({ setIsActive, setCursourText, setCursour
   }
 
   useEffect(() => {
-    console.log()
     const interval = setInterval(NextSlide, 5000);
 
     return () => clearInterval(interval);
