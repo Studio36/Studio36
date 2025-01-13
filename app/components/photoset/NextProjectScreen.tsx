@@ -37,6 +37,8 @@ export default function NextProjectScreen({isMobile}: NextProjectScreenProps) {
     if (progress >= 100) {
         return;
     }
+
+    console.log(latest * 100);
     setProgress(latest * 100);
     setProgressNumber((latest * 100).toFixed(0).padStart(3, "0"))
   })
