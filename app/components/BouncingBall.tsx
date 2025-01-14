@@ -12,6 +12,8 @@ export default function BouncingBall( { startX, startY, velocityX, velocityY, in
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
+        if (inFrame) return;
+
         const canvas = canvasRef.current;
         const ctx = canvas?.getContext('2d');
         if (!canvas || !ctx) return;
@@ -71,7 +73,7 @@ export default function BouncingBall( { startX, startY, velocityX, velocityY, in
         return () => {
             window.removeEventListener('resize', resizeCanvas);
         };
-    }, [startX, startY, velocityX, velocityY]);
+    }, [startX, startY, velocityX, velocityY, inFrame]);
 
     return <canvas ref={canvasRef} className={`fixed top-0 left-0 w-full h-[calc(100vh+12px)] pointer-events-none z-[100] ${inFrame ? "hidden" : "lg:block hidden"}`}></canvas>;
 }

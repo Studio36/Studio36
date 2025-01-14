@@ -15,6 +15,7 @@ export default function CustomCursour({ isActive, text = 'VEZI MAI MULTE', width
     const mousePosition = useMousePosition();
     const [bounceCoordinates, setBounceCoordinates] = useState({ x: 0, y: 0, vx: 0, vy: 0 });
     const [inFrame, setInFrame] = useState(true);
+    const [isPageNew, setIsPageNew] = useState(true);
 
     const variants = {
         initial: {
@@ -33,6 +34,11 @@ export default function CustomCursour({ isActive, text = 'VEZI MAI MULTE', width
 
      useEffect(() => {
          const handleMouseMove = (e: MouseEvent) => {
+            if (isPageNew) {
+                setTimeout(() => {
+                    setIsPageNew(false);
+                }, 500)
+            }
              const now = Date.now();
              const dt = now - prevPosition.current.timestamp;
              
@@ -84,10 +90,12 @@ export default function CustomCursour({ isActive, text = 'VEZI MAI MULTE', width
                 velocityY={bounceCoordinates.vy}
                 inFrame={inFrame}
             />
-        <motion.div className="fixed left-0 top-0 z-[100] pointer-events-none w-fit h-fit hidden lg:block" animate={{x: mousePosition.x, y: mousePosition.y}} transition={{type: 'tween', ease: 'easeOut'}}>
-            <motion.span className="z-10 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 whitespace-nowrap text-white" animate={isActive ? {opacity: 1, transition: {delay: .1}} : {opacity: 0, transition: {duration: 0.01}}}>[{text}]</motion.span>
-            <motion.div className={`size-[12px] rounded-full bg-red -translate-x-1/2 absolute left-1/2 top-1/2 -translate-y-1/2 ${inFrame ? "" : "hidden"}`} variants={variants} animate={isActive ? "animate" : "initial"}></motion.div>
-        </motion.div>
+            <div className={`${isPageNew ? "opacity-0" : "opacity-100"} transition-all duration-300 z-[100]`}>
+                <motion.div className="fixed left-0 top-0 z-[100] pointer-events-none w-fit h-fit hidden lg:block" animate={{x: mousePosition.x, y: mousePosition.y}} transition={{type: 'tween', ease: 'easeOut'}}>
+                    <motion.span className="z-10 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 whitespace-nowrap text-white" animate={isActive ? {opacity: 1, transition: {delay: .1}} : {opacity: 0, transition: {duration: 0.01}}}>[{text}]</motion.span>
+                    <motion.div className={`size-[12px] rounded-full bg-red -translate-x-1/2 absolute left-1/2 top-1/2 -translate-y-1/2 ${!inFrame ? "hidden" : ""}`} variants={variants} animate={isActive ? "animate" : "initial"}></motion.div>
+                </motion.div>
+            </div>
     </>
   )
 }

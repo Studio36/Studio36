@@ -44,3 +44,29 @@ export const carousellDescriptionTexts = [
   ["Vintage","Două canapele în stil vintage care aduc clasă fiecărei fotografii.", "Fotografie tematică, ședințe de modă, filmari podcast."],
   ["Dining","Concepută în stil natural, aceasta aduce un sentiment de căldură și autenticitate fiecărei imagini.", "Fotografie de lifestyle, reclame produse alimentare, ședințe culinare."],
 ]
+
+// Photosets
+
+export const photosets = [
+  [
+    "woman1-1.jpg",
+    "woman1-2.jpg",
+    "woman1-3.jpg",
+    "woman1-4.jpg",
+    "woman1-5.jpg",
+    "woman1-6.jpg",
+    "woman1-7.jpg",
+    "woman1-8.jpg",
+  ],
+  [
+    "woman2-1.png",
+    "woman2-2.png",
+    "woman2-3.png",
+    "woman2-4.png",
+    "woman2-5.png",
+    "woman2-6.png",
+    "woman2-7.png",
+    "woman2-8.png",
+    "woman2-9.png",
+  ]
+]

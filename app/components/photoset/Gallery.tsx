@@ -1,22 +1,14 @@
 'use client'
 
 import { easeInOutCubic } from "@/app/lib/utils";
+import { useLenis } from "lenis/react";
 import { motion } from "motion/react";
 import { createRef, Fragment, useEffect, useRef, useState } from "react";
 
-const images = [
-    "woman-1.jpg",
-    "woman-2.jpg",
-    "woman-3.jpg",
-    "woman-4.jpg",
-    "woman-5.jpg",
-    "woman-6.jpg",
-    "woman-7.jpg",
-    "woman-8.jpg",
-]
-
 interface GalleryProps {
-    gridLayout: boolean        
+    gridLayout: boolean,
+    images: string[],
+    setIsLoaded: (isLoaded: boolean) => void,
 }
 
 const imageVariants = {
@@ -41,11 +33,15 @@ const imageVariants = {
     }
 }
 
-export default function Gallery({ gridLayout }: GalleryProps) {
+export default function Gallery({ gridLayout, images, setIsLoaded }: GalleryProps) {
     const container = useRef<HTMLDivElement>(null);
     const [containerHeight, setContainerHeight] = useState(0);
     const [heights, setHeights] = useState<number[]>([]);
+    const [isAnimationGoing, setIsAnimationGoing] = useState(true);
     const elementsRef = useRef(images.map(() => createRef<HTMLDivElement>()));
+    const lenis = useLenis();
+
+    let gridImagesOffset = 0;
 
     useEffect(() => {
         window.addEventListener('resize', () => {
@@ -60,6 +56,8 @@ export default function Gallery({ gridLayout }: GalleryProps) {
             });
         });
 
+        lenis?.stop();
+
         Promise.all(imagePromises).then(() => {
             measureHeights();
         });
@@ -72,6 +70,11 @@ export default function Gallery({ gridLayout }: GalleryProps) {
             
             return element.getBoundingClientRect().height;
         });
+        setIsLoaded(true);
+        setTimeout(() => {
+            setIsAnimationGoing(false);
+            lenis?.start();
+        }, 1400)
         setHeights(newHeights);
     };
 
@@ -85,9 +88,9 @@ export default function Gallery({ gridLayout }: GalleryProps) {
 
   return (
     <motion.div layout className="col-start-3 col-end-8 grid grid-cols-5" animate={{height: containerHeight + 'px'}} transition={{duration: 1 , ease: easeInOutCubic}}>
-        <motion.div layout className={`h-fit col-span-5 grid grid-cols-5 pb-[7.75rem] ${gridLayout ? "gap-y-6" : "gap-y-0"}`} ref={container}>
-        {images.map((image, index) =>{
-            const position = (index % 3);
+        <motion.div layout transition={{duration: isAnimationGoing ? 0 : 1 , ease: easeInOutCubic}} className={`h-fit col-span-5 grid grid-cols-5 pb-[7.75rem] ${gridLayout ? "gap-y-6" : "gap-y-0"}`} ref={container}>
+        {images.map((image, index) => {
+            const position = ((index + gridImagesOffset) % 3);
             let isFirst = position === 0;
             let isSecond = position === 1;
             let isThird = position === 2;
@@ -96,14 +99,14 @@ export default function Gallery({ gridLayout }: GalleryProps) {
                 isFirst = true;
                 isSecond = false;
                 isThird = false;
+                gridImagesOffset++;
             }
 
             return (
-                <Fragment key={index}>
+                <Fragment key={`${index}-${isAnimationGoing}`}>
                     <motion.div 
-                        ref={elementsRef.current[index]} 
-                        layout 
-                        initial={index === 0 ? false : 'initial'} 
+                        layout={!isAnimationGoing}
+                        initial={false} 
                         variants={imageVariants} 
                         animate={gridLayout 
                             ? (index + 1) % 5 === 0 
@@ -116,25 +119,46 @@ export default function Gallery({ gridLayout }: GalleryProps) {
                         transition={{duration: 1, ease: easeInOutCubic}} 
                         className={`${
                             gridLayout 
-                                ? 'col-span-1 h-[18vw]' 
+                                ? 'col-span-1' 
                                 : `${
                                     isFirst 
-                                        ? `col-span-2 ${index === 0 ? "h-[calc(100vh-17rem)]" : "h-fit"}` 
+                                        ? `col-span-2` 
                                         : isSecond 
-                                            ? 'col-span-3 h-fit' 
-                                            : 'col-span-2 -mt-[7.75rem] h-fit'
+                                            ? 'col-span-3 ' 
+                                            : 'col-span-2 -mt-[7.75rem]'
                                 }`
-                        } overflow-hidden rounded-[1%] relative`}
+                        } overflow-hidden relative`}
                     >
-                        <motion.img 
-                            layout 
-                            transition={{duration: 1, ease: easeInOutCubic}} 
-                            src={`/photosets/${image}`} 
-                            alt="woman" 
-                            width={823} 
-                            height={1226} 
-                            className={`w-full rounded-[1%]`}
-                        />
+                        <motion.div
+                            ref={elementsRef.current[index]} 
+                            initial={isAnimationGoing ? 'initial' : false}
+                            animate={'animate'}
+                            layout={!isAnimationGoing}
+                            variants={{initial: {x: '-100%'}, animate: {x: 0, transition: {delay: index === 0 ? 0 : 0.4, duration: 1, ease: easeInOutCubic}}}}
+                            transition={{duration: 1, ease: easeInOutCubic}}
+                            className={`${
+                                gridLayout 
+                                    ? 'h-[18vw]' 
+                                    : `${
+                                        isFirst 
+                                            ? `${index === 0 ? "h-[calc(100vh-17rem)]" : "h-fit"}` 
+                                            : isSecond 
+                                                ? 'h-fit' 
+                                                : 'h-fit'
+                                    }`
+                            } overflow-hidden rounded-[1%] relative`}
+
+                        >
+                            <motion.img 
+                                layout={!isAnimationGoing}
+                                transition={{duration: 1, ease: easeInOutCubic}}
+                                src={`/photosets/${image}`} 
+                                alt="woman" 
+                                width={823} 
+                                height={1226} 
+                                className={`w-full rounded-[1%]`}
+                            />
+                        </motion.div>
                     </motion.div>
                     {(isThird || isSecond && heights[index] <= heights[index - 1]) && index !== images.length - 1 && !gridLayout && <div className="col-span-5 mb-[7.75rem]"></div>}
                 </Fragment>
