@@ -59,7 +59,7 @@ export default function NextProjectScreen({isMobile, nextPhotoset}: NextProjectS
             }
             {
                 isMobile ? 
-                <Image src={`/photosets/${photosets[nextPhotoset][0]}`} alt="next-project" width={1000} height={1500} className='col-span-3 rounded-[0.25rem] mt-12 mb-4' onClick={() => {router.push('/photoset/' + nextPhotoset), {scroll: 0}}}/>
+                <Image src={`/photosets/${photosets[nextPhotoset][0]}`} alt="next-project" width={1000} height={1500} className='col-span-3 rounded-[0.25rem] mt-12 mb-4' onClick={() => {router.push('/photoset/' + nextPhotoset)}}/>
                 :
                 <div className='col-start-3 col-span-2 overflow-hidden'>
                     <motion.div animate={controls} variants={{nextProject: {x: "110%"}}} transition={{duration: 1, ease:easeInOutCubic, delay: 1}} className='h-[calc(100vh-17rem)] w-[calc(100%-1.5rem)] relative rounded-lg overflow-hidden'>
