@@ -27,7 +27,7 @@ export default function NextProjectScreen({isMobile, nextPhotoset}: NextProjectS
   });
 
   useEffect(() => {
-    if (progress < 100) return;
+    if (progress < 100 || isMobile) return;
 
     lenis?.stop();
     controls.start('nextProject');
@@ -51,7 +51,7 @@ export default function NextProjectScreen({isMobile, nextPhotoset}: NextProjectS
     <motion.div layout className='layout-grid lg:h-[300vh] col-span-3 lg:col-span-8 relative' ref={ref}>
         <div className='layout-grid col-span-3 lg:col-span-8 lg:h-screen lg:pt-48 pb-16 lg:pb-20 lg:sticky top-0 left-0'>
             { 
-                isMobile ?? 
+                isMobile && 
                 <div className='lg:col-start-2 col-span-3 lg:col-span-2'>
                     <p className='mb-4 lg:mb-6 text-sm lg:text-base'>[URMĂTORUL PROIECT]</p>
                     <p className='font-hedwig text-2xl lg:text-[3.5rem]'>Tandrețea Florilor</p>
@@ -59,7 +59,7 @@ export default function NextProjectScreen({isMobile, nextPhotoset}: NextProjectS
             }
             {
                 isMobile ? 
-                <Image src="/photosets/woman-1.jpg" alt="next-project" width={1000} height={1500} className='col-span-3 rounded-[0.25rem] mt-12 mb-4' />
+                <Image src={`/photosets/${photosets[nextPhotoset][0]}`} alt="next-project" width={1000} height={1500} className='col-span-3 rounded-[0.25rem] mt-12 mb-4' onClick={() => {router.push('/photoset/' + nextPhotoset), {scroll: 0}}}/>
                 :
                 <div className='col-start-3 col-span-2 overflow-hidden'>
                     <motion.div animate={controls} variants={{nextProject: {x: "110%"}}} transition={{duration: 1, ease:easeInOutCubic, delay: 1}} className='h-[calc(100vh-17rem)] w-[calc(100%-1.5rem)] relative rounded-lg overflow-hidden'>

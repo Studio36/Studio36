@@ -9,9 +9,10 @@ import { motion } from 'motion/react'
 interface SetDescriptionProps {
     gridLayout: boolean,
     setGridLayout: (value: boolean) => void,
+    isMobile: boolean
 }
 
-export default function SetDescription({gridLayout, setGridLayout}: SetDescriptionProps) {
+export default function SetDescription({gridLayout, setGridLayout, isMobile}: SetDescriptionProps) {
   const [isAnimationGoing, setIsAnimationGoing] = React.useState(false);
   const lenis = useLenis();
 
@@ -47,7 +48,7 @@ export default function SetDescription({gridLayout, setGridLayout}: SetDescripti
   }
 
   return (
-    <motion.div variants={{animate: {transition: {delayChildren: 0.75, staggerChildren: 0.1, ease:easeInOutCubic}}}} animate={'animate'} initial={'initial'} className='lg:sticky top-48 left-0 lg:col-start-2 lg:col-span-1 col-span-2 h-fit lg:pb-24 lg:pr-6'>
+    <motion.div variants={{animate: {transition: {delayChildren: isMobile ?  0 : 0.75, staggerChildren: 0.1, ease:easeInOutCubic}}}} animate={'animate'} initial={'initial'} className='lg:sticky top-48 left-0 lg:col-start-2 lg:col-span-1 col-span-2 h-fit lg:pb-24 lg:pr-6'>
         <motion.div variants={itemVariants} className="hidden items-center gap-3 mb-6 lg:flex">
             <p className='text-sm lg:text-base uppercase'>[Schimbă Vizualizarea]</p>
             <button onClick={() => {setGridLayout(!gridLayout); scrollTop()}} disabled={isAnimationGoing}>

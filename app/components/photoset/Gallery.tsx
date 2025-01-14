@@ -59,6 +59,7 @@ export default function Gallery({ gridLayout, images, setIsLoaded }: GalleryProp
         lenis?.stop();
 
         Promise.all(imagePromises).then(() => {
+            console.log('images loaded');
             measureHeights();
         });
     }, [])
