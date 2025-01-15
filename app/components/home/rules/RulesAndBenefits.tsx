@@ -71,7 +71,7 @@ export default function RulesAndBenefits() {
                     <motion.li variants={textVariants} className="relative font-hedwig text-sm lg:text-2xl font-normal text-justify">Sistem audio Bang & Olufsen cu AirPlay.</motion.li> <br/>
                     <motion.li variants={textVariants} className="relative font-hedwig text-sm lg:text-2xl font-normal text-justify">Aer condiționat sau încălzire.</motion.li> <br/>
                     <motion.li variants={textVariants} className="relative font-hedwig text-sm lg:text-2xl font-normal text-justify">Standuri, masă de machiaj personalizată, suport pentru haine, oglindă mare, aburitor.</motion.li> <br/>
-                    <motion.li variants={textVariants} className="relative font-hedwig text-sm lg:text-2xl font-normal text-justify">Suport tehnic din partea echipei noastre pentru orice nevoie, de la instalarea echipamentului la post-producție.</motion.li> <br/>
+                    <motion.li variants={textVariants} className="relative font-hedwig text-sm lg:text-2xl font-normal text-justify">Suport tehnic din partea echipei noastre pentru orice nevoie, de la instalarea echipamentului la post-producție.</motion.li>
                 </motion.ol>
         </div>
     </div>

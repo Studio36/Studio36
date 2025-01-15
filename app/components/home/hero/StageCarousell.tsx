@@ -11,10 +11,11 @@ import { carousellNumbers } from '@/app/lib/utils';
 interface StageCarousellProps {
   setIsActive: (isActive: boolean) => void,
   setCursourText: (text: string) => void,
-  setCursourWidth: (width: string) => void
+  setCursourWidth: (width: string) => void,
+  isLinkClicked: boolean
 }
 
-export default function StageCarousell({ setIsActive, setCursourText, setCursourWidth }: StageCarousellProps) {
+export default function StageCarousell({ setIsActive, setCursourText, setCursourWidth, isLinkClicked }: StageCarousellProps) {
   const [slide, setSlide] = useState(0);
   const [text, setText] = useState(carousellNumbers[0]);
   const [loading, setLoading] = useState(false);
@@ -22,7 +23,7 @@ export default function StageCarousell({ setIsActive, setCursourText, setCursour
   const controls = useAnimationControls();
 
   const NextSlide = () => {
-    if (loading) return;
+    if (loading || isLinkClicked) return;
 
     setLoading(true);
     controls.start('exit');

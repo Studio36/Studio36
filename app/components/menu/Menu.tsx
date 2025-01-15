@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import BracketButton from '../buttons/BracketButton'
 import { useEffect, useState } from 'react'
 import LinkButton from '../buttons/LinkButton'
+import Link from '../buttons/Link'
 
 interface MenuProps {
   open: boolean,
@@ -12,10 +13,11 @@ interface MenuProps {
   loading: boolean,
   currentHoverLink: number | null,
   setCurrentHoverLink: (currentHoverLink: number | null) => void,
-  setOpen: (open: boolean) => void
+  setOpen: (open: boolean) => void,
+  setIsLinkClicked: (isLinkClicked: boolean) => void,
 }
 
-export default function Menu({open, menuActive, loading, currentHoverLink, setCurrentHoverLink, setOpen}: MenuProps) {
+export default function Menu({open, menuActive, loading, currentHoverLink, setCurrentHoverLink, setOpen, setIsLinkClicked}: MenuProps) {
   const [dimensions, setDimensions] = useState({
     width: "6.2rem",
     height: "3.2rem"
@@ -97,10 +99,6 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
     },
   }
 
-  useEffect(() => {
-    
-  }, [open])
-
   return (
     <>
       <div className={`fixed left-0 top-0 layout-grid w-full h-screen z-50  ${menuActive ? "" : "pointer-events-none"}`}>
@@ -119,10 +117,22 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
                       <span className='h-6'>[RO] /</span>
                       <LinkButton text='EN' href='/'/>
                     </motion.div>
-                    <motion.a variants={menuItemVariants} href="/" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 1 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(1)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>INDEX</motion.a>
-                    <motion.a variants={menuItemVariants} href="/" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 2 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(2)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>SERVICII</motion.a>
-                    <motion.a variants={menuItemVariants} href="/" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null  || loading? "" : currentHoverLink === 3 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(3)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>PROIECTE</motion.a>
-                    <motion.a variants={menuItemVariants} href="/" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block ${currentHoverLink === null || loading ? "" : currentHoverLink === 4 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(4)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>CONTACT</motion.a>
+
+                    <motion.span variants={menuItemVariants} className='block' onClick={() => {setOpen(false)}}>
+                      <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 1 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(1)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>INDEX</Link>
+                    </motion.span>
+
+                    <motion.span variants={menuItemVariants} className='block' onClick={() => {setOpen(false)}}>
+                      <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 2 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(2)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>SERVICII</Link>
+                    </motion.span>
+
+                    <motion.span variants={menuItemVariants} className='block' onClick={() => {setOpen(false)}}>
+                      <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/projects' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 3 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(3)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>PROIECTE</Link>
+                    </motion.span>
+
+                    <motion.span variants={menuItemVariants} className='block' onClick={() => {setOpen(false)}}>
+                      <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 4 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(4)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>CONTACT</Link>
+                    </motion.span>
                   <div className='my-12 h-[1px] w-[calc(100%+3.5rem)] lg:w-[calc(100%+4rem)] bg-white -ml-8'></div>
                   <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white  gap-3'>
                     <p>IG:</p>

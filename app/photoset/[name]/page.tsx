@@ -1,13 +1,15 @@
 'use client'
 
 import CustomCursour from "@/app/components/CustomCursour"
+import Header from "@/app/components/header/Header"
 import Gallery from "@/app/components/photoset/Gallery"
 import MobileGallery from "@/app/components/photoset/MobileGallery"
 import NextProjectScreen from "@/app/components/photoset/NextProjectScreen"
 import SetDescription from "@/app/components/photoset/SetDescription"
-import { photosets, responsiveMax } from "@/app/lib/utils"
-import Head from "next/head"
+import { easeInOutCubic, photosets, responsiveMax } from "@/app/lib/utils"
+import { useLenis } from "lenis/react"
 import { useEffect, useState } from "react"
+import { motion } from "motion/react";
 
 export default function Photoset({params}: {params: Promise<{ name: string }>}) {
     const [gridLayout, setGridLayout] = useState(false);
@@ -15,6 +17,8 @@ export default function Photoset({params}: {params: Promise<{ name: string }>}) 
     const [isLoaded, setIsLoaded] = useState(false);  
     const [images, setImages] = useState<string[] | null>(null);
     const [currentPhotoset, setCurrentPhotoset] = useState<number>(0);
+    const [isLinkClicked, setIsLinkClicked] = useState(false);
+    const lenis = useLenis();
 
     useEffect(() => {
       const checkMobile = () => {
@@ -34,6 +38,8 @@ export default function Photoset({params}: {params: Promise<{ name: string }>}) 
       getImages();
       
       window.addEventListener('resize', checkMobile);
+
+      lenis?.scrollTo(0, {immediate: true, force: true});
       
       return () => window.removeEventListener('resize', checkMobile);
     }, []);
@@ -44,15 +50,9 @@ export default function Photoset({params}: {params: Promise<{ name: string }>}) 
   
   return (
     <>
-    <Head>
-      <link
-        rel="preload"
-        href={`/photoset/${photosets[currentPhotoset][0]}`}
-        as="image"
-      />
-    </Head>
+      <Header setIsLinkClicked={setIsLinkClicked} isLinkClicked={isLinkClicked}/>
       <CustomCursour isActive={false}/>
-      <div className="col-span-3 lg:col-span-8 layout-grid min-h-[101vh]">
+      <motion.div initial={false} variants={{initial: {opacity: 0}, animate: {opacity: 100}}} animate={isLinkClicked ? 'initial' : 'animate'} transition={{duration: 0.7, ease: easeInOutCubic}} className="col-span-3 lg:col-span-8 layout-grid min-h-[101vh]">
         <div className="flex flex-col col-span-3 lg:col-span-8 mt-12 relative min-h-[calc(100vh-11.875rem)]">
           <div className="layout-grid w-full relative">
             {isMobile !== null && isLoaded && <SetDescription gridLayout={gridLayout} isMobile={isMobile} setGridLayout={setGridLayout}/>}
@@ -60,7 +60,7 @@ export default function Photoset({params}: {params: Promise<{ name: string }>}) 
           </div>
         </div>
         {isMobile !== null && isLoaded && <NextProjectScreen isMobile={isMobile} nextPhotoset={Math.abs(currentPhotoset - 1)}/>}
-      </div>
+      </motion.div>
     </>
   )
 }

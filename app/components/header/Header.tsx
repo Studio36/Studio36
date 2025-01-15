@@ -4,8 +4,14 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import Menu from '../menu/Menu';
 import BracketButton from '../buttons/BracketButton';
+import Link from '../buttons/Link';
 
-export default function Header() {
+interface HeaderProps {
+  setIsLinkClicked: (isLinkClicked: boolean) => void,
+  isLinkClicked: boolean,
+}
+
+export default function Header({ setIsLinkClicked, isLinkClicked }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -29,21 +35,36 @@ export default function Header() {
       }, 800)
       timeoutRef.current = setTimeout(() => {
         setMenuActive(false);
+        setTimeout(() => {
+          setIsLinkClicked(false);
+        }, 1600)
       }, 700)
     }
   }, [open])
 
+  useEffect(() => {
+    if (isLinkClicked) {
+      setOpen(false);
+    }
+  }, [isLinkClicked])
+
   return (
     <>
       <div className={`col-span-3 lg:col-span-8 layout-grid sticky top-0 z-50 py-4 lg:py-8 mix-blend-difference`}>
-        <Image src="/icons/logo.svg" alt="logo" width={64} height={78} className={`w-12 lg:w-16 lg:col-start-2`}/>
+        <Link href='/' setIsLinkClicked={setIsLinkClicked} className='lg:col-start-2 w-12 lg:w-16'>
+          <Image src="/icons/logo.svg" alt="logo" width={64} height={78} 
+          onClick={() => {setTimeout(() => {
+            setIsLinkClicked(false);
+          }, 1600)}}/>
+        </Link>
+
         <p className={`text-white text-2xl col-span-2 hidden lg:block`}>Închiriere Studio <br/> Servicii Foto & Video</p>
         <div className={`col-start-7 w-fit h-fit ml-auto ${menuActive ? "hidden" : ""}`}>
             <BracketButton disabled={false} className='w-[3.6rem] lg:w-[4.3rem]' onClick={() => {setOpen(!open)}} text='MENU'/>
         </div>
 
       </div>
-      <Menu open={open} menuActive={menuActive} loading={loading} currentHoverLink={currentHoverLink} setCurrentHoverLink={setCurrentHoverLink} setOpen={setOpen}/>
+      <Menu open={open} menuActive={menuActive} loading={loading} currentHoverLink={currentHoverLink} setCurrentHoverLink={setCurrentHoverLink} setOpen={setOpen} setIsLinkClicked={setIsLinkClicked}/>
       <div className={`fixed left-0 top-0 w-full h-screen z-40 transition-all duration-500 ${open ? "backdrop-blur-md delay-250" : "backdrop-blur-0 pointer-events-none delay-500"}`}></div>
     </>
   )
