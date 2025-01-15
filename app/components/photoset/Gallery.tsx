@@ -56,8 +56,7 @@ export default function Gallery({ gridLayout, images, setIsLoaded }: GalleryProp
             });
         });
 
-        lenis?.stop();
-
+        lenis?.stop(); 
         Promise.all(imagePromises).then(() => {
             console.log('images loaded');
             measureHeights();
@@ -71,6 +70,7 @@ export default function Gallery({ gridLayout, images, setIsLoaded }: GalleryProp
             
             return element.getBoundingClientRect().height;
         });
+        console.log('measured heights');
         setIsLoaded(true);
         setTimeout(() => {
             setIsAnimationGoing(false);

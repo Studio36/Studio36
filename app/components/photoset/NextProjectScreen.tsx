@@ -73,7 +73,7 @@ export default function NextProjectScreen({isMobile, nextPhotoset}: NextProjectS
                 <div className='col-start-2 col-span-3 lg:col-span-2 flex flex-col justify-between'>
                     <motion.div variants={{nextProject: {transition: {staggerChildren: 0.15, staggerDirection: -1, ease:easeInOutCubic}}}} animate={controls} >
                         <motion.p transition={{duration: 1, ease:easeInOutCubic}} variants={{nextProject: {opacity: 0, y: 15}}} className='mb-4 lg:mb-6 text-sm lg:text-base'>[URMĂTORUL PROIECT]</motion.p>
-                        <motion.p transition={{duration: 1, ease:easeInOutCubic}} variants={{nextProject: {opacity: 0, y: 15}}} className='font-hedwig text-2xl lg:text-[3.5rem]'>Tandrețea Florilor</motion.p>
+                        <motion.p transition={{duration: 1, ease:easeInOutCubic}} variants={{nextProject: {opacity: 0, y: 15}}} className='font-hedwig text-2xl lg:leading-none lg:text-[3.5rem]'>Tandrețea Florilor</motion.p>
                     </motion.div>
 
                     <motion.div variants={{nextProject: {transition: {delayChildren: 0.5, staggerChildren: 0.15, staggerDirection: -1, ease:easeInOutCubic}}}} animate={controls} className="grid-cols-2 col-span-2 relative items-end translate-y-8 z-10 grid">
