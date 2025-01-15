@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
-import Header from "./components/header/Header";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {

@@ -9,7 +9,7 @@ import { motion } from 'motion/react'
 import { easeInOutCubic } from '../lib/utils'
 import { useLenis } from 'lenis/react'
 
-export default function page() {
+export default function Projects () {
     const [isActive, setIsActive] = useState(false);
     const [isLinkClicked, setIsLinkClicked] = useState(false);
     const lenis = useLenis();
