@@ -136,6 +136,7 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: G
                             initial={isAnimationGoing ? 'initial' : false}
                             animate={isLoaded ? 'animate' : 'initial'}
                             layout={!isAnimationGoing}
+                            onAnimationStart={() => {console.log('animation started')}}
                             variants={{initial: {x: '-100%'}, animate: {x: 0, transition: {delay: index === 0 ? 0 : 0.4, duration: 1, ease: easeInOutCubic}}}}
                             transition={{duration: 1, ease: easeInOutCubic}}
                             className={`${
