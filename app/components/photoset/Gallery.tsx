@@ -109,17 +109,12 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: G
             let isSecond = position === 1;
             let isThird = position === 2;
 
-            console.log(index === 0 ? '-----start-----' : "");
-            
             if (isThird && heights[index - 1] <= heights[index - 2]) {
                 isFirst = true;
                 isSecond = false;
                 isThird = false;
                 gridImagesOffset++;
-                console.log(index)
-                console.log(`${images[index - 2]}-${heights[index - 2]}`, `${images[index - 1]}-${heights[index - 1]}`, `${images[index]}-${heights[index]}`);
             }
-            // console.log(isFirst ? "first" : "", isSecond ? "second" : "", isThird ? "third" : "");
             
             return (
                 <Fragment key={`${index}-${isAnimationGoing}`}>
@@ -130,10 +125,10 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: G
                         animate={gridLayout 
                             ? (index + 1) % 5 === 0 
                                 ? "nopadding" 
-                                : "padding" 
+                                : "padding"
                             : isSecond 
                                 ? "nopadding"
-                                : "padding"
+                                : `${index === images.length - 1 ? "nopadding" : "padding"}`
                         } 
                         transition={{duration: 1, ease: easeInOutCubic}} 
                         className={`${
@@ -141,9 +136,9 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: G
                                 ? 'col-span-1' 
                                 : `${
                                     isFirst 
-                                        ? `col-span-2` 
+                                        ? `${index === images.length - 1 ? "col-span-3 col-start-3" : "col-span-2"}` 
                                         : isSecond 
-                                            ? 'col-span-3 ' 
+                                            ? 'col-span-3' 
                                             : 'col-span-2 -mt-[7.75rem]'
                                 }`
                         } overflow-hidden relative`}
@@ -165,7 +160,6 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: G
                                                 : 'h-fit'
                                     }`
                             } overflow-hidden rounded-[1%] relative`}
-
                         >
                             <motion.img 
                                 ref={elementsRef.current[index]} 
