@@ -39,7 +39,7 @@ export default function Photoset({params}: {params: Promise<{ name: string }>}) 
     }, []);
 
     useEffect(() => {
-      setIsLoaded(true);
+      if (isMobile === true) setIsLoaded(true);
     }, [isMobile])
   
   return (
