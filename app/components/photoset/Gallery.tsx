@@ -39,7 +39,7 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: G
     const [containerHeight, setContainerHeight] = useState(0);
     const [heights, setHeights] = useState<number[]>([]);
     const [isAnimationGoing, setIsAnimationGoing] = useState(true);
-    const elementsRef = useRef(images.map(() => createRef<HTMLDivElement>()));
+    const elementsRef = useRef(images.map(() => createRef<HTMLImageElement>()));
     const lenis = useLenis();
 
     let gridImagesOffset = 0;
@@ -62,6 +62,20 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: G
             measureHeights();
         });
     }, [])
+
+    useEffect(() => {
+        const imagePromises = images.map(src => {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.src = `/photosets/${src}`;
+                img.onload = resolve;
+            });
+        });
+
+        Promise.all(imagePromises).then(() => {
+            measureHeights();
+        });
+    }, [isLoaded])
 
     const measureHeights = () => {
         const newHeights = elementsRef.current.map(ref => {
@@ -95,13 +109,18 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: G
             let isSecond = position === 1;
             let isThird = position === 2;
 
+            console.log(index === 0 ? '-----start-----' : "");
+            
             if (isThird && heights[index - 1] <= heights[index - 2]) {
                 isFirst = true;
                 isSecond = false;
                 isThird = false;
                 gridImagesOffset++;
+                console.log(index)
+                console.log(`${images[index - 2]}-${heights[index - 2]}`, `${images[index - 1]}-${heights[index - 1]}`, `${images[index]}-${heights[index]}`);
             }
-
+            // console.log(isFirst ? "first" : "", isSecond ? "second" : "", isThird ? "third" : "");
+            
             return (
                 <Fragment key={`${index}-${isAnimationGoing}`}>
                     <motion.div 
@@ -130,11 +149,10 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: G
                         } overflow-hidden relative`}
                     >
                         <motion.div
-                            ref={elementsRef.current[index]} 
                             initial={isAnimationGoing ? 'initial' : false}
                             animate={isLoaded ? 'animate' : 'initial'}
                             layout={!isAnimationGoing}
-                            variants={{initial: {x: '-100%'}, animate: {x: 0, transition: {delay: index === 0 ? 0 : 0.4, duration: 1, ease: easeInOutCubic}}}}
+                            variants={{initial: {clipPath: 'inset(0px 100% 0px 0px)'}, animate: {clipPath: 'inset(0px 0px 0px 0px)', transition: {delay: index === 0 ? 0 : 0.4, duration: 1, ease: easeInOutCubic}}}}
                             transition={{duration: 1, ease: easeInOutCubic}}
                             className={`${
                                 gridLayout 
@@ -150,6 +168,7 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: G
 
                         >
                             <motion.img 
+                                ref={elementsRef.current[index]} 
                                 layout={!isAnimationGoing}
                                 transition={{duration: 1, ease: easeInOutCubic}}
                                 src={`/photosets/${image}`} 

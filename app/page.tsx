@@ -45,7 +45,7 @@ export default function Home() {
   return (
     <>
         <Header setIsLinkClicked={setIsLinkClicked} isLinkClicked={isLinkClicked}/>
-        <CustomCursour isActive={isActive} text={cursourText} width={cursourWidth}/>
+        <CustomCursour isActive={isActive} text={cursourText} width={cursourWidth} isVisible={!isLinkClicked}/>
         <motion.div initial={'initial'} variants={{initial: {opacity: 0}, animate: {opacity: 100 }}} animate={isLinkClicked ? 'initial' : 'animate'} transition={{duration: 0.7, ease: easeInOutCubic}} className="layout-grid col-span-8">
           {isMobile ? <MobileHero /> : <StageCarousell isLinkClicked={isLinkClicked} setIsActive={setIsActive} setCursourText={setCursourText} setCursourWidth={setCursourWidth}/>}
           <Offer setIsActive={setIsActive}/>

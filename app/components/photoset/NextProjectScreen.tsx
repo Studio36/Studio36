@@ -62,7 +62,7 @@ export default function NextProjectScreen({isMobile, nextPhotoset}: NextProjectS
                 <Image src={`/photosets/${photosets[nextPhotoset][0]}`} alt="next-project" width={1000} height={1500} className='col-span-3 rounded-[0.25rem] mt-12 mb-4' onClick={() => {router.push('/photoset/' + nextPhotoset)}}/>
                 :
                 <div className='col-start-3 col-span-2 overflow-hidden'>
-                    <motion.div animate={controls} variants={{nextProject: {x: "110%"}}} transition={{duration: 1, ease:easeInOutCubic, delay: 1}} className='h-[calc(100vh-17rem)] w-[calc(100%-1.5rem)] relative rounded-lg overflow-hidden'>
+                    <motion.div animate={controls} variants={{nextProject: {clipPath: "inset(0px 0px 0px 100%)"}}} transition={{duration: 1, ease:easeInOutCubic, delay: 0.8}} className='h-[calc(100vh-17rem)] w-[calc(100%-1.5rem)] relative rounded-lg overflow-hidden'>
                         <Image priority src={`/photosets/${photosets[nextPhotoset][1]}`} alt="next-project" width={1000} height={1500} style={{clipPath: `inset(0px 0px 0px ${progress}%)`}} className='rounded-lg absolute left-0 top-0 w-full min-h-full object-cover z-10 max-w-none' />
                         <Image priority src={`/photosets/${photosets[nextPhotoset][0]}`} alt="next-project" width={1000} height={1500} style={{clipPath: `inset(0px ${100 - progress}% 0px 0px)`}} className='rounded-lg absolute left-0 top-0 w-full min-h-full object-cover z-10 max-w-none' />
                     </motion.div>

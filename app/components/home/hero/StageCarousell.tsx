@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import StageCard from './StageCard';
 import { useAnimationControls } from 'motion/react';
 import CarousellNumber from './CarousellNumber';
@@ -19,11 +19,16 @@ export default function StageCarousell({ setIsActive, setCursourText, setCursour
   const [slide, setSlide] = useState(0);
   const [text, setText] = useState(carousellNumbers[0]);
   const [loading, setLoading] = useState(false);
-  
+  const intervalRef = useRef<NodeJS.Timeout>(null);
   const controls = useAnimationControls();
 
   const NextSlide = () => {
     if (loading || isLinkClicked) return;
+
+    // Clear existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
 
     setLoading(true);
     controls.start('exit');
@@ -37,13 +42,21 @@ export default function StageCarousell({ setIsActive, setCursourText, setCursour
       setLoading(false);
     }, 1300);
 
+    // Reset interval
+    intervalRef.current = setInterval(NextSlide, 5000);
   }
 
   useEffect(() => {
-    const interval = setInterval(NextSlide, 5000);
+    // Initial interval setup
+    intervalRef.current = setInterval(NextSlide, 5000);
 
-    return () => clearInterval(interval);
-  }, [])
+    // Cleanup
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [loading, isLinkClicked]);
 
   useEffect(() => {
     setTimeout(() => {
