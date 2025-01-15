@@ -8,6 +8,7 @@ import { createRef, Fragment, useEffect, useRef, useState } from "react";
 interface GalleryProps {
     gridLayout: boolean,
     images: string[],
+    isLoaded: boolean,
     setIsLoaded: (isLoaded: boolean) => void,
 }
 
@@ -33,7 +34,7 @@ const imageVariants = {
     }
 }
 
-export default function Gallery({ gridLayout, images, setIsLoaded }: GalleryProps) {
+export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: GalleryProps) {
     const container = useRef<HTMLDivElement>(null);
     const [containerHeight, setContainerHeight] = useState(0);
     const [heights, setHeights] = useState<number[]>([]);
@@ -133,7 +134,7 @@ export default function Gallery({ gridLayout, images, setIsLoaded }: GalleryProp
                         <motion.div
                             ref={elementsRef.current[index]} 
                             initial={isAnimationGoing ? 'initial' : false}
-                            animate={'animate'}
+                            animate={isLoaded ? 'animate' : 'initial'}
                             layout={!isAnimationGoing}
                             variants={{initial: {x: '-100%'}, animate: {x: 0, transition: {delay: index === 0 ? 0 : 0.4, duration: 1, ease: easeInOutCubic}}}}
                             transition={{duration: 1, ease: easeInOutCubic}}

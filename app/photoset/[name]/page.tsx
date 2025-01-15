@@ -56,7 +56,7 @@ export default function Photoset({params}: {params: Promise<{ name: string }>}) 
         <div className="flex flex-col col-span-3 lg:col-span-8 mt-12 relative min-h-[calc(100vh-11.875rem)]">
           <div className="layout-grid w-full relative">
             {isMobile !== null && isLoaded && <SetDescription gridLayout={gridLayout} isMobile={isMobile} setGridLayout={setGridLayout}/>}
-            {isMobile === null || images === null ? <></> : isMobile ? <MobileGallery images={images} /> : <Gallery gridLayout={gridLayout} images={images} setIsLoaded={setIsLoaded}/>}
+            {isMobile === null || images === null ? <></> : isMobile ? <MobileGallery images={images} /> : <Gallery isLoaded={isLoaded} gridLayout={gridLayout} images={images} setIsLoaded={setIsLoaded}/>}
           </div>
         </div>
         {isMobile !== null && isLoaded && <NextProjectScreen isMobile={isMobile} nextPhotoset={Math.abs(currentPhotoset - 1)}/>}
