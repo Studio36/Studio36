@@ -107,46 +107,46 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
               <BracketButton disabledStyle={false} disabled={loading} className='w-[3.9rem] lg:w-[4.6rem]' onClick={() => {setOpen(!open)}} text='CLOSE'/>
           </div>
           <motion.div className="col-start-2 lg:col-start-7 col-span-2 max-w-full lg:col-span-1 relative w-full" variants={menuContainerVariants} animate={menuActive ? "animate" : "initial"} initial={false}>
-            <motion.div className='bg-black h-fit w-full lg:w-[27rem] rounded-lg mr-auto -z-10 absolute right-2 lg:-right-2 top-2 lg:top-6 overflow-hidden' variants={menuVariants} animate={open ? "animate" : "initial"}>
-              <motion.div className='absolute left-2 top-2 text-white text-2xl gap-1 hidden lg:flex' variants={menuItemVariants}>
+            <motion.div className='bg-black dark:bg-white h-fit w-full lg:w-[27rem] rounded-lg mr-auto -z-10 absolute right-2 lg:-right-2 top-2 lg:top-6 overflow-hidden' variants={menuVariants} animate={open ? "animate" : "initial"}>
+              <motion.div className='absolute left-2 top-2 text-white dark:text-black text-2xl gap-1 hidden lg:flex' variants={menuItemVariants}>
                 <span>[RO] /</span>
                 <LinkButton text='EN' href='/'/>
               </motion.div>
               <div className='w-full h-full pb-6 pt-16 px-6 lg:px-8 flex flex-col justify-end lg:block'>
-                    <motion.div className='text-white text-xl lg:text-2xl gap-1 flex items-center lg:hidden mb-6' variants={menuItemVariants}>
+                    <motion.div className='text-white dark:text-black text-xl lg:text-2xl gap-1 flex items-center lg:hidden mb-6' variants={menuItemVariants}>
                       <span className='h-6'>[RO] /</span>
                       <LinkButton text='EN' href='/'/>
                     </motion.div>
 
                     <motion.span variants={menuItemVariants} className='block' onClick={() => {setOpen(false)}}>
-                      <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 1 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(1)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>INDEX</Link>
+                      <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white dark:text-black block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 1 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(1)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>INDEX</Link>
                     </motion.span>
 
                     <motion.span variants={menuItemVariants} className='block' onClick={() => {setOpen(false)}}>
-                      <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 2 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(2)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>SERVICII</Link>
+                      <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white dark:text-black block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 2 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(2)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>SERVICII</Link>
                     </motion.span>
 
                     <motion.span variants={menuItemVariants} className='block' onClick={() => {setOpen(false)}}>
-                      <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/projects' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 3 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(3)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>PROIECTE</Link>
+                      <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/projects' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white dark:text-black block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 3 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(3)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>PROIECTE</Link>
                     </motion.span>
 
                     <motion.span variants={menuItemVariants} className='block' onClick={() => {setOpen(false)}}>
-                      <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 4 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(4)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>CONTACT</Link>
+                      <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white dark:text-black block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 4 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(4)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>CONTACT</Link>
                     </motion.span>
-                  <div className='my-12 h-[1px] w-[calc(100%+3.5rem)] lg:w-[calc(100%+4rem)] bg-white -ml-8'></div>
-                  <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white  gap-3'>
+                  <div className='my-12 h-[1px] w-[calc(100%+3.5rem)] lg:w-[calc(100%+4rem)] bg-white dark:bg-black -ml-8'></div>
+                  <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>IG:</p>
                     <LinkButton text='@studio36' href='/'/>
                   </motion.div>
-                  <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white  gap-3'>
+                  <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>FB:</p>
                     <LinkButton text='Studio 36' href='/'/>
                   </motion.div>
-                  <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white  gap-3'>
+                  <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>E:</p>
                     <LinkButton text='hello@studio36.md' href='/'/>
                   </motion.div>
-                  <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white  gap-3'>
+                  <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>T:</p>
                     <LinkButton text='+373 (68) 12 34 56' href='/'/>
                   </motion.div>

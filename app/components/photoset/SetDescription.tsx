@@ -52,8 +52,8 @@ export default function SetDescription({gridLayout, setGridLayout, isMobile}: Se
         <motion.div variants={itemVariants} className="hidden items-center gap-3 mb-6 lg:flex">
             <p className='text-sm lg:text-base uppercase'>[Schimbă Vizualizarea]</p>
             <button onClick={() => {setGridLayout(!gridLayout); scrollTop()}} disabled={isAnimationGoing}>
-                <Image src="/icons/view-column.svg" alt="view-columns" width={22} height={22} className={`size-[1.375rem] ${gridLayout ? "" : "hidden"}`}/>
-                <Image src="/icons/view-grid.svg" alt="view-columns" width={22} height={22} className={`size-[1.375rem] ${gridLayout ? "hidden" : ""}`}/>
+                <Image src="/icons/view-column.svg" alt="view-columns" width={22} height={22} className={`size-[1.375rem] dark:invert ${gridLayout ? "" : "hidden"}`}/>
+                <Image src="/icons/view-grid.svg" alt="view-columns" width={22} height={22} className={`size-[1.375rem] dark:invert ${gridLayout ? "hidden" : ""}`}/>
             </button>
         </motion.div>
         <motion.p variants={itemVariants} className='font-hedwig text-xl lg:text-2xl mb-4 lg:mb-6'>Ana-Maria</motion.p>

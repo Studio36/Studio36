@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import Menu from '../menu/Menu';
 import BracketButton from '../buttons/BracketButton';
 import Link from '../buttons/Link';
+import { useTheme } from 'next-themes';
 
 interface HeaderProps {
   setIsLinkClicked: (isLinkClicked: boolean) => void,
@@ -17,6 +18,7 @@ export default function Header({ setIsLinkClicked, isLinkClicked }: HeaderProps)
   const [loading, setLoading] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>(setTimeout(() => {}, 0));
   const [currentHoverLink, setCurrentHoverLink] = useState<number | null>(null);
+  const { setTheme, resolvedTheme } = useTheme()
 
   useEffect(() => {
     if (open) {
@@ -60,9 +62,9 @@ export default function Header({ setIsLinkClicked, isLinkClicked }: HeaderProps)
 
         <p className={`text-white text-2xl col-span-2 hidden lg:block`}>Închiriere Studio <br/> Servicii Foto & Video</p>
         <div className={`col-start-7 w-fit h-fit ml-auto ${menuActive ? "hidden" : ""}`}>
-            <BracketButton disabled={false} className='w-[3.6rem] lg:w-[4.3rem]' onClick={() => {setOpen(!open)}} text='MENU'/>
-        </div>
-
+            <BracketButton isInHeader disabled={false} className='w-[3.6rem] lg:w-[4.3rem]' onClick={() => {setOpen(!open)}} text='MENU'/>
+        </div> 
+          <button className='absolute size-4 bg-white m-2 rounded-full right-8 top-8' onClick={() => {if(resolvedTheme === 'dark') setTheme('light'); else setTheme('dark')}}></button>
       </div>
       <Menu open={open} menuActive={menuActive} loading={loading} currentHoverLink={currentHoverLink} setCurrentHoverLink={setCurrentHoverLink} setOpen={setOpen} setIsLinkClicked={setIsLinkClicked}/>
       <div className={`fixed left-0 top-0 w-full h-screen z-40 transition-all duration-500 ${open ? "backdrop-blur-md delay-250" : "backdrop-blur-0 pointer-events-none delay-500"}`}></div>
