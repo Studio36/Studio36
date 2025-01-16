@@ -136,11 +136,11 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
                   <div className='my-12 h-[1px] w-[calc(100%+3.5rem)] lg:w-[calc(100%+4rem)] bg-white dark:bg-black -ml-8'></div>
                   <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>IG:</p>
-                    <LinkButton text='@studio36' href='/'/>
+                    <LinkButton text='@photography.studio36' href='/'/>
                   </motion.div>
                   <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>FB:</p>
-                    <LinkButton text='Studio 36' href='/'/>
+                    <LinkButton text='Studio 36 - Foto & Video' href='/'/>
                   </motion.div>
                   <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>E:</p>

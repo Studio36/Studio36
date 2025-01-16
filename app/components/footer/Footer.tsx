@@ -6,7 +6,6 @@ import { easeInOutCubic } from "@/app/lib/utils";
 import { useLenis } from "lenis/react";
 import BracketButton from "../buttons/BracketButton";
 import SwitchBracketButton from "../buttons/SwitchBracketButton";
-import { useToast } from "@/hooks/use-toast";
 import LinkButton from "../buttons/LinkButton";
 import Image from "next/image";
 
@@ -24,9 +23,8 @@ export default function Footer() {
   const [loading, setLoading] = useState(false);
 
   const controls = useAnimationControls();
+  const inputControls = useAnimationControls();
   const lenis = useLenis();
-
-  const { toast } = useToast();
 
   const parentVariants = {
     animate: {
@@ -65,18 +63,12 @@ export default function Footer() {
 
   const nextSlide = () => {
     if (slide === 0 && name === "") {
-      toast({
-        title: "Numele nu poate fi gol",
-        duration: 5000,
-      });
+      inputControls.start('wrong');
       return;
     }
 
     if (slide === 1 && tel === "") {
-      toast({
-        title: "Telefonul nu poate fi gol",
-        duration: 5000,
-      });
+      inputControls.start('wrong');
       return;
     }
     controls.start('exit');
@@ -112,7 +104,10 @@ export default function Footer() {
                 <motion.div variants={textVariants} className="flex items-end gap-4 w-2/3 lg:w-full relative">
                   <p className='text-2xl lg:leading-tight lg:text-[3.5rem] text-white dark:text-black  font-hedwig'>{texts[slide][1]}</p>
                   <div className={`lg:flex-1 bottom-0 ${slide === 0 ? "left-20" : "left-[5.5rem]"} lg:left-auto lg:bottom-auto absolute lg:relative`}>
-                    <input size={0} className={`bg-transparent text-white dark:text-black  p-0 m-0 h-fit w-full peer focus:outline-none font-hedwig text-2xl lg:leading-tight lg:text-[3.5rem] placeholder:opacity-25 ${slide === 2 ? "hidden" : ""}`} type="text" placeholder={texts[slide][2]} value={slide === 0 ? name : tel} onChange={(e) => {if (slide === 0) setName(e.currentTarget.value); else setTel(e.currentTarget.value)}}/>
+                    <div className="relative">
+                      <input size={0} className={`bg-transparent text-white dark:text-black  p-0 m-0 h-fit w-full peer focus:outline-none font-hedwig text-2xl lg:leading-tight lg:text-[3.5rem] placeholder:opacity-25 ${slide === 2 ? "hidden" : ""}`} type="text" value={slide === 0 ? name : tel} onChange={(e) => {inputControls.set('initial'); if (slide === 0) setName(e.currentTarget.value); else if (e.currentTarget.value.length <= 9) setTel(e.currentTarget.value)}}/>
+                      <motion.div animate={inputControls} variants={{initial: {color: "#f1f1f1"}, wrong: {color: '#F42A2A', x: [-7, 7, -7, 7, 0]}}} transition={{duration: 0.3}} className={`left-0 top-0 h-full absolute text-2xl lg:leading-tight lg:text-[3.5rem] font-hedwig text-white opacity-25 pointer-events-none ${(slide === 0 && name !== "" ||  slide === 1 && tel !== "") ? "hidden" : ""}`}>{texts[slide][2]}</motion.div>
+                    </div>
                     <motion.div className={`left-0 top-0 h-full w-[1px] bg-white absolute peer-focus:hidden ${(slide === 0 && name !== "" ||  slide === 1 && tel !== "") ? "hidden" : ""}`} animate={{opacity: 0, transition: {repeat: Infinity, repeatType: 'reverse', repeatDelay: .6, duration: .01}}}></motion.div>
                   </div>
                 </motion.div>
@@ -127,11 +122,11 @@ export default function Footer() {
                 <div className="lg:col-start-3 col-span-2 lg:hidden">
                   <div className="flex gap-3 mb-2 text-white dark:text-black  text-xl lg:text-2xl">
                     <p>IG:</p>
-                    <LinkButton text='@studio36' href='/'/>
+                    <LinkButton text='@photography.studio36' href='/'/>
                   </div>
                   <div className="flex gap-3 mb-2 text-white dark:text-black  text-xl lg:text-2xl">
                     <p>FB:</p>
-                    <LinkButton text='Studio 36' href='/'/>
+                    <LinkButton text='Studio 36 - Foto & Video' href='/'/>
                   </div>
                 </div>
 
