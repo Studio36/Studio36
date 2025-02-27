@@ -1,0 +1,119 @@
+
+{
+    "header": {
+        "title1": "Închiriere Studio",
+        "title2": "Servicii Foto & Video"
+    },
+    "menu": {
+        "link1": "INDEX",
+        "link2": "SERVICII",
+        "link3": "PROIECTE",
+        "link4": "CONTACT"
+    },
+    "footer": {
+        "subtitle1": "BRIEFING",
+        "backButton": "ÎNAPOI",
+        "nextButton1": "URMĂTOAREA",
+        "nextButton2": "ÎNAPOI SUS",
+        "lines": {
+            "0": {
+                "line1": "Ai un proiect unde te putem ajuta?",
+                "line2": "Oferă-ne mai multe detalii,",
+                "placeholder": "numele tău"
+            },
+            "1": {
+                "line1": "Cum te putem contacta?",
+                "line2": "Pe numărul de telefon,",
+                "placeholder": "060 12 34 56"
+            },
+            "2": {
+                "line1": "Mulțumim pentru detaliile oferite!",
+                "line2": "Revenim în cel mai scurt timp posibil.",
+                "placeholder": ""
+            }
+        }
+    },
+    "index": {
+        "cursorText": {
+            "default": "VEZI MAI MULTE",
+            "next": "URMĂTOREA"
+        },
+      "hero": {
+        "carousel": {
+            "subtitle1": "DESCRIERE",
+            "subtitle2": "UTILIZĂRI",
+            "first": {
+                "title": "Ciclorama",
+                "description": "Un perete curbat alb, ideal pentru a crea imagini fără margini și a experimenta cu lumina și umbrele.",
+                "usage": "Fotoshooturi profesionale, videoclipuri muzicale, campanii comerciale."
+            },
+            "second": {
+                "title": "Living Modern",
+                "description": "O canapea în stil contemporan, perfect pentru fotografii elegante și ședințe relaxate.",
+                "usage": "Fotografie editorială, portrete stilizate, ședințe de familie."
+            },
+            "third": {
+                "title": "Vintage",
+                "description": "Două canapele în stil vintage care aduc clasă fiecărei fotografii.",
+                "usage": "Fotografie tematică, ședințe de modă, filmari podcast."
+            },
+            "fourth": {
+                "title": "Dining",
+                "description": "Concepută în stil natural, aceasta aduce un sentiment de căldură și autenticitate fiecărei imagini.",
+                "usage": "Fotografie de lifestyle, reclame produse alimentare, ședințe culinare."
+            }
+        }
+      },
+      "service": {
+        "subtitle1": "CE ÎȚI OFERIM",
+        "content": "Studio este împărțit în 4 zone distincte perfecte pentru ședințe foto sau producție video disponibile. Cu o estetică pastelată și dotări moderne, unde fiecare detaliu e conceput să inspire și să sprijine.",
+        "subtitle2": "Servicii Foto & Video",
+        "card": {
+            "title1": "Ședințe Foto Personalizate",
+            "title2": "Fotografie & Videografie Comercială",
+            "title3": "Filmări Podcasturi și Interviuri",
+            "title4": "Filmări Videoclipuri Muzicale"
+        }
+      },
+      "overlay": {
+        "screen1": "Suntem o echipă creativă și experimentată ce oferă servicii foto-video, cu o abordare personalizată pentru fiecare proiect.",
+        "screen2": "Asigurăm flexibilitate și o comunicare eficientă. Studioul este situat convenabil în Chișinău, sectorul Ciocana."
+      },
+      "rules": {
+        "subtitle1": "REGULILE CASEI",
+        "subtitle2": "BENEFICII",
+        "rules": {
+            "0": "Timpul minim de rezervare: 4 ore pentru ședințe foto, 6 ore pentru filmări.",
+            "1": "Program de lucru: Luni-Vineri, 09:00-21:00. Rezervările în weekend presupun o taxă suplimentară de 80 EUR/zi.",
+            "2": "Înregistrarea sunetului: Nu putem garanta sunet pur din cauza posibilului ecou.",
+            "3": "Consumul de alimente și băuturi: Este interzis în studioul complet alb.",
+            "4": "Utilizarea vaselor: Vasele folosite trebuie spălate, altfel se aplică o taxă de 30 EUR.",
+            "5": "Durata rezervării: Include pregătirea și curățenia, terminând cu 10 minute înainte de sfârșitul rezervării.",
+            "6": "Ore suplimentare: Între 23:00 și 09:00 se aplică o taxă de 30 EUR/oră.",
+            "7": "Curățenie suplimentară: Pentru utilizarea decorurilor care lasă multă murdărie, se percepe o taxă de 50 EUR.",
+            "8": "Acces în studioul alb: Obligatoriu șoșoni de protecție sau încălțăminte albă curată.",
+            "9": "Gunoi în exces: Peste un container de 240l se percepe o taxă de 25 EUR.",
+            "10": "Deteriorări: Responsabilitatea financiară revine chiriașului, iar echipamentele vor fi verificate de administrator la finalul rezervării."
+        },
+        "benefits": {
+            "0": "Internet Gigabit WiFi6.",
+            "1": "Cafea Nespresso gratuită.",
+            "2": "Sistem audio Bang & Olufsen cu AirPlay.",
+            "3": "Aer condiționat sau încălzire.",
+            "4": "Standuri, masă de machiaj personalizată, suport pentru haine, oglindă mare, aburitor.",
+            "5": "Suport tehnic din partea echipei noastre pentru orice nevoie, de la instalarea echipamentului la post-producție."
+        }
+      }
+    },
+    "projects": {
+        "subtitle": "PORTFOLIO",
+        "content": "Fiecare proiect creat spune o poveste unică, realizată cu pasiune și atenție la detalii. Portofoliul nostru reflectă expertiza, inovația și angajamentul de a depăși așteptările clienților."
+    },
+    "photoset": {
+        "subtitle1": "VIZUALIZARE",
+        "subtitle2": "DESCRIERE",
+        "subtitle3": "INFO",
+        "subtitle4": "URMĂTORUL PROIECT",
+        "subtitle5": "DĂ CLICK PENTRU URMĂTOAREA"
+    }
+}

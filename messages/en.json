@@ -1,0 +1,118 @@
+{
+    "header": {
+        "title1": "Studio Rental",
+        "title2": "Photo & Video Services"
+    },
+    "menu": {
+        "link1": "INDEX",
+        "link2": "SERVICES",
+        "link3": "PROJECTS",
+        "link4": "CONTACT"
+    },
+    "footer": {
+        "subtitle1": "BRIEFING",
+        "backButton": "BACK",
+        "nextButton1": "NEXT",
+        "nextButton2": "BACK TO TOP",
+        "lines": {
+            "0": {
+                "line1": "Do you have a project we can help with?",
+                "line2": "Give us some more details,",
+                "placeholder": "your name"
+            },
+            "1": {
+                "line1": "How can we contact you?",
+                "line2": "Via your phone number,",
+                "placeholder": "060 12 34 56"
+            },
+            "2": {
+                "line1": "Thank you for the provided details!",
+                "line2": "We will get back to you as soon as possible.",
+                "placeholder": ""
+            }
+        }
+    },
+    "index": {
+        "cursorText": {
+            "default": "SEE MORE",
+            "next": "NEXT ROOM"
+        },
+      "hero": {
+        "carousel": {
+            "subtitle1": "DESCRIPTION",
+            "subtitle2": "USES",
+            "first": {
+                "title": "Cyclorama",
+                "description": "A curved white wall, ideal for creating seamless images and experimenting with light and shadows.",
+                "usage": "Professional photoshoots, music videos, commercial campaigns."
+            },
+            "second": {
+                "title": "Modern Living",
+                "description": "A contemporary-style sofa, perfect for elegant photos and relaxed sessions.",
+                "usage": "Editorial photography, stylized portraits, family shoots."
+            },
+            "third": {
+                "title": "Vintage",
+                "description": "Two vintage-style sofas that bring class to every photo.",
+                "usage": "Thematic photography, fashion shoots, podcast recordings."
+            },
+            "fourth": {
+                "title": "Dining",
+                "description": "Designed in a natural style, it brings warmth and authenticity to every image.",
+                "usage": "Lifestyle photography, food product commercials, culinary shoots."
+            }
+        }
+      },
+      "service": {
+        "subtitle1": "WHAT WE OFFER",
+        "content": "The studio is divided into 4 distinct areas, perfect for photo shoots or available video production. With a pastel aesthetic and modern amenities, every detail is designed to inspire and support.",
+        "subtitle2": "Photo & Video Services",
+        "card": {
+            "title1": "Custom Photo Sessions",
+            "title2": "Commercial Photography & Videography",
+            "title3": "Podcast & Interview Filming",
+            "title4": "Music Video Filming"
+        }
+      },
+      "overlay": {
+        "screen1": "We are a creative and experienced team offering photo-video services, with a personalized approach for every project.",
+        "screen2": "We ensure flexibility and effective communication. The studio is conveniently located in Chișinău, Ciocana district."
+      },
+      "rules": {
+        "subtitle1": "HOUSE RULES",
+        "subtitle2": "BENEFITS",
+        "rules": {
+            "0": "Minimum booking time: 4 hours for photo shoots, 6 hours for filming.",
+            "1": "Working hours: Monday-Friday, 09:00-21:00. Weekend bookings require an additional fee of 80 EUR/day.",
+            "2": "Audio recording: We cannot guarantee pure sound due to possible echo.",
+            "3": "Food and drink consumption: Prohibited in the completely white studio.",
+            "4": "Use of dishes: Used dishes must be washed, otherwise a fee of 30 EUR applies.",
+            "5": "Booking duration: Includes preparation and cleanup, ending 10 minutes before the reservation’s end.",
+            "6": "Overtime hours: From 23:00 to 09:00, a fee of 30 EUR/hour applies.",
+            "7": "Additional cleaning: For decor usage that leaves excessive dirt, a 50 EUR fee applies.",
+            "8": "Access to the white studio: Protective shoe covers or clean white footwear are mandatory.",
+            "9": "Excess trash: More than one 240L container incurs a 25 EUR fee.",
+            "10": "Damages: Financial responsibility falls on the renter, and equipment will be checked by the administrator at the end of the booking."
+        },
+        "benefits": {
+            "0": "Gigabit WiFi6 Internet.",
+            "1": "Free Nespresso coffee.",
+            "2": "Bang & Olufsen audio system with AirPlay.",
+            "3": "Air conditioning or heating.",
+            "4": "Stands, custom makeup table, clothing rack, large mirror, steamer.",
+            "5": "Technical support from our team for any need, from equipment setup to post-production."
+        }
+      }
+    },
+    "projects": {
+        "subtitle": "PORTFOLIO",
+        "content": "Each project we create tells a unique story, crafted with passion and attention to detail. Our portfolio reflects expertise, innovation, and a commitment to exceeding client expectations."
+    },
+    "photoset": {
+        "subtitle1": "VIEW",
+        "subtitle2": "DESCRIPTION",
+        "subtitle3": "INFO",
+        "subtitle4": "NEXT PROJECT",
+        "subtitle5": "CLICK FOR NEXT"
+    }
+}
