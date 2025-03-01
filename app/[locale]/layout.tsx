@@ -46,7 +46,6 @@ export default async function RootLayout({
             </Providers>
           </SmoothScroll>
         </NextIntlClientProvider>
-        <Script src="https://get.usetool.bar/embedded-app.js" data-toolbar-api-key="8e1135e1-eccd-498c-ae35-f1067411f4e6" async id="toolbar-script" />
       </body>
     </html>
   );
