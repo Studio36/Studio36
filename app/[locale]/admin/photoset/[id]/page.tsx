@@ -8,6 +8,7 @@ import AdminNavbar from '@/app/[locale]/components/admin/AdminNavbar';
 import ImageGrid from '@/app/[locale]/components/admin/photoset/ImageGrid';
 import { motion } from 'motion/react';
 import { easeInOutCubic } from '@/app/[locale]/lib/utils';
+import VerticalLines from '@/app/[locale]/components/VerticalLines';
 
 export default function AdminPhotoset({params}: {params: Promise<{ id: string }>}) {
     const [photoset, setPhotoset] = useState<Photoset | null>(null);
@@ -28,7 +29,8 @@ export default function AdminPhotoset({params}: {params: Promise<{ id: string }>
     }
 
   return (
-    <motion.div initial={'initial'} variants={{initial: {opacity: 0}, animate: {opacity: 100 }}} animate={isLinkClicked ? 'initial' : 'animate'} transition={{duration: 0.7, ease: easeInOutCubic}} className="col-span-8 min-h-screen [&>*]:z-[2] flex-1 z-[100]">
+    <motion.div initial={'initial'} variants={{initial: {opacity: 0}, animate: {opacity: 100 }}} animate={isLinkClicked ? 'initial' : 'animate'} transition={{duration: 0.7, ease: easeInOutCubic}} className="col-span-8 min-h-screen [&>*]:z-[2] flex-1 z-[100] bg-white">
+      <VerticalLines />
       <div className='layout-grid col-span-8 pb-24'>
           <AdminNavbar setIsLinkClicked={setIsLinkClicked}/>
           <InfoForm photoset={photoset}/>

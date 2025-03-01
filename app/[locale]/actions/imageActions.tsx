@@ -21,7 +21,7 @@ export const imageUpload = async ({
   photosetId,
 }: ImageUploadParams): Promise<ImageUploadResult> => {
   try {
-    const awsAccessKey = process.env.AWS_ACCESS_KEY;
+    const awsAccessKey = process.env.AWS_PUBLIC_ACCESS_KEY;
 
     const awsSecretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 
@@ -105,7 +105,7 @@ interface DeleteImageParams {
     photosetId
   }: DeleteImageParams): Promise<DeleteImageResult> => {
     try {
-    const awsAccessKey = process.env.AWS_ACCESS_KEY;
+    const awsAccessKey = process.env.AWS_PUBLIC_ACCESS_KEY;
 
     const awsSecretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 
