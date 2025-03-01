@@ -8,6 +8,7 @@ import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Studio 36",
@@ -45,6 +46,7 @@ export default async function RootLayout({
             </Providers>
           </SmoothScroll>
         </NextIntlClientProvider>
+        <Script src="https://get.usetool.bar/embedded-app.js" data-toolbar-api-key="8e1135e1-eccd-498c-ae35-f1067411f4e6" async id="toolbar-script" />
       </body>
     </html>
   );
