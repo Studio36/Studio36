@@ -88,7 +88,7 @@ export default function Footer() {
   }
 
   return (
-    <div className='layout-grid col-span-3 lg:col-span-8 mt-[7.75rem] lg:mt-48 min-h-screen relative before:content-[""] before:absolute before:-left-4 before:top-0 before:w-[calc(100%+2rem)] lg:before:w-[calc(100%+1rem)] before:h-full before:bg-black before:dark:bg-white before:-z-10 before:transition-all before:duration-300' id="contact">
+    <div className='layout-grid col-span-3 lg:col-span-8 mt-[7.75rem] z-10 lg:mt-48 min-h-screen relative before:content-[""] before:absolute before:-left-4 before:top-0 before:w-[calc(100%+2rem)] lg:before:w-[calc(100%+1rem)] before:h-full before:bg-black before:dark:bg-white before:-z-10 before:transition-all before:duration-300' id="contact">
         <div className="layout-grid absolute top-0 left-0 w-full h-full pointer-events-none">
             {[...Array(7)].map((_, index) => (
               <div key={index} className={`z-0 pointer-events-none relative w-full before:w-full before:absolute before:border-l before:border-white before:dark:border-black before:dark:border-opacity-15 before:border-opacity-15 before:h-full ${index > 2 ? "hidden lg:block" : ""} ${index === 2 ? "before:border-r lg:before:border-r-0" : ""} ${index === 6 ? "before:border-r" : ""}`}></div>

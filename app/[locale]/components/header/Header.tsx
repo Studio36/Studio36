@@ -55,7 +55,7 @@ export default function Header({ setIsLinkClicked, isLinkClicked, hasContact = t
 
   return (
     <>
-      <div className={`col-span-3 lg:col-span-8 layout-grid sticky top-0 z-50 py-4 lg:py-8 mix-blend-difference`}>
+      <div className={`col-span-3 lg:col-span-8 layout-grid sticky top-0 z-50 py-4 lg:py-8 mix-blend-difference header`}>
         <Link href='/' setIsLinkClicked={setIsLinkClicked} className='lg:col-start-2 w-12 lg:w-16'>
           <Image src="/icons/logo.svg" alt="logo" width={64} height={78} 
           onClick={() => {setTimeout(() => {
@@ -72,7 +72,7 @@ export default function Header({ setIsLinkClicked, isLinkClicked, hasContact = t
           </button>
       </div>
       <Menu hasContact={hasContact} open={open} menuActive={menuActive} loading={loading} currentHoverLink={currentHoverLink} setCurrentHoverLink={setCurrentHoverLink} setOpen={setOpen} setIsLinkClicked={setIsLinkClicked}/>
-      <div className={`fixed left-0 top-0 w-full h-screen z-40 transition-all duration-500 ${open ? "backdrop-blur-md delay-250" : "backdrop-blur-0 pointer-events-none delay-500"}`}></div>
+      <div className={`header fixed left-0 top-0 w-full h-screen z-40 transition-all duration-500 ${open ? "backdrop-blur-md delay-250" : "backdrop-blur-0 pointer-events-none delay-500"}`}></div>
     </>
   )
 }

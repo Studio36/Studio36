@@ -4,18 +4,19 @@ import { useAnimationControls, useMotionValueEvent, useScroll } from 'motion/rea
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { useRouter } from 'next/navigation'
 import { easeInOutCubic } from '@/app/[locale]/lib/utils';
 import { useLenis } from 'lenis/react';
 import { Photoset } from '@prisma/client';
 import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/routing';
 
 interface NextProjectScreenProps {
     isMobile: boolean,
-    nextPhotoset: Photoset
+    nextPhotoset: Photoset,
+    setIsLinkClicked: (linkClicked: boolean) => void
 }
 
-export default function NextProjectScreen({isMobile, nextPhotoset}: NextProjectScreenProps) {
+export default function NextProjectScreen({isMobile, nextPhotoset, setIsLinkClicked}: NextProjectScreenProps) {
     const ref = useRef(null);
     const [progressNumber, setProgressNumber] = useState("000");
     const [progress, setProgress] = useState(0);
@@ -34,10 +35,16 @@ export default function NextProjectScreen({isMobile, nextPhotoset}: NextProjectS
 
     lenis?.stop();
     controls.start('nextProject');
-    window.history.pushState({}, '', '/photoset/' + nextPhotoset.id);
 
     setTimeout(() => {
-        router.push('/photoset/' + nextPhotoset.id)
+        setIsLinkClicked(true);
+    }, 1800 - 700)
+
+    setTimeout(() => {
+        router.push({
+            pathname: '/photoset/[id]',
+            params: {id: nextPhotoset.id}
+          });
     }, 1800)
   }, [progress])
 
@@ -62,7 +69,13 @@ export default function NextProjectScreen({isMobile, nextPhotoset}: NextProjectS
             }
             {
                 isMobile ? 
-                <Image src={nextPhotoset.images[0]} alt="next-project" width={1000} height={1500} className='col-span-3 rounded-[0.25rem] mt-12 mb-4' onClick={() => {router.push('/photoset/' + nextPhotoset)}}/>
+                <Image src={nextPhotoset.images[0]} alt="next-project" width={1000} height={1500} className='col-span-3 rounded-[0.25rem] mt-12 mb-4' 
+                onClick={() => {
+                    router.push({
+                        pathname: '/photoset/[id]',
+                        params: {id: nextPhotoset.id}
+                      });
+                }}/>
                 :
                 <div className='col-start-3 col-span-2 overflow-hidden'>
                     <motion.div animate={controls} variants={{nextProject: {clipPath: "inset(0px 0px 0px 100%)"}}} transition={{duration: 1, ease:easeInOutCubic, delay: 0.8}} className='h-[calc(100vh-17rem)] w-[calc(100%-1.5rem)] relative rounded-lg overflow-hidden'>

@@ -111,7 +111,7 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
 
   return (
     <>
-      <div className={`fixed left-0 top-0 layout-grid w-full h-screen z-50  ${menuActive ? "" : "pointer-events-none"}`}>
+      <div className={`header fixed left-0 top-0 layout-grid w-full h-screen z-50  ${menuActive ? "" : "pointer-events-none"}`}>
         <div className='col-start-2 lg:col-start-7 col-span-2 lg:col-span-1 relative w-full h-0'>
           <div className={`w-fit h-fit ml-auto z-50 absolute right-4 lg:right-0 top-4 lg:top-8 ${menuActive ? "" : "hidden"}`}>
               <BracketButton disabledStyle={false} disabled={loading} className='w-[3.9rem] lg:w-[4.6rem]' onClick={() => {setOpen(!open)}} text='CLOSE'/>

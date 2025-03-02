@@ -21,7 +21,7 @@ export default function BracketButton({ className, disabled, onClick, text, disa
             <p className={`invisible ${textSize}`}> {text}</p>
             <div className="absolute left-0 top-0 w-full transition duration-300 lg:group-hover:-translate-y-1/2">
                 <button className={`${color} ${isInHeader ? "" : "dark:text-black"} ${textSize} ${disabledStyle ? "disabled:opacity-25" : ""}`} disabled={disabled && disabledStyle}>{text}</button>
-                <button className={`${color} ${isInHeader ? "" : "dark:text-black"} ${textSize} ${disabledStyle ? "disabled:opacity-25" : ""}`} disabled={disabled && disabledStyle}>GAY</button>
+                <button className={`${color} ${isInHeader ? "" : "dark:text-black"} ${textSize} ${disabledStyle ? "disabled:opacity-25" : ""}`} disabled={disabled && disabledStyle}>{text}</button>
             </div>
         </div>
         {brackets && <span style={{right: bracketDistance}} className={`absolute top-0 ${color} ${isInHeader ? "" : "dark:text-black"} ${textSize} ${disabled && disabledStyle ? 'opacity-25' : ''}`}>]</span>}
