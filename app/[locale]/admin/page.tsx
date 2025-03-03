@@ -6,10 +6,11 @@ import { createPhotoset, deletePhotoset, getAllPhotosets } from '@/app/[locale]/
 import { Photoset } from '@prisma/client';
 import Image from 'next/image';
 import BracketButton from '../components/buttons/BracketButton';
-import { convertServiceType, easeInOutCubic } from '../lib/utils';
+import { easeInOutCubic } from '../lib/utils';
 import { useRouter } from 'next/navigation';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { motion } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 export default function AdminPage() {
   const [isLinkClicked, setIsLinkClicked] = useState(false);
@@ -66,13 +67,15 @@ export default function AdminPage() {
 }
 
 const Card = ({photoset, router, deleteSelectedPhotoset}: {photoset: Photoset, router: AppRouterInstance, deleteSelectedPhotoset: (id: string) => void}) => {
+  const t = useTranslations("projects.services");
+
   return(
     <div className='col-span-2 pr-6 z-10'>
       {photoset.images.length > 0 ? <Image src={photoset.images[0]} width={1000} height={1500} alt={photoset.title} className='rounded-lg'/> : <div className='w-full h-96 flex justify-center items-center border border-black border-dashed rounded-lg '>No Photos Added</div>}
       <div className='mt-4'>
         <h2 className='text-2xl font-hedwig'>{photoset.title}</h2>
         <div className="flex justify-between">
-          <p>{convertServiceType(photoset.service)}</p>
+          <p>{t(photoset.service)}</p>
           <div className="flex gap-1">
             <BracketButton color="text-black dark:text-white" bracketDistance="-0.5rem" height='h-5' textSize='text-base' disabled={false} className='w-[3.2rem] lg:w-[4.8rem]' onClick={() => router.push(`admin/photoset/${photoset.id}`)} text='MODIFICĂ'/>
             <BracketButton color="text-red dark:text-red" bracketDistance="-0.5rem" height='h-5' textSize='text-base' disabled={false} className='w-[3.2rem] lg:w-[3.6rem]' onClick={() => {deleteSelectedPhotoset(photoset.id)}} text='ȘTERGE'/>

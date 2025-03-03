@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ParallaxImage from "../../ParallaxImage";
 import ArrowAnimation from "./ArrowAnimation";
 import Image from "next/image";
