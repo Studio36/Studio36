@@ -33,12 +33,6 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ image, service, right, setIsActive }) => {
     const [animate, setAnimate] = useState(false);
 
-    useEffect(() => {
-        window.addEventListener('scroll', () => {
-            // setAnimate(false)
-        })
-    }, [])
-
     return (
             <div 
                 onMouseEnter={() => {setAnimate(true); setIsActive(true)}} onMouseLeave={() => {setAnimate(false); setIsActive(false)}} className={`relative h-[16.5rem] lg:h-[25rem] group transition-all duration-500 ${animate ? "hover:cursor-pointer" : ""} ${right ? `lg:w-1/2 lg:ml-6 ${animate ? "lg:hover:w-2/3" : ""} lg:peer-hover:w-1/3` : "lg:flex-1 peer"}`}>

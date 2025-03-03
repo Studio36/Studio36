@@ -58,13 +58,13 @@ export default function NextProjectScreen({isMobile, nextPhotoset, setIsLinkClic
   })
 
   return (
-    <motion.div layout className='layout-grid lg:h-[300vh] col-span-3 lg:col-span-8 relative' ref={ref}>
+    <motion.div layout className='layout-grid lg:h-[300vh] col-span-3 lg:col-span-8 relative z-10' ref={ref}>
         <div className='layout-grid col-span-3 lg:col-span-8 lg:h-screen lg:pt-48 pb-16 lg:pb-20 lg:sticky top-0 left-0'>
             { 
                 isMobile && 
                 <div className='lg:col-start-2 col-span-3 lg:col-span-2'>
                     <p className='mb-4 lg:mb-6 text-sm lg:text-base'>{`[${t('subtitle4')}]`}</p>
-                    <p className='font-hedwig text-2xl lg:text-[3.5rem]'>Tandrețea Florilor</p>
+                    <p className='font-hedwig text-2xl lg:text-[3.5rem]'>{nextPhotoset.title}</p>
                 </div>
             }
             {
@@ -89,7 +89,7 @@ export default function NextProjectScreen({isMobile, nextPhotoset, setIsLinkClic
                 <div className='col-start-2 col-span-3 lg:col-span-2 flex flex-col justify-between'>
                     <motion.div variants={{nextProject: {transition: {staggerChildren: 0.15, staggerDirection: -1, ease:easeInOutCubic}}}} animate={controls} >
                         <motion.p transition={{duration: 1, ease:easeInOutCubic}} variants={{nextProject: {opacity: 0, y: 15}}} className='mb-4 lg:mb-6 text-sm lg:text-base'>{`[${t('subtitle4')}]`}</motion.p>
-                        <motion.p transition={{duration: 1, ease:easeInOutCubic}} variants={{nextProject: {opacity: 0, y: 15}}} className='font-hedwig text-2xl lg:leading-none lg:text-[3.5rem]'>Tandrețea Florilor</motion.p>
+                        <motion.p transition={{duration: 1, ease:easeInOutCubic}} variants={{nextProject: {opacity: 0, y: 15}}} className='font-hedwig text-2xl lg:leading-none lg:text-[3.5rem]'>{nextPhotoset.title}</motion.p>
                     </motion.div>
 
                     <motion.div variants={{nextProject: {transition: {delayChildren: 0.5, staggerChildren: 0.15, staggerDirection: -1, ease:easeInOutCubic}}}} animate={controls} className="grid-cols-2 col-span-2 relative items-end translate-y-8 z-10 grid">

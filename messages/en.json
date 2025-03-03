@@ -106,7 +106,13 @@
     },
     "projects": {
         "subtitle": "PORTFOLIO",
-        "content": "Each project we create tells a unique story, crafted with passion and attention to detail. Our portfolio reflects expertise, innovation, and a commitment to exceeding client expectations."
+        "content": "Each project we create tells a unique story, crafted with passion and attention to detail. Our portfolio reflects expertise, innovation, and a commitment to exceeding client expectations.",
+        "services": {
+            "PERSONAL_PHOTO": "Personalized Photo Session",
+            "COMMERCIAL_PHOTO": "Commercial Photo Session",
+            "MUSIC_VIDEOS": "Music Video Filming",
+            "PODCASTS": "Podcast Video Filming"
+        }
     },
     "photoset": {
         "subtitle1": "VIEW",

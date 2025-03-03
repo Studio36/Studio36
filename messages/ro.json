@@ -107,7 +107,13 @@
     },
     "projects": {
         "subtitle": "PORTFOLIO",
-        "content": "Fiecare proiect creat spune o poveste unică, realizată cu pasiune și atenție la detalii. Portofoliul nostru reflectă expertiza, inovația și angajamentul de a depăși așteptările clienților."
+        "content": "Fiecare proiect creat spune o poveste unică, realizată cu pasiune și atenție la detalii. Portofoliul nostru reflectă expertiza, inovația și angajamentul de a depăși așteptările clienților.",
+        "services": {
+            "PERSONAL_PHOTO": "Ședință Foto Personalizată",
+            "COMMERCIAL_PHOTO": "Ședință Foto Comercială",
+            "MUSIC_VIDEOS": "Filmare Video Muzical",
+            "PODCASTS": "Filmare Video Podcast"
+        }
     },
     "photoset": {
         "subtitle1": "VIZUALIZARE",

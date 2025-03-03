@@ -1,13 +1,15 @@
+import { useTranslations } from "next-intl";
 import ParallaxImage from "../../ParallaxImage";
-import { carousellDescriptionTexts } from '@/app/[locale]/lib/utils';
 
 export default function MobileHero() {
+    const t = useTranslations("index.hero.carousel");
+
   return (
     <div className='col-start-1 col-span-3 layout-grid mt-12 mb-[7.75rem]'>
-        <StageSection texts={carousellDescriptionTexts[0]} img="/hero-stages/stage1.jpg" number="1"/>
-        <StageSection texts={carousellDescriptionTexts[1]} img="/hero-stages/stage2.jpg" number="2"/>
-        <StageSection texts={carousellDescriptionTexts[2]} img="/hero-stages/stage3.jpg" number="3"/>
-        <StageSection texts={carousellDescriptionTexts[3]} img="/hero-stages/stage4.jpg" number="4"/>
+        <StageSection texts={[t("first.title"), t("first.description"), t("first.usage")]} img="/hero-stages/stage1.jpg" number="1"/>
+        <StageSection texts={[t("second.title"), t("second.description"), t("second.usage")]} img="/hero-stages/stage2.jpg" number="2"/>
+        <StageSection texts={[t("third.title"), t("third.description"), t("third.usage")]} img="/hero-stages/stage3.jpg" number="3"/>
+        <StageSection texts={[t("fourth.title"), t("fourth.description"), t("fourth.usage")]} img="/hero-stages/stage4.jpg" number="4"/>
     </div>
   )
 }

@@ -4,8 +4,8 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Photoset, Service } from '@prisma/client'
-import { convertServiceType } from '@/app/[locale]/lib/utils'
 import { updatePhotosetData } from '@/app/[locale]/actions/photosetActions'
+import { useTranslations } from 'next-intl'
 
 interface InfoFormProps {
   photoset: Photoset
@@ -17,6 +17,7 @@ export default function InfoForm({photoset}: InfoFormProps) {
   const [info, setInfo] = useState(photoset.additional_info);
   const [service, setService] = useState(photoset.service);
   const [hasChanged, setHasChanged] = useState(false);
+  const t = useTranslations("projects.services");
 
   const updatePhotosetInfo = async () => {
     setHasChanged(false)
@@ -55,7 +56,7 @@ export default function InfoForm({photoset}: InfoFormProps) {
           <SelectContent>
             {
               Object.keys(Service).map((service) => {
-                return <SelectItem key={service} value={service}>{convertServiceType(service)}</SelectItem>
+                return <SelectItem key={service} value={service}>{t(service)}</SelectItem>
               })
             }
           </SelectContent>

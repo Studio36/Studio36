@@ -1,12 +1,13 @@
 'use client'
 
-import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import Menu from '../menu/Menu';
 import BracketButton from '../buttons/BracketButton';
 import Link from '../buttons/Link';
 import { useTheme } from 'next-themes';
 import { useTranslations } from 'next-intl';
+import Lottie from 'react-lottie-player'
+import animation from '@/public/animations/logo.json';
 
 interface HeaderProps {
   setIsLinkClicked: (isLinkClicked: boolean) => void,
@@ -22,6 +23,7 @@ export default function Header({ setIsLinkClicked, isLinkClicked, hasContact = t
   const [currentHoverLink, setCurrentHoverLink] = useState<number | null>(null);
   const { setTheme, resolvedTheme } = useTheme();
   const t = useTranslations('header');
+  const lottieRef = useRef<any>(null);
 
   useEffect(() => {
     if (open) {
@@ -56,11 +58,23 @@ export default function Header({ setIsLinkClicked, isLinkClicked, hasContact = t
   return (
     <>
       <div className={`col-span-3 lg:col-span-8 layout-grid sticky top-0 z-50 py-4 lg:py-8 mix-blend-difference header`}>
+        
         <Link href='/' setIsLinkClicked={setIsLinkClicked} className='lg:col-start-2 w-12 lg:w-16'>
-          <Image src="/icons/logo.svg" alt="logo" width={64} height={78} 
-          onClick={() => {setTimeout(() => {
-            setIsLinkClicked(false);
-          }, 1600)}}/>
+            <Lottie
+              ref={lottieRef}
+              animationData={animation}
+              speed={1.75}
+              className='w-full'
+              onClick={() => {setTimeout(() => {
+                setIsLinkClicked(false);
+              }, 1600)}}
+              onMouseEnter={() => {
+                lottieRef.current?.play();
+              }}
+              onMouseLeave={() => {
+                lottieRef.current?.stop();
+              }}
+            />
         </Link>
 
         <p className={`text-white text-2xl col-span-2 hidden lg:block`}>{t('title1')} <br/> {t('title2')}</p>
