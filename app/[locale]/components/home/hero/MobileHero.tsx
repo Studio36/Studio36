@@ -18,7 +18,7 @@ interface StageSectionProps {
     texts: string[],
     img: string,
     number: string        
-}
+} 
 
 const StageSection = ({texts, img, number}: StageSectionProps) => {
     return (

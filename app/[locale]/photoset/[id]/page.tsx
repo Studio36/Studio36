@@ -58,7 +58,7 @@ export default function PhotosetPage({params}: {params: Promise<{ id: string }>}
   return (
     <>
       <CustomCursour isActive={false} isVisible={!isLinkClicked}/>
-      <motion.div initial={'initial'} variants={{initial: {opacity: 0}, animate: {opacity: 100}}} animate={isLinkClicked ? 'initial' : 'animate'} transition={{duration: 0.7, ease: easeInOutCubic}} className="col-span-3 lg:col-span-8 layout-grid min-h-[101vh] bg-white">
+      <motion.div initial={'initial'} variants={{initial: {opacity: 0}, animate: {opacity: 100}}} animate={isLinkClicked ? 'initial' : 'animate'} transition={{duration: 0.7, ease: easeInOutCubic}} className="col-span-3 lg:col-span-8 layout-grid min-h-[101vh] bg-white dark:bg-black transition-colors duration-200">
         <Header setIsLinkClicked={setIsLinkClicked} isLinkClicked={isLinkClicked} hasContact={false}/>
         <div className="flex flex-col col-span-3 lg:col-span-8 mt-12 relative min-h-[calc(100vh-11.875rem)] [&>*]:z-[2]">
           <div className="layout-grid w-full relative">

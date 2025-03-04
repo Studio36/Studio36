@@ -29,7 +29,7 @@ export default function AdminPhotoset({params}: {params: Promise<{ id: string }>
     }
 
   return (
-    <motion.div initial={'initial'} variants={{initial: {opacity: 0}, animate: {opacity: 100 }}} animate={isLinkClicked ? 'initial' : 'animate'} transition={{duration: 0.7, ease: easeInOutCubic}} className="col-span-8 min-h-screen [&>*]:z-[2] flex-1 z-[100] bg-white">
+    <motion.div initial={'initial'} variants={{initial: {opacity: 0}, animate: {opacity: 100 }}} animate={isLinkClicked ? 'initial' : 'animate'} transition={{duration: 0.7, ease: easeInOutCubic}} className="col-span-8 min-h-screen [&>*]:z-[2] flex-1 z-[100] bg-white dark:bg-black transition-colors duration-200">
       <VerticalLines />
       <div className='layout-grid col-span-8 pb-24'>
           <AdminNavbar setIsLinkClicked={setIsLinkClicked}/>

@@ -1,8 +1,8 @@
-import Image from 'next/image'
 import React from 'react'
 import ImageUpload from './ImageUpload'
 import { Photoset } from '@prisma/client';
 import { deleteImage } from '@/app/[locale]/actions/imageActions';
+import PhotosetImage from './PhotosetImage';
 
 interface ImageGridProps {
   images: string[],
@@ -35,12 +35,9 @@ export default function ImageGrid({images, photoset, setPhotoset}: ImageGridProp
       </div>
       {
         images.map((image, index) => {
-          return <div key={index} className='pr-6 cursor-pointer relative group' onClick={() => {onDeleteClick(image)}}>
-            <div className='absolute pointer-events-none left-0 top-0 w-full h-full bg-white bg-opacity-25 flex justify-center items-center opacity-0 group-hover:opacity-100 transition duration-200'>
-              <button className='text-red text-2xl'>[ȘTERGE]</button>
-            </div>
-            <Image src={image} alt='image' width={1000} height={1500} className='rounded-[0.25rem] h-full object-cover' />
-          </div>
+          return (
+            <PhotosetImage key={index} image={image} onDeleteClick={() => {onDeleteClick(image)}} />
+          )
         })
       }
     </div>

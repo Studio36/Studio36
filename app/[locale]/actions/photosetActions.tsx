@@ -26,6 +26,11 @@ export async function getAllPhotosets(): Promise<Photoset[]> {
     return photosets;
 }
 
+export async function getPhotosetCount(): Promise<{ photosets: number }> {
+    const count = await prisma.photoset.count();
+    return { photosets: count };
+}
+
 export async function getPhotoset(id: string): Promise<Photoset | null> {
     const photoset = await prisma.photoset.findUnique({
         where: {

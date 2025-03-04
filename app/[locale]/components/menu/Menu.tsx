@@ -10,6 +10,7 @@ import Link from '../buttons/Link'
 import { useTheme } from 'next-themes'
 import { useLocale, useTranslations } from 'next-intl';
 import SwitchLangButton from '../buttons/SwitchLangButton';
+import { getPhotosetCount } from '../../actions/photosetActions';
 
 interface MenuProps {
   open: boolean,
@@ -34,6 +35,8 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
   });
 
   const { setTheme, resolvedTheme } = useTheme();
+  const [photosetCount, setPhotosetCount] = useState(0);
+
   const pathname = usePathname();
   const t = useTranslations('menu');
   const locale = useLocale();
@@ -52,6 +55,13 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
     };
 
     handleResize();
+
+    const getPhotosetNumbers = async () => {
+      const res = await getPhotosetCount();
+      setPhotosetCount(res.photosets);
+    }
+
+    getPhotosetNumbers();
 
     window.addEventListener('resize', handleResize);
 
@@ -139,7 +149,8 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
                       <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/' section='servicii' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white dark:text-black block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 2 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(2)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>{t("link2")}</Link>
                     </motion.span>
 
-                    <motion.span variants={menuItemVariants} className='block' onClick={() => {setOpen(false)}}>
+                    <motion.span variants={menuItemVariants} className='block relative w-fit' onClick={() => {setOpen(false)}}>
+                      <span className={`absolute text-2xl right-0 top-0 text-white translate-x-full ${loading ? "" : "transition duration-200"} ${currentHoverLink === null || loading ? "" : currentHoverLink === 3 ? "" : "lg:blur-sm"}`}>{photosetCount}</span>
                       <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/projects' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white dark:text-black block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 3 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(3)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>{t("link3")}</Link>
                     </motion.span>
 

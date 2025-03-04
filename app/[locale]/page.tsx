@@ -19,6 +19,7 @@ import { useSearchParams } from "next/navigation";
 export default function Home() {
   const [isActive, setIsActive] = useState(false);
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
   const lenis = useLenis();
   const searchParams = useSearchParams();
   const t = useTranslations('index');
@@ -74,7 +75,7 @@ export default function Home() {
         <AnimatePresence>
           {loadingScreen ? 
             <LoadingScreen setLoadingScreen={setLoadingScreen}/> :
-            <motion.div initial={'initial'} variants={{initial: {opacity: 0}, animate: {opacity: 100 }}} animate={isLinkClicked ? 'initial' : 'animate'} transition={{duration: 0.7, ease: easeInOutCubic}} className="layout-grid col-span-8 [&>*:not(.header)]:z-[2] bg-white">
+            <motion.div initial={'initial'} variants={{initial: {opacity: 0}, animate: {opacity: 100 }}} animate={isLinkClicked ? 'initial' : 'animate'} transition={{duration: 0.7, ease: easeInOutCubic}} className="layout-grid col-span-8 [&>*:not(.header)]:z-[2] bg-white dark:bg-black transition-colors duration-200">
               <Header setIsLinkClicked={setIsLinkClicked} isLinkClicked={isLinkClicked}/>
               {isMobile ? <MobileHero /> : <StageCarousell isLinkClicked={isLinkClicked} setIsActive={setIsActive} setCursourText={setCursourText} setCursourWidth={setCursourWidth}/>}
               <Offer setIsActive={setIsActive}/>

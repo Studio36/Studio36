@@ -13,7 +13,7 @@ export default function AdminNavbar({ setIsLinkClicked }: AdminNavbarProps) {
   const { setTheme, resolvedTheme } = useTheme()
 
   return (
-    <div className={`col-span-3 lg:col-span-8 layout-grid sticky top-0 z-50 py-4 lg:py-8 mix-blend-difference h-fit`}>
+    <div className={`col-span-3 lg:col-span-8 layout-grid sticky top-0 z-50 py-4 lg:py-8 mix-blend-difference h-fit header`}>
         <Link href='/' setIsLinkClicked={setIsLinkClicked} className='lg:col-start-2 w-12 lg:w-16'>
             <Image src="/icons/logo.svg" alt="logo" width={64} height={78} 
             onClick={() => {setTimeout(() => {
