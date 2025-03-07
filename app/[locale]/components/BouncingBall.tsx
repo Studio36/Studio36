@@ -75,5 +75,5 @@ export default function BouncingBall( { startX, startY, velocityX, velocityY, in
         };
     }, [startX, startY, velocityX, velocityY, inFrame]);
 
-    return <canvas ref={canvasRef} className={`fixed top-0 left-0 w-full h-[calc(100vh+12px)] pointer-events-none z-[100] ${inFrame ? "hidden" : "lg:block hidden"}`}></canvas>;
+    return <canvas ref={canvasRef} className={`cursor fixed top-0 left-0 w-full h-[calc(100vh+12px)] pointer-events-none z-[100] ${inFrame ? "hidden" : "lg:block hidden"}`}></canvas>;
 }

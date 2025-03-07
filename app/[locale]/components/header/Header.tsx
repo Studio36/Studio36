@@ -7,8 +7,9 @@ import BracketButton from '../buttons/BracketButton';
 import Link from '../buttons/Link';
 import { useTheme } from 'next-themes';
 import { useTranslations } from 'next-intl';
-import Lottie from 'react-lottie-player'
+const Lottie = dynamic(() => import('react-lottie-player'), { ssr: false });
 import animation from '@/public/animations/logo.json';
+import dynamic from 'next/dynamic';
 
 interface HeaderProps {
   setIsLinkClicked: (isLinkClicked: boolean) => void,
@@ -60,12 +61,12 @@ export default function Header({ setIsLinkClicked, isLinkClicked, hasContact = t
     <>
       <div className={`col-span-3 lg:col-span-8 layout-grid sticky top-0 z-50 py-4 lg:py-8 mix-blend-difference header`}>
         
-        <Link href='/' setIsLinkClicked={setIsLinkClicked} className='lg:col-start-2 w-12 lg:w-16'>
+        <Link href='/' setIsLinkClicked={setIsLinkClicked} className='lg:col-start-2 aspect-[0.82] w-12 lg:w-16'>
             <Lottie
               ref={lottieRef}
               animationData={animation}
               speed={1.75}
-              className='w-full'
+              className='w-full h-full object-cover'
               onClick={() => {setTimeout(() => {
                 setIsLinkClicked(false);
               }, 1600)}}

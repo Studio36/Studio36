@@ -13,10 +13,9 @@ interface StageCarousellProps {
   setIsActive: (isActive: boolean) => void,
   setCursourText: (text: string) => void,
   setCursourWidth: (width: string) => void,
-  isLinkClicked: boolean,
 }
 
-export default function StageCarousell({ setIsActive, setCursourText, setCursourWidth, isLinkClicked }: StageCarousellProps) {
+export default function StageCarousell({ setIsActive, setCursourText, setCursourWidth }: StageCarousellProps) {
   const [slide, setSlide] = useState(0);
   const [text, setText] = useState(carousellNumbers[0]);
   const [loading, setLoading] = useState(false);
@@ -26,7 +25,7 @@ export default function StageCarousell({ setIsActive, setCursourText, setCursour
   const locale = useLocale();
 
   const NextSlide = () => {
-    if (loading || isLinkClicked) return;
+    if (loading) return;
 
     // Clear existing interval
     if (intervalRef.current) {
@@ -59,7 +58,7 @@ export default function StageCarousell({ setIsActive, setCursourText, setCursour
         clearInterval(intervalRef.current);
       }
     };
-  }, [loading, isLinkClicked]);
+  }, [loading]);
 
   useEffect(() => {
     setTimeout(() => {

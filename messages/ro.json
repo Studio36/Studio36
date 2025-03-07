@@ -34,6 +34,10 @@
         }
     },
     "index": {
+        "meta": {
+            "title": "Pagina principala | Studio 36",
+            "description": "Pagina principala | Studio 36"
+        },
         "cursorText": {
             "default": "VEZI MAI MULTE",
             "next": "URMĂTOREA"
@@ -106,6 +110,10 @@
       }
     },
     "projects": {
+        "meta": {
+            "title": "Proiecte | Studio 36",
+            "description": "Proiecte | Studio 36"
+        },
         "subtitle": "PORTFOLIO",
         "content": "Fiecare proiect creat spune o poveste unică, realizată cu pasiune și atenție la detalii. Portofoliul nostru reflectă expertiza, inovația și angajamentul de a depăși așteptările clienților.",
         "services": {

@@ -1,73 +1,32 @@
-'use client'
+import { use } from "react"
+import { setRequestLocale } from "next-intl/server"
+import PhotosetClientComponent from "../../components/photoset/PhotosetClientComponent"
+import { getPhotoset } from "../../actions/photosetActions";
+import { Metadata } from "next";
 
-import CustomCursour from "@/app/[locale]/components/CustomCursour"
-import Header from "@/app/[locale]/components/header/Header"
-import Gallery from "@/app/[locale]/components/photoset/Gallery"
-import MobileGallery from "@/app/[locale]/components/photoset/MobileGallery"
-import NextProjectScreen from "@/app/[locale]/components/photoset/NextProjectScreen"
-import SetDescription from "@/app/[locale]/components/photoset/SetDescription"
-import { easeInOutCubic, responsiveMax } from "@/app/[locale]/lib/utils"
-import { useLenis } from "lenis/react"
-import { useEffect, useState } from "react"
-import { motion } from "motion/react";
-import { getAllPhotosets } from "@/app/[locale]/actions/photosetActions"
-import { Photoset } from "@prisma/client"
+type Props = {
+  params: Promise<{ id: string, locale: string }>
+}
 
-export default function PhotosetPage({params}: {params: Promise<{ id: string }>}) {
-    const [gridLayout, setGridLayout] = useState(false);
-    const [isMobile, setIsMobile] = useState<boolean | null>(null);
-    const [isLoaded, setIsLoaded] = useState(false);  
-    const [nextPhotoset, setNextPhotoset] = useState<Photoset | null>(null);
-    const [currentPhotoset, setCurrentPhotoset] = useState<Photoset | null>(null);
-    const [isLinkClicked, setIsLinkClicked] = useState(false);
-    const lenis = useLenis();
+export async function generateMetadata(
+  { params }: Props,
+): Promise<Metadata> {
+  const { id } = await params
+  const photoset = await getPhotoset(id);
 
-    useEffect(() => {
-      const checkMobile = () => {
-        setIsMobile(window.innerWidth < responsiveMax);
-      };
-      
-      checkMobile();
+  return {
+    title: photoset?.title,
+    description: photoset?.description
+  };
+}
 
-      const getImages = async () => {
-        const id = (await params).id;
-        const photosets = await getAllPhotosets();
-        const currentPhotosetIndex = photosets.findIndex(photoset => photoset.id === id);
-        const nextPhotosetIndex = currentPhotosetIndex + 1 >= photosets.length ? 0 : currentPhotosetIndex + 1;
-        setNextPhotoset(photosets[nextPhotosetIndex]);
-        setCurrentPhotoset(photosets[currentPhotosetIndex]);
-      }
-
-      getImages();
-      
-      window.addEventListener('resize', checkMobile);
-
-      lenis?.scrollTo(0, {immediate: true, force: true});
-      
-      return () => window.removeEventListener('resize', checkMobile);
-    }, []);
-
-    useEffect(() => {
-      if (isMobile === true) setIsLoaded(true);
-    }, [isMobile])
-  
-    if (nextPhotoset === null || currentPhotoset === null) {
-      return;
-    }
+export default function PhotosetPage({params}: Props) {
+  const {locale, id} = use(params);
+ 
+  // Enable static rendering
+  setRequestLocale(locale);
 
   return (
-    <>
-      <CustomCursour isActive={false} isVisible={!isLinkClicked}/>
-      <motion.div initial={'initial'} variants={{initial: {opacity: 0}, animate: {opacity: 100}}} animate={isLinkClicked ? 'initial' : 'animate'} transition={{duration: 0.7, ease: easeInOutCubic}} className="col-span-3 lg:col-span-8 layout-grid min-h-[101vh] bg-white dark:bg-black transition-colors duration-200">
-        <Header setIsLinkClicked={setIsLinkClicked} isLinkClicked={isLinkClicked} hasContact={false}/>
-        <div className="flex flex-col col-span-3 lg:col-span-8 mt-12 relative min-h-[calc(100vh-11.875rem)] [&>*]:z-[2]">
-          <div className="layout-grid w-full relative">
-            {isMobile !== null && isLoaded && <SetDescription photoset={currentPhotoset} gridLayout={gridLayout} isMobile={isMobile} setGridLayout={setGridLayout}/>}
-            {isMobile === null ? <></> : isMobile ? <MobileGallery images={currentPhotoset.images} /> : <Gallery isLoaded={isLoaded} gridLayout={gridLayout} images={currentPhotoset.images} setIsLoaded={setIsLoaded}/>}
-          </div>
-        </div>
-        {isMobile !== null && isLoaded && <NextProjectScreen setIsLinkClicked={setIsLinkClicked} isMobile={isMobile} nextPhotoset={nextPhotoset}/>}
-      </motion.div>
-    </>
+    <PhotosetClientComponent id={id}/>
   )
 }

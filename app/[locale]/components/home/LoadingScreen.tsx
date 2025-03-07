@@ -9,7 +9,6 @@ interface LoadingScreenProps {
 export default function LoadingScreen({setLoadingScreen} : LoadingScreenProps) {
     const controls = useAnimationControls();
 
-
     useEffect(() => {
         controls.start('start');
         setTimeout(() => {

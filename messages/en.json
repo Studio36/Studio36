@@ -33,6 +33,10 @@
         }
     },
     "index": {
+        "meta": {
+            "title": "Index page | Studio 36",
+            "description": "Index page | Studio 36"
+        },
         "cursorText": {
             "default": "SEE MORE",
             "next": "NEXT ROOM"
@@ -105,6 +109,10 @@
       }
     },
     "projects": {
+        "meta": {
+            "title": "Projects | Studio 36",
+            "description": "Projects | Studio 36"
+        },
         "subtitle": "PORTFOLIO",
         "content": "Each project we create tells a unique story, crafted with passion and attention to detail. Our portfolio reflects expertise, innovation, and a commitment to exceeding client expectations.",
         "services": {
