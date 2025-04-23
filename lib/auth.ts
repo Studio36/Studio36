@@ -21,7 +21,7 @@ export const authOptions: NextAuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
     providers: [
         CredentialsProvider({
-            name: "Credentials",
+            name: "credentials",
             credentials: {
                 username: { label: "username", type: "username", required: true },
                 password: { label: "password", type: "password", required: true }

@@ -123,10 +123,10 @@ export default function StageCarousell({ setIsActive, setCursourText, setCursour
             <motion.div className='absolute h-full w-full overflow-hidden top-0 right-0' variants={slideVariants} animate={isLoading ? '' : 'appear'}>
               <div className="absolute h-full w-[57vw] top-0 right-0">
                 <div className="h-full w-full relative rounded-lg overflow-hidden">
-                <StageCard src="/hero-stages/stage4.jpg" alt="stage1" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={0} className='h-full w-[57vw] rounded-lg' duration={.9}/>
-                <StageCard src="/hero-stages/stage1.jpg" alt="stage2" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={1} className='h-full w-[57vw] rounded-lg' duration={.9}/>
-                <StageCard src="/hero-stages/stage2.jpg" alt="stage3" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={2} className='h-full w-[57vw] rounded-lg' duration={.9}/>
-                <StageCard src="/hero-stages/stage3.jpg" alt="stage4" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={3} className='h-full w-[57vw] rounded-lg' duration={.9}/>
+                <StageCard src="/hero-stages/stage4.png" alt="stage1" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={0} className='h-full w-[57vw] rounded-lg' duration={.9}/>
+                <StageCard src="/hero-stages/stage1.png" alt="stage2" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={1} className='h-full w-[57vw] rounded-lg' duration={.9}/>
+                <StageCard src="/hero-stages/stage2.png" alt="stage3" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={2} className='h-full w-[57vw] rounded-lg' duration={.9}/>
+                <StageCard src="/hero-stages/stage3.png" alt="stage4" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={3} className='h-full w-[57vw] rounded-lg' duration={.9}/>
                 </div>
               </div>
             </motion.div>
@@ -140,10 +140,10 @@ export default function StageCarousell({ setIsActive, setCursourText, setCursour
             <motion.div className='absolute h-full w-full overflow-hidden top-0 right-0' variants={secondSlideVariants} animate={isLoading ? '' : 'appear'}>
               <div className="absolute h-full aspect-[0.2] top-0 right-0">
                 <div className="h-full w-full relative rounded-lg overflow-hidden">
-                <StageCard src="/hero-stages/stage1.jpg" alt="stage" nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} slide={slide} index={0} className='aspect-[0.2] h-full rounded-l-lg' duration={0.5}/>
-                <StageCard src="/hero-stages/stage2.jpg" alt="stage" nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} slide={slide} index={1} className='aspect-[0.2] h-full rounded-l-lg' duration={0.5}/>
-                <StageCard src="/hero-stages/stage3.jpg" alt="stage" nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} slide={slide} index={2} className='aspect-[0.2] h-full rounded-l-lg' duration={0.5}/>
-                <StageCard src="/hero-stages/stage4.jpg" alt="stage" nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} slide={slide} index={3} className='aspect-[0.2] h-full rounded-l-lg' duration={0.5}/>
+                <StageCard src="/hero-stages/stage1.png" alt="stage" nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} slide={slide} index={0} className='aspect-[0.2] h-full rounded-l-lg' duration={0.5}/>
+                <StageCard src="/hero-stages/stage2.png" alt="stage" nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} slide={slide} index={1} className='aspect-[0.2] h-full rounded-l-lg' duration={0.5}/>
+                <StageCard src="/hero-stages/stage3.png" alt="stage" nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} slide={slide} index={2} className='aspect-[0.2] h-full rounded-l-lg' duration={0.5}/>
+                <StageCard src="/hero-stages/stage4.png" alt="stage" nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} slide={slide} index={3} className='aspect-[0.2] h-full rounded-l-lg' duration={0.5}/>
                 </div>
               </div>
             </motion.div>

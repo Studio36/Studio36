@@ -18,7 +18,6 @@ export async function generateMetadata() {
 export default function Home({params}: {params: Promise<{locale: string}>;}) {
   const {locale} = use(params);
  
-  // Enable static rendering
   setRequestLocale(locale);
 
   return (
