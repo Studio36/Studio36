@@ -6,10 +6,10 @@ export default function MobileHero() {
 
   return (
     <div className='col-start-1 col-span-3 layout-grid mt-12 mb-[7.75rem]'>
-        <StageSection texts={[t("first.title"), t("first.description"), t("first.usage")]} img="/hero-stages/stage1.jpg" number="1"/>
-        <StageSection texts={[t("second.title"), t("second.description"), t("second.usage")]} img="/hero-stages/stage2.jpg" number="2"/>
-        <StageSection texts={[t("third.title"), t("third.description"), t("third.usage")]} img="/hero-stages/stage3.jpg" number="3"/>
-        <StageSection texts={[t("fourth.title"), t("fourth.description"), t("fourth.usage")]} img="/hero-stages/stage4.jpg" number="4"/>
+        <StageSection texts={[t("first.title"), t("first.description"), t("first.usage")]} img="/hero-stages/stage1.png" number="1"/>
+        <StageSection texts={[t("second.title"), t("second.description"), t("second.usage")]} img="/hero-stages/stage2.png" number="2"/>
+        <StageSection texts={[t("third.title"), t("third.description"), t("third.usage")]} img="/hero-stages/stage3.png" number="3"/>
+        <StageSection texts={[t("fourth.title"), t("fourth.description"), t("fourth.usage")]} img="/hero-stages/stage4.png" number="4"/>
     </div>
   )
 }
