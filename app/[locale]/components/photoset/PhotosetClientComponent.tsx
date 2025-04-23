@@ -16,7 +16,7 @@ interface PhotosetClientComponentProps {
     id: string
 }
 
-export default function PhotosetClientComponent({id}: PhotosetClientComponentProps) {
+export default function PhotosetClientComponent({ id }: PhotosetClientComponentProps) {
     const [gridLayout, setGridLayout] = useState(false);
     const [isMobile, setIsMobile] = useState<boolean | null>(null);
     const [isLoaded, setIsLoaded] = useState(false);  

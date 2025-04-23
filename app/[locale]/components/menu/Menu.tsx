@@ -158,19 +158,19 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
                       <Link delay={900} setIsLinkClicked={setIsLinkClicked} href={hasContact ? pathname : "/"} section="contact" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white dark:text-black block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 4 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(4)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>{t("link4")}</Link>
                     </motion.span>
                   <div className='my-12 h-[1px] w-[calc(100%+3.5rem)] lg:w-[calc(100%+4rem)] bg-white dark:bg-black -ml-8'></div>
-                  <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
+                  <motion.div variants={menuItemVariants} className='mb-2 flex text-base lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>IG:</p>
                     <LinkButton targetBlank={true} text='@photo.studio36' href='https://www.instagram.com/photo.studio36/'/>
                   </motion.div>
-                  <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
+                  <motion.div variants={menuItemVariants} className='mb-2 flex text-base lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>FB:</p>
                     <LinkButton targetBlank text='Studio 36 - Foto & Video' href='https://www.facebook.com/profile.php?id=61572898073057'/>
                   </motion.div>
-                  <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
+                  <motion.div variants={menuItemVariants} className='mb-2 flex text-base lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>E:</p>
                     <LinkButton text='fotostudio36@yahoo.com' href='mailto:fotostudio36@yahoo.com'/>
                   </motion.div>
-                  <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
+                  <motion.div variants={menuItemVariants} className='mb-2 flex text-base lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>T:</p>
                     <LinkButton text='+373 (69) 594 218' href='tel:+37369594218'/>
                   </motion.div>

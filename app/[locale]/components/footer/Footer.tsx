@@ -117,45 +117,45 @@ export default function Footer() {
             <div className='col-start-1 lg:col-start-3 col-span-3 lg:col-span-5 grid grid-cols-3 lg:grid-cols-5 self-end mt-12 mb-24 lg:my-24'>
 
                 <div className="lg:col-start-3 col-span-2 lg:hidden">
-                  <div className="flex gap-3 mb-2 text-white dark:text-black  text-xl lg:text-2xl">
+                  <div className="flex gap-3 mb-4 text-white dark:text-black text-base lg:text-2xl">
                     <p>IG:</p>
                     <LinkButton targetBlank text='@photo.studio36' href='https://www.instagram.com/photo.studio36/'/>
                   </div>
-                  <div className="flex gap-3 mb-2 text-white dark:text-black  text-xl lg:text-2xl">
+                  <div className="flex gap-3 mb-4 text-white dark:text-black text-base lg:text-2xl">
                     <p>FB:</p>
                     <LinkButton targetBlank text='Studio 36 - Foto & Video' href='https://www.facebook.com/profile.php?id=61572898073057'/>
                   </div>
                 </div>
 
                 <div className="col-span-2">
-                  <div className="flex gap-3 mb-2 text-white dark:text-black  text-xl lg:text-2xl">
+                  <div className="flex gap-3 mb-4 text-white dark:text-black text-base lg:text-2xl">
                     <p>E:</p>
                     <LinkButton text='fotostudio36@yahoo.com' href='mailto:fotostudio36@yahoo.com'/>
                   </div>
-                  <div className="flex gap-3 mb-2 text-white dark:text-black  text-xl lg:text-2xl">
+                  <div className="flex gap-3 mb-4 text-white dark:text-black text-base lg:text-2xl">
                     <p>T:</p>
                     <LinkButton text='+373 (69) 594 218' href='tel:+37369594218'/>
                   </div>
-                  <div className="flex gap-3 mb-2 lg:mb-0 text-white dark:text-black  text-xl lg:text-2xl">
+                  <div className="flex gap-3 mb-4 lg:mb-0 text-white dark:text-black text-base lg:text-2xl">
                     <p>A:</p>
-                    <p>str. Meșterul Manole 5A <br/> mun. Chișinău, MD</p>
+                    <p className="whitespace-nowrap">str. Meșterul Manole 5A <br/> mun. Chișinău, MD</p>
                   </div>
                 </div>
 
                 <div className="lg:col-start-3 col-span-2 hidden lg:block">
-                  <div className="flex gap-3 mb-2 text-white dark:text-black  text-xl lg:text-2xl">
+                  <div className="flex gap-3 mb-4 text-white dark:text-black text-base lg:text-2xl">
                     <p>IG:</p>
-                    <LinkButton text='@studio36' href='/'/>
+                    <LinkButton targetBlank text='@photo.studio36' href='https://www.instagram.com/photo.studio36/'/>
                   </div>
-                  <div className="flex gap-3 mb-2 text-white dark:text-black  text-xl lg:text-2xl">
+                  <div className="flex gap-3 mb-4 text-white dark:text-black text-base lg:text-2xl">
                     <p>FB:</p>
-                    <LinkButton text='Studio 36' href='/'/>
+                    <LinkButton text='Studio 36 - Foto & Video' href='https://www.facebook.com/profile.php?id=61572898073057'/>
                   </div>
                 </div>
             </div>
           </motion.div>
           <div className="absolute bottom-4 lg:bottom-8 left-0 flex justify-between w-full px-[7.3%]">
-            <p className="text-white dark:text-black ">© 2024</p>
+            <p className="text-white dark:text-black ">© {new Date().getFullYear()}</p>
             <div className="flex gap-2 group">
               <span className="text-white dark:text-black ">by Studio Modvis</span>
               <Image src="/icons/modvis.svg" alt="studio-modvis" className="transition duration-200 group-hover:rotate-[360deg] mix-blend-difference" width={10} height={10}/>

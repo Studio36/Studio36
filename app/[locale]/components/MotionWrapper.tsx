@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { easeInOutCubic } from '../lib/utils';
 import Header from './header/Header';
-import { useEffect } from "react";
+import { usePathname } from "@/i18n/routing";
 
 interface MotionWrapperProps {
     children: React.ReactNode,
@@ -13,14 +13,11 @@ interface MotionWrapperProps {
 }
 
 export default function MotionWrapper({children, isLinkClicked, setIsLinkClicked, isLoading = false}: MotionWrapperProps) {
-
-  useEffect(() => {
-    
-  }, [])
+  const pathname = usePathname();
 
   return (
     <motion.div initial={'initial'} variants={{initial: {opacity: 0}, animate: {opacity: 100 }}} animate={isLoading ? "initial" : isLinkClicked ? 'initial' : 'animate'} transition={{duration: 0.7, ease: easeInOutCubic}} className="layout-grid col-span-8 [&>*:not(.header)]:z-[2] bg-white dark:bg-black transition-colors duration-200">
-        <Header setIsLinkClicked={setIsLinkClicked} isLinkClicked={isLinkClicked}/>
+        <Header hasContact={pathname !== '/photoset/[id]'} setIsLinkClicked={setIsLinkClicked} isLinkClicked={isLinkClicked}/>
         {children}
     </motion.div>
   );

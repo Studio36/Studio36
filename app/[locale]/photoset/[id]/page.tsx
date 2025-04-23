@@ -1,4 +1,3 @@
-import { use } from "react"
 import { setRequestLocale } from "next-intl/server"
 import PhotosetClientComponent from "../../components/photoset/PhotosetClientComponent"
 import { getPhotoset } from "../../actions/photosetActions";
@@ -11,7 +10,7 @@ type Props = {
 export async function generateMetadata(
   { params }: Props,
 ): Promise<Metadata> {
-  const { id } = await params
+  const { id } = await params;
   const photoset = await getPhotoset(id);
 
   return {
@@ -20,9 +19,10 @@ export async function generateMetadata(
   };
 }
 
-export default function PhotosetPage({params}: Props) {
-  const {locale, id} = use(params);
+export default async function PhotosetPage({params}: Props) {
+  const {locale, id} = await params;
  
+  // Enable static rendering
   setRequestLocale(locale);
 
   return (
