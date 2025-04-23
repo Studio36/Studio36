@@ -1,7 +1,6 @@
 import Footer from '../components/footer/Footer'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import ProjectsClientContent from '../components/projects/ProjectsClientContent'
-import { use } from 'react'
 
 export async function generateMetadata() {
   const t = await getTranslations('projects.meta');
