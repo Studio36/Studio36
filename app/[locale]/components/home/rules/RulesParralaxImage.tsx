@@ -13,9 +13,11 @@ interface ParallaxImageProps {
 export default function RulesParallasImage({src, alt, className, y}: ParallaxImageProps) {
   return (       
     <div className={`relative overflow-hidden ${className}`}>
-      <motion.div style={{ y: -y + "%" }}>
+      <motion.div style={{ y: -y + "%" }} className="h-full">
         <Image
-          fill 
+          width={928}
+          height={1080}
+          quality={80}
           src={src} 
           alt={alt} 
           className={`absolute left-0 top-0 h-[130%] w-full object-cover`} 
