@@ -64,7 +64,7 @@ export default function SetDescription({gridLayout, setGridLayout, isMobile, pho
         <motion.p variants={itemVariants} className='text-sm lg:text-base uppercase mb-2'>{`[${t('subtitle2')}]`}</motion.p>
         <motion.p variants={itemVariants} className='text-sm lg:text-base font-hedwig mb-4 lg:mb-6'>{photoset.description}</motion.p>
         <motion.p variants={itemVariants} className='text-sm lg:text-base uppercase mb-2'>{`[${t('subtitle3')}]`}</motion.p>
-        <motion.p variants={itemVariants} className='text-sm lg:text-base font-hedwig lg:mb-6 mb-12'>{photoset.additional_info}</motion.p>
+        <motion.p variants={itemVariants} className='text-sm lg:text-base font-hedwig lg:mb-6 mb-12 whitespace-pre'>{photoset.additional_info}</motion.p>
     </motion.div>
   )
 }

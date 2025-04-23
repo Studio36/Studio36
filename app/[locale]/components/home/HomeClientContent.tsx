@@ -17,8 +17,8 @@ interface MotionWrapperProps {
 }
 
 export default function HomeClientContent({children}: MotionWrapperProps) {
-    const locale = useLocale();
-    const [isActive, setIsActive] = useState(false);
+  const locale = useLocale();
+  const [isActive, setIsActive] = useState(false);
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   const lenis = useLenis();
@@ -72,14 +72,14 @@ export default function HomeClientContent({children}: MotionWrapperProps) {
   return (
     <>
         <CustomCursour isActive={isActive} text={cursourText} width={cursourWidth} isVisible={!isLinkClicked}/>
-        {loadingScreen ?
-        <LoadingScreen setLoadingScreen={setLoadingScreen}/> :
-        <MotionWrapper isLinkClicked={isLinkClicked} setIsLinkClicked={setIsLinkClicked}>
-            {isMobile ? <MobileHero /> : <StageCarousell setIsActive={setIsActive} setCursourText={setCursourText} setCursourWidth={setCursourWidth}/>}
-            <Offer setIsActive={setIsActive}/>
+        {
+          loadingScreen && <LoadingScreen setLoadingScreen={setLoadingScreen}/>
+        }
+        <MotionWrapper isLinkClicked={isLinkClicked} setIsLinkClicked={setIsLinkClicked} isLoading={loadingScreen}>
+            {isMobile ? <MobileHero /> : <StageCarousell isLoading={loadingScreen} setIsActive={setIsActive} setCursourText={setCursourText} setCursourWidth={setCursourWidth}/>}
+              <Offer setIsActive={setIsActive}/>
             {children}
         </MotionWrapper>
-        }
     </>
   );
 }

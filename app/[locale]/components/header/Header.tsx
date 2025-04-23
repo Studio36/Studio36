@@ -26,6 +26,23 @@ export default function Header({ setIsLinkClicked, isLinkClicked, hasContact = t
   const { setTheme, resolvedTheme } = useTheme();
   const t = useTranslations('header');
   const lottieRef = useRef<any>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+  
+    // Check screen size on mount and window resize
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsDesktop(window.innerWidth >= 1024);
+        };
+        
+        // Set initial state
+        checkScreenSize();
+
+        // Add event listener for resize
+        window.addEventListener('resize', checkScreenSize);
+        
+        // Clean up
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
 
   useEffect(() => {
     if (open) {
@@ -71,10 +88,10 @@ export default function Header({ setIsLinkClicked, isLinkClicked, hasContact = t
                 setIsLinkClicked(false);
               }, 1600)}}
               onMouseEnter={() => {
-                lottieRef.current?.play();
+                if (isDesktop) lottieRef.current?.play();
               }}
               onMouseLeave={() => {
-                lottieRef.current?.stop();
+                if (isDesktop) lottieRef.current?.stop();
               }}
             />
         </Link>

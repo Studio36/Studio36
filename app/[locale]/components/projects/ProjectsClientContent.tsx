@@ -8,7 +8,6 @@ import { easeInOutCubicMath } from '../../lib/utils'
 import CustomCursour from '../CustomCursour'
 import MotionWrapper from '../MotionWrapper'
 import ProjectsGrid from './ProjectsGrid'
-// import { setRequestLocale } from 'next-intl/server'
 
 interface ProjectsClientContentProps {
   children: React.ReactNode;

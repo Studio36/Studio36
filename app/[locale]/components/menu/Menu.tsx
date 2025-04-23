@@ -150,7 +150,7 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
                     </motion.span>
 
                     <motion.span variants={menuItemVariants} className='block relative w-fit' onClick={() => {setOpen(false)}}>
-                      <span className={`absolute text-2xl right-0 top-0 text-white translate-x-full ${loading ? "" : "transition duration-200"} ${currentHoverLink === null || loading ? "" : currentHoverLink === 3 ? "" : "lg:blur-sm"}`}>{photosetCount}</span>
+                      <span className={`absolute text-2xl right-0 top-0 text-white translate-x-full ${loading ? "" : "transition duration-200"} ${currentHoverLink === null || loading ? "" : currentHoverLink === 3 ? "" : "lg:blur-sm"}`}>[{photosetCount}]</span>
                       <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/projects' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white dark:text-black block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 3 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(3)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>{t("link3")}</Link>
                     </motion.span>
 
