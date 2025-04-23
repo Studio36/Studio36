@@ -3,7 +3,6 @@
 import { easeInOutCubic } from "@/app/[locale]/lib/utils";
 import { useLenis } from "lenis/react";
 import { motion } from "motion/react";
-import { default as NextImage } from "next/image";
 import { createRef, Fragment, useEffect, useRef, useState } from "react";
 
 interface GalleryProps {
@@ -116,16 +115,6 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: G
                 isThird = false;
                 gridImagesOffset++;
             }
-
-            console.log(`Image ${index}: gridLayout=${gridLayout}, isSecond=${isSecond}, isLast=${index === images.length - 1}, position=${position}, animate=${
-                gridLayout 
-                  ? (index + 1) % 5 === 0 
-                    ? "nopadding" 
-                    : "padding"
-                  : isSecond || index === images.length - 1
-                    ? "nopadding"
-                    : "padding"
-              }`);
             
             return (
                 <Fragment key={`${index}-${isAnimationGoing}`}>
@@ -172,20 +161,16 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: G
                                     }`
                             } overflow-hidden rounded-[1%] relative`}
                         >
-                            <motion.div
+                              <motion.img 
+                                ref={elementsRef.current[index]} 
                                 layout={!isAnimationGoing}
                                 transition={{duration: 1, ease: easeInOutCubic}}
-                                className="w-full h-full rounded-[1%]"
-                            >
-                                <NextImage 
-                                    ref={elementsRef.current[index]} 
-                                    src={image} 
-                                    alt="woman" 
-                                    width={823} 
-                                    height={1226} 
-                                    className="w-full rounded-[1%]"
-                                />
-                            </motion.div>
+                                src={image} 
+                                alt="woman" 
+                                width={823} 
+                                height={1226} 
+                                className={`w-full rounded-[1%]`}
+                            />
                         </motion.div>
                     </motion.div>
                     {(isThird || isSecond && heights[index] <= heights[index - 1]) && index !== images.length - 1 && !gridLayout && <div className="col-span-5 mb-[7.75rem]"></div>}

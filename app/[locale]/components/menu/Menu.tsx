@@ -160,19 +160,19 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
                   <div className='my-12 h-[1px] w-[calc(100%+3.5rem)] lg:w-[calc(100%+4rem)] bg-white dark:bg-black -ml-8'></div>
                   <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>IG:</p>
-                    <LinkButton text='@studio.36' href='/'/>
+                    <LinkButton targetBlank={true} text='@photo.studio36' href='https://www.instagram.com/photo.studio36/'/>
                   </motion.div>
                   <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>FB:</p>
-                    <LinkButton text='Studio 36 - Foto & Video' href='/'/>
+                    <LinkButton targetBlank text='Studio 36 - Foto & Video' href='https://www.facebook.com/profile.php?id=61572898073057'/>
                   </motion.div>
                   <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>E:</p>
-                    <LinkButton text='hello@studio36.md' href='/'/>
+                    <LinkButton text='fotostudio36@yahoo.com' href='mailto:fotostudio36@yahoo.com'/>
                   </motion.div>
                   <motion.div variants={menuItemVariants} className='mb-2 flex text-xl lg:text-2xl text-white dark:text-black  gap-3'>
                     <p>T:</p>
-                    <LinkButton text='+373 (68) 12 34 56' href='/'/>
+                    <LinkButton text='+373 (69) 594 218' href='tel:+37369594218'/>
                   </motion.div>
               </div>
             </motion.div>

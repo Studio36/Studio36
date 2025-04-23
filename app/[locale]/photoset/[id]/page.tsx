@@ -23,7 +23,6 @@ export async function generateMetadata(
 export default function PhotosetPage({params}: Props) {
   const {locale, id} = use(params);
  
-  // Enable static rendering
   setRequestLocale(locale);
 
   return (

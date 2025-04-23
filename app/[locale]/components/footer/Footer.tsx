@@ -119,26 +119,26 @@ export default function Footer() {
                 <div className="lg:col-start-3 col-span-2 lg:hidden">
                   <div className="flex gap-3 mb-2 text-white dark:text-black  text-xl lg:text-2xl">
                     <p>IG:</p>
-                    <LinkButton text='@studio.36' href='/'/>
+                    <LinkButton targetBlank text='@photo.studio36' href='https://www.instagram.com/photo.studio36/'/>
                   </div>
                   <div className="flex gap-3 mb-2 text-white dark:text-black  text-xl lg:text-2xl">
                     <p>FB:</p>
-                    <LinkButton text='Studio 36 - Foto & Video' href='/'/>
+                    <LinkButton targetBlank text='Studio 36 - Foto & Video' href='https://www.facebook.com/profile.php?id=61572898073057'/>
                   </div>
                 </div>
 
                 <div className="col-span-2">
                   <div className="flex gap-3 mb-2 text-white dark:text-black  text-xl lg:text-2xl">
                     <p>E:</p>
-                    <LinkButton text='hello@studio36.md' href='/'/>
+                    <LinkButton text='fotostudio36@yahoo.com' href='mailto:fotostudio36@yahoo.com'/>
                   </div>
                   <div className="flex gap-3 mb-2 text-white dark:text-black  text-xl lg:text-2xl">
                     <p>T:</p>
-                    <LinkButton text='+373 (68) 12 34 56' href='/'/>
+                    <LinkButton text='+373 (69) 594 218' href='tel:+37369594218'/>
                   </div>
                   <div className="flex gap-3 mb-2 lg:mb-0 text-white dark:text-black  text-xl lg:text-2xl">
                     <p>A:</p>
-                    <p>str. Armenească 136/2 <br/> mun. Chișinău, MD</p>
+                    <p>str. Meșterul Manole 5A <br/> mun. Chișinău, MD</p>
                   </div>
                 </div>
 
