@@ -87,17 +87,13 @@
         "subtitle1": "REGULILE CASEI",
         "subtitle2": "BENEFICII",
         "rules": {
-            "0": "Timpul minim de rezervare: 4 ore pentru ședințe foto, 6 ore pentru filmări.",
-            "1": "Program de lucru: Luni-Vineri, 09:00-21:00. Rezervările în weekend presupun o taxă suplimentară de 80 EUR/zi.",
-            "2": "Înregistrarea sunetului: Nu putem garanta sunet pur din cauza posibilului ecou.",
-            "3": "Consumul de alimente și băuturi: Este interzis în studioul complet alb.",
-            "4": "Utilizarea vaselor: Vasele folosite trebuie spălate, altfel se aplică o taxă de 30 EUR.",
-            "5": "Durata rezervării: Include pregătirea și curățenia, terminând cu 10 minute înainte de sfârșitul rezervării.",
-            "6": "Ore suplimentare: Între 23:00 și 09:00 se aplică o taxă de 30 EUR/oră.",
-            "7": "Curățenie suplimentară: Pentru utilizarea decorurilor care lasă multă murdărie, se percepe o taxă de 50 EUR.",
-            "8": "Acces în studioul alb: Obligatoriu șoșoni de protecție sau încălțăminte albă curată.",
-            "9": "Gunoi în exces: Peste un container de 240l se percepe o taxă de 25 EUR.",
-            "10": "Deteriorări: Responsabilitatea financiară revine chiriașului, iar echipamentele vor fi verificate de administrator la finalul rezervării."
+            "0": "Reguli de acces în studio \n - Acces permis pentru maximum 6 persoane (inclusiv fotografi). \n - Pentru fiecare persoană suplimentară se percepe o taxă de 100 lei/persoană. \n - Accesul cu persoane neimplicate în proiect este nerecomandat, cu excepția cazurilor discutate în prealabil.",
+            "1": "Încălțăminte (studio & cicloramă) \n - Accesul în studio se face exclusiv cu încălțăminte curată de schimb, bavețici de unică folosință sau cu bandă adezivă aplicată pe talpă. \n - Această regulă se aplică inclusiv în zona cicloramei. \n - Nerespectarea acestei reguli atrage aplicarea unei taxe de revopsire conform grilei de penalități.",
+            "2": "Utilizarea spațiului \n - Este strict interzisă rezemarea de pereții cicloramei. \n - Fumatul, consumul de alcool și utilizarea artificiilor (focuri bengale, fumigene etc.) sunt interzise în incinta studioului. \n - Consumul de alimente sau băuturi în zona de lucru este, de asemenea, interzis.",
+            "3": "Comportament & Curățenie \n - Păstrarea ordinii: Este responsabilitatea fiecărui client să lase spațiul curat și bine organizat, ca la începutul ședinței. \n - Manipularea echipamentului: Vă rugăm să tratați cu grijă recuzita, mobilierul și echipamentele din studio. În cazul deteriorărilor, pot fi aplicate costuri de reparație sau înlocuire. \n - Alte materiale aduse: Dacă intenționați să folosiți materiale proprii (confetti etc.), vă rugăm să informați echipa din timp. Clientul este responsabil pentru curățarea completă a spațiului la finalul sesiunii.",
+            "4": "Penalități \n - Curățare chimică textile – de la 1000 MDL/bucată. \n - Curățare chimică mobilier – de la 2000 MDL/bucată. \n - Curățare podea – de la 500 MDL. \n - Curățare pereți – de la 1000 MDL.",
+            "5": "Art. 1064 Codul Civil al Republicii Moldova: \n - Daunele aduse proprietății unei persoane juridice sau fizice trebuie compensate integral de către persoana care a cauzat prejudiciul.",
+            "6": "Este interzisă însușirea bunurilor studioului. (Codul Administrativ al Republicii Moldova, Art. 20.1)"
         },
         "benefits": {
             "0": "Internet Gigabit WiFi6.",

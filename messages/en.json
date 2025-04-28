@@ -82,31 +82,27 @@
         "screen1": "We are a creative and experienced team offering photo-video services, with a personalized approach for every project.",
         "screen2": "We ensure flexibility and effective communication. The studio is conveniently located in Chișinău, Ciocana district."
       },
+    "rules": {
+      "subtitle1": "HOUSE RULES",
+      "subtitle2": "BENEFITS",
       "rules": {
-        "subtitle1": "HOUSE RULES",
-        "subtitle2": "BENEFITS",
-        "rules": {
-            "0": "Minimum booking time: 4 hours for photo shoots, 6 hours for filming.",
-            "1": "Working hours: Monday-Friday, 09:00-21:00. Weekend bookings require an additional fee of 80 EUR/day.",
-            "2": "Audio recording: We cannot guarantee pure sound due to possible echo.",
-            "3": "Food and drink consumption: Prohibited in the completely white studio.",
-            "4": "Use of dishes: Used dishes must be washed, otherwise a fee of 30 EUR applies.",
-            "5": "Booking duration: Includes preparation and cleanup, ending 10 minutes before the reservation’s end.",
-            "6": "Overtime hours: From 23:00 to 09:00, a fee of 30 EUR/hour applies.",
-            "7": "Additional cleaning: For decor usage that leaves excessive dirt, a 50 EUR fee applies.",
-            "8": "Access to the white studio: Protective shoe covers or clean white footwear are mandatory.",
-            "9": "Excess trash: More than one 240L container incurs a 25 EUR fee.",
-            "10": "Damages: Financial responsibility falls on the renter, and equipment will be checked by the administrator at the end of the booking."
-        },
-        "benefits": {
-            "0": "Gigabit WiFi6 Internet.",
-            "1": "Free Nespresso coffee.",
-            "2": "Bang & Olufsen audio system with AirPlay.",
-            "3": "Air conditioning or heating.",
-            "4": "Stands, custom makeup table, clothing rack, large mirror, steamer.",
-            "5": "Technical support from our team for any need, from equipment setup to post-production."
-        }
+        "0": "Studio Access Rules \n - Access permitted for maximum 6 people (including photographers). \n - For each additional person, a fee of 100 lei/person is charged. \n - Access with people not involved in the project is not recommended, except for cases discussed in advance.",
+        "1": "Footwear (studio & cyclorama) \n - Access to the studio is exclusively with clean change shoes, disposable shoe covers, or with adhesive tape applied to the sole. \n - This rule also applies to the cyclorama area. \n - Failure to comply with this rule will result in a repainting fee according to the penalty grid.",
+        "2": "Use of Space \n - Leaning against cyclorama walls is strictly forbidden. \n - Smoking, alcohol consumption, and use of pyrotechnics (sparklers, smoke bombs, etc.) are prohibited inside the studio. \n - Consumption of food or beverages in the work area is also prohibited.",
+        "3": "Behavior & Cleanliness \n - Maintaining order: It is each client's responsibility to leave the space clean and well-organized, as at the beginning of the session. \n - Equipment handling: Please treat studio props, furniture, and equipment with care. In case of damage, repair or replacement costs may apply. \n - Other materials brought in: If you intend to use your own materials (confetti, etc.), please inform the team in advance. The client is responsible for complete cleaning of the space at the end of the session.",
+        "4": "Penalties \n - Dry cleaning of textiles – from 1000 MDL/piece. \n - Dry cleaning of furniture – from 2000 MDL/piece. \n - Floor cleaning – from 500 MDL. \n - Wall cleaning – from 1000 MDL.",
+        "5": "Art. 1064 Civil Code of the Republic of Moldova: \n - Damages to the property of a legal entity or individual must be fully compensated by the person who caused the damage.",
+        "6": "It is forbidden to appropriate studio property. (Administrative Code of the Republic of Moldova, Art. 20.1)"
+      },
+      "benefits": {
+        "0": "Gigabit WiFi6 Internet.",
+        "1": "Free Nespresso coffee.",
+        "2": "Bang & Olufsen audio system with AirPlay.",
+        "3": "Air conditioning or heating.",
+        "4": "Stands, custom makeup table, clothing rack, large mirror, steamer.",
+        "5": "Technical support from our team for any need, from equipment setup to post-production."
       }
+    }
     },
     "projects": {
         "meta": {
