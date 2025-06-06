@@ -9,19 +9,20 @@ export async function createPhotoset() {
     const newPhotoset = await prisma.photoset.create({
         data: {
             title: "Titlu",
-            description: "Descriere",
-            additional_info: "Informatie aditionala",
             service: Service.PERSONAL_PHOTO,
             images: []
         }
-
     });
 
     return newPhotoset;
 }
 
 export async function getAllPhotosets(): Promise<Photoset[]> {
-    const photosets = await prisma.photoset.findMany({});
+    const photosets = await prisma.photoset.findMany({
+        orderBy: {
+            createdAt: 'desc'
+        }
+    });
 
     return photosets;
 }
@@ -44,8 +45,6 @@ export async function getPhotoset(id: string): Promise<Photoset | null> {
 interface UpdatePhotosetProps {
     id: string,
     title: string,
-    description: string,
-    info: string,
     service: Service
 }
 
@@ -54,7 +53,7 @@ interface UpdatePhotosetResult {
     error?: string;
   }
 
-export async function updatePhotosetData({id, title, description, info, service}: UpdatePhotosetProps): Promise<UpdatePhotosetResult> {
+export async function updatePhotosetData({id, title, service}: UpdatePhotosetProps): Promise<UpdatePhotosetResult> {
     try {
         await prisma.photoset.update({
             where: {
@@ -62,8 +61,6 @@ export async function updatePhotosetData({id, title, description, info, service}
             },
             data: {
                 title: title,
-                description: description,
-                additional_info: info,
                 service: service
             }
         })

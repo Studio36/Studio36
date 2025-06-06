@@ -155,7 +155,7 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
                     </motion.span>
 
                     <motion.span variants={menuItemVariants} className='block' onClick={() => {setOpen(false)}}>
-                      <Link delay={900} setIsLinkClicked={setIsLinkClicked} href={hasContact ? pathname : "/"} section="contact" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white dark:text-black block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 4 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(4)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>{t("link4")}</Link>
+                      <Link delay={900} setIsLinkClicked={setIsLinkClicked} href={hasContact ? pathname : "/"} section="contact" className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white dark:text-black block ${currentHoverLink === null || loading ? "" : currentHoverLink === 4 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(4)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>{t("link4")}</Link>
                     </motion.span>
                   <div className='my-12 h-[1px] w-[calc(100%+3.5rem)] lg:w-[calc(100%+4rem)] bg-white dark:bg-black -ml-8'></div>
                   <motion.div variants={menuItemVariants} className='mb-2 flex text-base lg:text-2xl text-white dark:text-black  gap-3'>

@@ -33,7 +33,7 @@ export default function AdminPage() {
     <>
       <motion.div initial={false} variants={{initial: {opacity: 0}, animate: {opacity: 100}}} animate={isLinkClicked ? 'initial' : 'animate'} transition={{duration: 0.7, ease: easeInOutCubic}} className="col-span-3 lg:col-span-8 layout-grid [&>*:not(.header)]:z-[2]">
         <AdminNavbar setIsLinkClicked={setIsLinkClicked}/>
-        <div className='col-start-2 col-span-6 grid grid-cols-6 pb-[7.75rem] mt-24'>
+        <div className='col-start-2 col-span-6 grid grid-cols-6 pb-[7.75rem] mt-24 gap-y-6'>
           <div className='col-span-2 pr-6 flex flex-col'>
             <div className='flex justify-center items-center border border-black dark:border-white border-dashed rounded-lg flex-1 hover:cursor-pointer group hover:opacity-50 transition duration-200' onClick={createNewPhotoset}>
               <BracketButton color="text-black dark:text-white" disabled={false} className='w-[3.2rem] lg:w-[12.5rem]' text='ADAUGĂ PROIECT'/>

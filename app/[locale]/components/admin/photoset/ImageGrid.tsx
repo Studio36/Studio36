@@ -1,7 +1,7 @@
 import React from 'react'
 import ImageUpload from './ImageUpload'
 import { Photoset } from '@prisma/client';
-import { deleteImage } from '@/app/[locale]/actions/imageActions';
+import { deleteImage, reorderImages } from '@/app/[locale]/actions/imageActions';
 import PhotosetImage from './PhotosetImage';
 
 interface ImageGridProps {
@@ -28,15 +28,29 @@ export default function ImageGrid({images, photoset, setPhotoset}: ImageGridProp
   }
   }
 
+  const onReorderToFirst = async (selectedImageUrl: string) => {
+    const filteredImages = photoset.images.filter(image => image !== selectedImageUrl);
+
+    await reorderImages({
+      photosetId: photoset.id,
+      imageUrls: [selectedImageUrl, ...filteredImages]
+    })
+
+    setPhotoset({
+      ...photoset,
+      images: [selectedImageUrl, ...filteredImages]
+    });
+  };
+
   return (
     <div className='grid grid-cols-5 col-start-3 col-span-5 gap-y-6 mt-12'>
-      <div className='pr-6 flex flex-col'>
+      <div className='pr-6 flex flex-col h-80'>
       <ImageUpload photoset={photoset} setPhotoset={setPhotoset}/>
       </div>
       {
         images.map((image, index) => {
           return (
-            <PhotosetImage key={index} image={image} onDeleteClick={() => {onDeleteClick(image)}} />
+            <PhotosetImage index={index} key={index} image={image} onDeleteClick={() => {onDeleteClick(image)}} onReorderToFirst={onReorderToFirst}/>
           )
         })
       }

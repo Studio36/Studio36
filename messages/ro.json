@@ -52,12 +52,12 @@
                 "usage": "Fotoshooturi profesionale, videoclipuri muzicale, campanii comerciale."
             },
             "second": {
-                "title": "Living Modern",
+                "title": "Living Room",
                 "description": "O canapea în stil contemporan, perfect pentru fotografii elegante și ședințe relaxate.",
                 "usage": "Fotografie editorială, portrete stilizate, ședințe de familie."
             },
             "third": {
-                "title": "Vintage",
+                "title": "Vintage & Interview",
                 "description": "Două canapele în stil vintage care aduc clasă fiecărei fotografii.",
                 "usage": "Fotografie tematică, ședințe de modă, filmari podcast."
             },
@@ -70,7 +70,7 @@
       },
       "service": {
         "subtitle1": "CE ÎȚI OFERIM",
-        "content": "Studio este împărțit în 4 zone distincte perfecte pentru ședințe foto sau producție video disponibile. Cu o estetică pastelată și dotări moderne, unde fiecare detaliu e conceput să inspire și să sprijine.",
+        "content": "Studio 36 - un studio open space cu 3 zone mobilate și o cicloramă albă. Ideal pentru ședințe foto, proiecte video și content de brand. Transformă-ți ideile în realitate aici.",
         "subtitle2": "Servicii Foto & Video",
         "card": {
             "title1": "Ședințe Foto Personalizate",
@@ -111,7 +111,7 @@
             "description": "Proiecte | Studio 36"
         },
         "subtitle": "PORTFOLIO",
-        "content": "Fiecare proiect creat spune o poveste unică, realizată cu pasiune și atenție la detalii. Portofoliul nostru reflectă expertiza, inovația și angajamentul de a depăși așteptările clienților.",
+        "content": "Mai mult decât un studio - un spațiu unde creativitatea se transformă în imagine. Descoperă lucrările realizate la Studio 36.",
         "services": {
             "PERSONAL_PHOTO": "Ședință Foto Personalizată",
             "COMMERCIAL_PHOTO": "Ședință Foto Comercială",

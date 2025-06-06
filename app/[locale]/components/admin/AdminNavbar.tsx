@@ -1,9 +1,9 @@
 import React from 'react'
-import Link from '../buttons/Link';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
-import BracketButton from '../buttons/BracketButton';
 import { signOut } from "next-auth/react"
+import Link from '../buttons/Link';
+import BracketButton from '../buttons/BracketButton';
 
 interface AdminNavbarProps {
   setIsLinkClicked: (isLinkClicked: boolean) => void,

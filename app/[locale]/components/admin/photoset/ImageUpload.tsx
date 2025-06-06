@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import BracketButton from "../../buttons/BracketButton";
-import { imageUpload } from "@/app/[locale]/actions/imageActions";
+import { generateUplaodLinks, updatePhotosetImages } from "@/app/[locale]/actions/imageActions";
 import { Photoset } from "@prisma/client";
 
 interface ImageUploadProps {
@@ -24,24 +24,52 @@ export default function ImageUpload({
         });
     };
 
-    const handleUpload = async (file: File) => {
+    const handleUpload = async (files: File[]) => {
         try {
             setIsUploading(true);
-            const base64String = await convertToBase64(file);
-            
-            const result = await imageUpload({
-                image: base64String,
-                photosetId: photoset.id,
+
+            const linksRes = await generateUplaodLinks({
+                nrOfImages: files.length,
+                photosetId: photoset.id
             });
 
-            if (result.success) {
-                setPhotoset({
-                  ...photoset,
-                  images: [...photoset.images, result.imageUrl]
-                })
-            } else {
-                console.error(result.error);
+            if (!linksRes.success) return;
+
+            const filenames = [];
+            
+            for (let i = 0; i < linksRes.links.length; i++) {
+                // Convert base64 to Buffer
+                const base64String = await convertToBase64(files[i]);
+                const base64Data = base64String.replace(/^data:image\/\w+;base64,/, "");
+                const buf = Buffer.from(base64Data, 'base64');
+
+                // Upload to S3
+                const response = await fetch(linksRes.links[i], {
+                    method: 'PUT',
+                    body: buf
+                });
+
+                 // Extract key from URL
+                 const extractedKey = linksRes.links[i].split('.com/')[1]?.split('?')[0];
+    
+                 if (response.ok && extractedKey) {
+                    filenames.push(extractedKey);
+                 } else {
+                     console.error(`Failed to upload image ${i+1}`);
+                 }
             }
+
+            const updatePhotosetImagesRes = await updatePhotosetImages({
+                filenames,
+                id: photoset.id
+             })
+
+             if (updatePhotosetImagesRes.success) {
+                setPhotoset({
+                    ...photoset,
+                    images: updatePhotosetImagesRes.images
+                })
+             }
         } catch (error) {
             console.error('Upload failed:', error);
         } finally {
@@ -54,9 +82,8 @@ export default function ImageUpload({
             'image/*': []
         },
         onDrop: async (acceptedFiles) => {
-            const file = acceptedFiles[0];
-            if (file) {
-                await handleUpload(file);
+            if (acceptedFiles) {
+                await handleUpload(acceptedFiles);
             }
         }
     });

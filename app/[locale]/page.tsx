@@ -1,8 +1,7 @@
 import ImageScreen from "./components/home/img-screen/ImageScreen";
 import RulesAndBenefits from "./components/home/rules/RulesAndBenefits";
 import Footer from "./components/footer/Footer";
-import { setRequestLocale, getTranslations } from "next-intl/server";
-import { use } from "react";
+import { getTranslations } from "next-intl/server";
 import { AnimatePresence } from "motion/react";
 import ClientContent from "./components/home/HomeClientContent";
  
@@ -15,11 +14,7 @@ export async function generateMetadata() {
   };
 }
 
-export default function Home({params}: {params: Promise<{locale: string}>;}) {
-  const {locale} = use(params);
- 
-  setRequestLocale(locale);
-
+export default async function Home() {
   return (
     <AnimatePresence>
       <ClientContent>

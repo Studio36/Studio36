@@ -4,31 +4,31 @@
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 import crypto from 'crypto';
 import { prisma } from '@/lib/prisma';
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-interface ImageUploadParams {
-  image: string;        // base64 string or empty
-  photosetId: string;   // Prisma Photoset ID
+interface GenerateUplaodLinksParams {
+  nrOfImages: number,
+  photosetId: string
 }
 
-interface ImageUploadResult {
+interface GenerateUplaodLinksResult {
+  links: string[],
   success: boolean;
-  imageUrl: string;
   error?: string;
 }
 
-export const imageUpload = async ({
-  image,
-  photosetId,
-}: ImageUploadParams): Promise<ImageUploadResult> => {
+export const generateUplaodLinks = async ({
+  nrOfImages,
+  photosetId
+}: GenerateUplaodLinksParams): Promise<GenerateUplaodLinksResult> => {
   try {
     const awsAccessKey = process.env.AWS_PUBLIC_ACCESS_KEY;
-
     const awsSecretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 
     if (!awsAccessKey || !awsSecretAccessKey) {
       return { 
         success: false, 
-        imageUrl: '', 
+        links: [], 
         error: 'AWS credentials not provided' 
       };
     }
@@ -40,51 +40,116 @@ export const imageUpload = async ({
         secretAccessKey: awsSecretAccessKey,
       },
     });
+    
+    const links: string[] = [];
+      
+      for (let i = 0; i < nrOfImages; i++) {
+        const hash = crypto.randomBytes(4).toString('hex');
+        const fileName = `photosets/${photosetId}/${hash}.png`;
 
-    // Handle empty image case
-    if (image === "") {
-      return { 
-        success: false, 
-        imageUrl: '', 
-        error: 'No image provided' 
-      };
-    }
+        const comm = new PutObjectCommand({
+        Bucket: 'studio36',
+        Key: fileName,
+        });
 
-    // Upload new image
-    const data = image.replace(/^data:image\/\w+;base64,/, "");
-    const buf = Buffer.from(data, 'base64');
-    const hash = crypto.randomBytes(4).toString('hex');
-    const fileName = `photosets/${photosetId}/${hash}.png`;
+        const uploadUrl = await getSignedUrl(
+        s3,
+        comm,
+        { expiresIn: 3600 },
+        );
 
-    await s3.send(new PutObjectCommand({
-      Bucket: 'studio36',
-      Key: fileName,
-      Body: buf,
-    }));
-
-    const newImageUrl = `https://d3le09nbvee0zx.cloudfront.net/${fileName}`;
-
-    // Update photoset with new image URL
-    await prisma.photoset.update({
-      where: {
-        id: photosetId
-      },
-      data: {
-        images: {
-          push: newImageUrl 
+        if (uploadUrl) {
+        links.push(uploadUrl);
         }
       }
-    });
 
-    return { 
-      success: true, 
-      imageUrl: newImageUrl 
-    };
+      return {
+        success: true,
+        links: links,
+      };
   
   } catch (error: any) {
     return {
       success: false,
-      imageUrl: '',
+      links: [],
+      error: error.message
+    };
+  }
+}
+
+interface UpdatePhotosetImagesParams {
+  id: string;
+  filenames: string[];
+}
+
+interface UpdatePhotosetImagesResult {
+  success: boolean;
+  images: string[];
+  error?: string;
+}
+
+export const updatePhotosetImages = async ({
+  id,
+  filenames
+}: UpdatePhotosetImagesParams): Promise<UpdatePhotosetImagesResult> => {
+  try {
+    const newImageUrls = filenames.map(filename => `https://d3le09nbvee0zx.cloudfront.net/${filename}`);
+  
+    // Get current images from photoset
+    const currentPhotoset = await prisma.photoset.findUnique({
+      where: { id },
+      select: { images: true }
+    });
+
+    const currentImages = currentPhotoset?.images || [];
+
+    // Update photoset with new images at the beginning
+    await prisma.photoset.update({
+      where: { id },
+      data: {
+      images: [...newImageUrls, ...currentImages]
+      }
+    });
+
+    return {
+      success: true,
+      images: [...newImageUrls, ...currentImages],
+    };
+  } catch (error: any) {
+    return {
+      success: false,
+      images: [],
+      error: error.message
+    };
+  }
+};
+
+interface ReorderImageParams {
+  photosetId: string;
+  imageUrls: string[];
+}
+
+interface ReorderImageResult {
+  success: boolean;
+  error?: string;
+}
+
+export const reorderImages = async ({
+  photosetId,
+  imageUrls
+}: ReorderImageParams): Promise<ReorderImageResult> => {
+  try {
+    await prisma.photoset.update({
+      where: { id: photosetId },
+      data: {
+        images: imageUrls
+      }
+    });
+
+    return { success: true };
+  } catch (error: any) {
+    return {
+      success: false,
       error: error.message
     };
   }

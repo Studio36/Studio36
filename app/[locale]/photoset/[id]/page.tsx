@@ -16,7 +16,6 @@ export async function generateMetadata(
 
   return {
     title: photoset?.title,
-    description: photoset?.description
   };
 }
 

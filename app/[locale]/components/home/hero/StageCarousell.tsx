@@ -139,7 +139,7 @@ export default function StageCarousell({ setIsActive, setCursourText, setCursour
         <div className={`col-start-7 col-span-1 h-full relative rounded-l-lg overflow-hidden ${loading ? "cursor-default" : "cursor-pointer"}`} onClick={NextSlide} onMouseEnter={() => {setIsActive(true); setCursourText(t('next')); setCursourWidth(locale === 'en' ? "7.7rem" : "7.7rem")}} onMouseLeave={() => {setIsActive(false);setCursourText(t('default')); setCursourWidth(locale === 'en' ? "7rem" : "9.3rem")}}>
             <motion.div className='absolute h-full w-full overflow-hidden top-0 right-0' variants={secondSlideVariants} animate={isLoading ? '' : 'appear'}>
               <div className="absolute h-full aspect-[0.2] top-0 right-0">
-                <div className="h-full w-full relative rounded-lg overflow-hidden">
+                <div className="h-full w-full relative rounded-l-lg overflow-hidden">
                 <StageCard src="/hero-stages/stage1.png" alt="stage" nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} slide={slide} index={0} className='aspect-[0.2] h-full rounded-l-lg' duration={0.5}/>
                 <StageCard src="/hero-stages/stage2.png" alt="stage" nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} slide={slide} index={1} className='aspect-[0.2] h-full rounded-l-lg' duration={0.5}/>
                 <StageCard src="/hero-stages/stage3.png" alt="stage" nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} slide={slide} index={2} className='aspect-[0.2] h-full rounded-l-lg' duration={0.5}/>

@@ -26,12 +26,12 @@ export default function ProjectsGrid({ setIsActive, setIsLinkClicked }: Projects
     }, []);
 
   return (
-      <div className='grid grid-cols-3 lg:grid-cols-6 col-span-6 gap-y-4 lg:gap-y-12 lg:[&>*:not(:nth-child(3n))]:pr-6'>
+      <div className='grid grid-cols-3 lg:grid-cols-6 col-span-6 gap-y-4 lg:gap-y-12'>
       {
             photosets ?
           photosets.map((photoset, index) => {
                 return (
-                    <div className='flex flex-col col-span-3 lg:col-span-2' key={index}>
+                    <div className='flex flex-col col-span-3 lg:col-span-2 lg:pr-6' key={index}>
                         <div>
                             <ProjectItemLink image={photoset.images[0]} title={photoset.title} id={photoset.id} setIsActive={setIsActive} setIsLinkClicked={setIsLinkClicked}/>
                             <p className='text-xl lg:text-2xl font-hedwig mt-1 lg:mt-4'>{photoset.title}</p>
@@ -42,19 +42,13 @@ export default function ProjectsGrid({ setIsActive, setIsLinkClicked }: Projects
             }) :
         <>
             <div className='col-span-2'>
-                <Skeleton className='aspect-[0.67] mr-6 mb-4'/>     
-                <Skeleton className='w-40 h-8 mb-1'/>     
-                <Skeleton className='w-72 h-6'/>      
+                <Skeleton className='aspect-[0.67] lg:mr-6'/>     
             </div> 
             <div className='col-span-2'>
-                <Skeleton className='aspect-[0.67] mr-6 mb-4'/>     
-                <Skeleton className='w-40 h-8 mb-1'/>     
-                <Skeleton className='w-72 h-6'/>      
+                <Skeleton className='aspect-[0.67] lg:mr-6'/>     
             </div> 
             <div className='col-span-2'>
-                <Skeleton className='aspect-[0.67] mr-6 mb-4'/>     
-                <Skeleton className='w-40 h-8 mb-1'/>     
-                <Skeleton className='w-72 h-6'/>      
+                <Skeleton className='aspect-[0.67] lg:mr-6'/>     
             </div> 
         </>
         }

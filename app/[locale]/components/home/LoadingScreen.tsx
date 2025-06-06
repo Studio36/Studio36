@@ -34,7 +34,7 @@ export default function LoadingScreen({setLoadingScreen} : LoadingScreenProps) {
   return (
     <motion.div exit={{opacity: 0}} className='layout-grid fixed left-0 top-0 w-full px-4 lg:pl-0 lg:pr-[10px] h-full z-[999] bg-white dark:bg-black' animate={controls} variants={{start: {transition: {staggerChildren: 0.15, staggerDirection: 1}}, end: {transition: {staggerChildren: 0.15, staggerDirection: -1}}}}>
         {[...Array(7)].map((_, index) => (
-            <div key={index} className={`-z-10 pointer-events-none relative w-full before:w-full before:absolute ${index > 2 ? "hidden lg:block" : "lg:block"} ${index === 0 ? "before:border-l lg:before:border-l-0" : "before:border-l"} z-[1] before:border-black before:dark:border-white before:dark:border-opacity-15 before:border-opacity-15 before:h-screen ${index === 6 ? "before:border-r" : ""} ${index === 2 ? "before:border-r lg:before:border-r-0" : ""}`} ></div>
+            <div key={index} className={`-z-10 pointer-events-none relative w-full before:w-full before:absolute ${index > 2 ? "hidden lg:block" : "lg:block"} ${index === 0 ? "before:border-l lg:before:border-l-0" : "before:border-l"} z-[1] before:border-black before:dark:border-white before:dark:border-opacity-5 before:border-opacity-5 before:h-screen ${index === 6 ? "before:border-r" : ""} ${index === 2 ? "before:border-r lg:before:border-r-0" : ""}`} ></div>
         ))}
 
     <Suspense fallback={<div className="h-screen" />}>
