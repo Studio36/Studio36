@@ -41,7 +41,7 @@ export default function ProjectsClientContent ({children}: ProjectsClientContent
         <CustomCursour isActive={isActive} text={cursorText('default')} width={locale === 'en' ? "7rem" : "9.3rem"} isVisible={!isLinkClicked}/>
         <MotionWrapper isLinkClicked={isLinkClicked} setIsLinkClicked={setIsLinkClicked}>
             <div className={`grid grid-cols-3 lg:grid-cols-6 lg:col-start-2 col-span-6 mt-12 lg:mt-24 z-10`}>
-                <p className='col-start-2 col-span-2 lg:col-start-4 mb-4 lg:mb-6 text-sm lg:text-base uppercase'>{`[${t('subtitle')}]`}</p>
+                <p className='col-start-2 col-span-2 lg:col-start-4 mb-4 lg:mb-6 text-sm lg:text-base uppercase'>{`${t('subtitle')}`}</p>
                 <p className='col-span-6 text-2xl lg:leading-tight lg:text-[3rem] font-hedwig indent-[33.3%] lg:indent-[50%] mb-12 lg:mb-24 text-justify'>{t('content')}</p>
                 <ProjectsGrid setIsActive={setIsActive} setIsLinkClicked={setIsLinkClicked}/>
             </div>

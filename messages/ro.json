@@ -87,8 +87,8 @@
         "subtitle1": "REGULILE CASEI",
         "subtitle2": "BENEFICII",
         "rules": {
-            "0": "Reguli de acces în studio \n - Acces permis pentru maximum 6 persoane (inclusiv fotografi). \n - Pentru fiecare persoană suplimentară se percepe o taxă de 100 lei/persoană. \n - Accesul cu persoane neimplicate în proiect este nerecomandat, cu excepția cazurilor discutate în prealabil.",
-            "1": "Încălțăminte (studio & cicloramă) \n - Accesul în studio se face exclusiv cu încălțăminte curată de schimb, bavețici de unică folosință sau cu bandă adezivă aplicată pe talpă. \n - Această regulă se aplică inclusiv în zona cicloramei. \n - Nerespectarea acestei reguli atrage aplicarea unei taxe de revopsire conform grilei de penalități.",
+            "0": "Reguli de acces în studio \n - Acces permis pentru maximum 6 persoane (inclusiv fotografi). \n - Pentru fiecare persoană suplimentară se percepe o taxă de 100 lei/persoană.",
+            "1": "Încălțăminte (studio & cicloramă) \n - Accesul în studio se face exclusiv cu încălțăminte curată de schimb, bahile de unică folosință sau cu bandă adezivă aplicată pe talpă. \n - Această regulă se aplică inclusiv în zona cicloramei. \n - Nerespectarea acestei reguli atrage aplicarea unei taxe de revopsire conform grilei de penalități.",
             "2": "Utilizarea spațiului \n - Este strict interzisă rezemarea de pereții cicloramei. \n - Fumatul, consumul de alcool și utilizarea artificiilor (focuri bengale, fumigene etc.) sunt interzise în incinta studioului. \n - Consumul de alimente sau băuturi în zona de lucru este, de asemenea, interzis.",
             "3": "Comportament & Curățenie \n - Păstrarea ordinii: Este responsabilitatea fiecărui client să lase spațiul curat și bine organizat, ca la începutul ședinței. \n - Manipularea echipamentului: Vă rugăm să tratați cu grijă recuzita, mobilierul și echipamentele din studio. În cazul deteriorărilor, pot fi aplicate costuri de reparație sau înlocuire. \n - Alte materiale aduse: Dacă intenționați să folosiți materiale proprii (confetti etc.), vă rugăm să informați echipa din timp. Clientul este responsabil pentru curățarea completă a spațiului la finalul sesiunii.",
             "4": "Penalități \n - Curățare chimică textile – de la 1000 MDL/bucată. \n - Curățare chimică mobilier – de la 2000 MDL/bucată. \n - Curățare podea – de la 500 MDL. \n - Curățare pereți – de la 1000 MDL.",
@@ -96,12 +96,11 @@
             "6": "Este interzisă însușirea bunurilor studioului. (Codul Administrativ al Republicii Moldova, Art. 20.1)"
         },
         "benefits": {
-            "0": "Internet Gigabit WiFi6.",
-            "1": "Cafea Nespresso gratuită.",
-            "2": "Sistem audio Bang & Olufsen cu AirPlay.",
-            "3": "Aer condiționat sau încălzire.",
-            "4": "Standuri, masă de machiaj personalizată, suport pentru haine, oglindă mare, aburitor.",
-            "5": "Suport tehnic din partea echipei noastre pentru orice nevoie, de la instalarea echipamentului la post-producție."
+            "0" : "Acces la parcare gratuită.",
+            "1": "Backdrops cu hârtie colorată",
+            "2": "Aer condiționat sau încălzire.",
+            "3": "Masă de machiaj personalizată, suport pentru haine, oglindă mare, aburitor.",
+            "4": "Suport tehnic din partea echipei noastre pentru orice nevoie, de la instalarea echipamentului la post-producție."
         }
       }
     },

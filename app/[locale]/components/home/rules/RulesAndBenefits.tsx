@@ -54,7 +54,7 @@ export default function RulesAndBenefits() {
             <RulesParallasImage src='/rules/rules.png' alt='parallax-image-1' className='absolute left-0 top-0 w-full h-[25rem] lg:h-screen object-cover -z-10 rounded-lg' y={y} />
         </div>
         <div className="grid grid-cols-3 col-start-1 lg:col-start-5 col-end-4 lg:col-end-8 ml-1 lg:ml-4">
-                <p className="col-span-3 lg:col-span-1 font-medium mb-2 lg:mb-0 text-sm lg:text-base">{`[${t("subtitle1")}]`}</p>
+                <p className="col-span-3 lg:col-span-1 font-medium mb-2 lg:mb-0 text-sm lg:text-base">{`${t("subtitle1")}`}</p>
                 <motion.ol className="col-start-1 col-span-3 lg:col-span-2 ml-3" whileInView={'animate'} initial={'initial'} variants={textContainerVariants}>
                   {
                     rulesArray.map((value, index) => {
@@ -71,7 +71,7 @@ export default function RulesAndBenefits() {
                     })
                   }
                 </motion.ol>
-                <p className="col-span-3 lg:col-span-1 font-medium mb-2 lg:mb-0 text-sm lg:text-base mt-12">{`[${t("subtitle2")}]`}</p>
+                <p className="col-span-3 lg:col-span-1 font-medium mb-2 lg:mb-0 text-sm lg:text-base mt-12">{`${t("subtitle2")}`}</p>
                 <motion.ol className="col-start-1 col-span-3 lg:col-span-2 ml-5 lg:ml-11 lg:mt-12 [&>li]:before:content-['+'] [&>li]:before:-left-5 lg:[&>li]:before:-left-11 [&>li]:before:absolute" whileInView={'animate'} initial={'initial'} variants={textContainerVariants}>
                     {
                       rulesArray.map((value, index) => {

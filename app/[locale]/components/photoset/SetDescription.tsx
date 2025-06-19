@@ -54,7 +54,7 @@ export default function SetDescription({gridLayout, setGridLayout, isMobile, pho
   return (
     <motion.div variants={{animate: {transition: {delayChildren: isMobile ?  0 : 0.75, staggerChildren: 0.1, ease:easeInOutCubic}}}} animate={'animate'} initial={'initial'} className='lg:sticky top-48 left-0 lg:col-start-2 lg:col-span-1 col-span-2 h-fit lg:pb-24 lg:pr-6'>
         <motion.button variants={itemVariants} className="hidden items-center gap-3 mb-6 lg:flex" onClick={() => {setGridLayout(!gridLayout); scrollTop()}} disabled={isAnimationGoing}>
-            <p className='text-sm lg:text-base uppercase'>{`[${t('subtitle1')}]`}</p>
+            <p className='text-sm lg:text-base uppercase'>{`${t('subtitle1')}`}</p>
             <div>
                 <Image src="/icons/view-column.svg" alt="view-columns" width={22} height={22} className={`size-[1.375rem] dark:invert ${gridLayout ? "" : "hidden"}`}/>
                 <Image src="/icons/view-grid.svg" alt="view-columns" width={22} height={22} className={`size-[1.375rem] dark:invert ${gridLayout ? "hidden" : ""}`}/>

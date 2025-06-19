@@ -96,7 +96,7 @@ export default function Footer() {
           </div>
           <motion.div className="col-span-3 lg:col-span-8 layout-grid" variants={parentVariants} animate={controls}>
             <div className='mt-[8.6rem] lg:mt-[14.875rem] lg:col-start-3 col-span-3 lg:col-span-5 lg:mb-32 mb-12'>
-                <p className='text-white dark:text-black  mb-2 lg:mb-6 text-sm lg:text-base'>{`[${t('subtitle1')}]`}</p>
+                <p className='text-white dark:text-black  mb-2 lg:mb-6 text-sm lg:text-base'>{`${t('subtitle1')}`}</p>
                 <motion.p className='text-2xl lg:leading-tight lg:text-[3.5rem] text-white dark:text-black  font-hedwig mb-6 lg:mb-12 w-2/3 lg:w-full' variants={textVariants}>{t(`lines.${slide}.line1`)}</motion.p>
                 <motion.div variants={textVariants} className="flex items-end gap-4 w-2/3 lg:w-full relative">
                   <p className='text-2xl lg:leading-tight lg:text-[3.5rem] text-white dark:text-black  font-hedwig'>{t(`lines.${slide}.line2`)}</p>

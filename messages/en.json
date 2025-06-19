@@ -86,7 +86,7 @@
       "subtitle1": "HOUSE RULES",
       "subtitle2": "BENEFITS",
       "rules": {
-        "0": "Studio Access Rules \n - Access permitted for maximum 6 people (including photographers). \n - For each additional person, a fee of 100 lei/person is charged. \n - Access with people not involved in the project is not recommended, except for cases discussed in advance.",
+        "0": "Studio Access Rules \n - Access permitted for maximum 6 people (including photographers). \n - For each additional person, a fee of 100 lei/person is charged.",
         "1": "Footwear (studio & cyclorama) \n - Access to the studio is exclusively with clean change shoes, disposable shoe covers, or with adhesive tape applied to the sole. \n - This rule also applies to the cyclorama area. \n - Failure to comply with this rule will result in a repainting fee according to the penalty grid.",
         "2": "Use of Space \n - Leaning against cyclorama walls is strictly forbidden. \n - Smoking, alcohol consumption, and use of pyrotechnics (sparklers, smoke bombs, etc.) are prohibited inside the studio. \n - Consumption of food or beverages in the work area is also prohibited.",
         "3": "Behavior & Cleanliness \n - Maintaining order: It is each client's responsibility to leave the space clean and well-organized, as at the beginning of the session. \n - Equipment handling: Please treat studio props, furniture, and equipment with care. In case of damage, repair or replacement costs may apply. \n - Other materials brought in: If you intend to use your own materials (confetti, etc.), please inform the team in advance. The client is responsible for complete cleaning of the space at the end of the session.",
@@ -95,12 +95,11 @@
         "6": "It is forbidden to appropriate studio property. (Administrative Code of the Republic of Moldova, Art. 20.1)"
       },
       "benefits": {
-        "0": "Gigabit WiFi6 Internet.",
-        "1": "Free Nespresso coffee.",
-        "2": "Bang & Olufsen audio system with AirPlay.",
-        "3": "Air conditioning or heating.",
-        "4": "Stands, custom makeup table, clothing rack, large mirror, steamer.",
-        "5": "Technical support from our team for any need, from equipment setup to post-production."
+        "0": "Access to free parking.",
+        "1": "Colored paper backdrops",
+        "2": "Air conditioning or heating.",
+        "3": "Personalized makeup table, clothing rack, large mirror, steamer.",
+        "4": "Technical support from our team for any need, from equipment installation to post-production."
       }
     }
     },

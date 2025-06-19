@@ -132,12 +132,12 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
                 <div className="absolute w-1/2 h-full rounded-l-full bg-white left-0 top-0"></div>
               </motion.button> 
               <motion.div className='absolute left-2 top-2 text-white dark:text-black text-2xl gap-1 hidden lg:flex' variants={menuItemVariants}>
-                <span>[{locale.toUpperCase()}] /</span>
+                <span>{locale.toUpperCase()} /</span>
                 <SwitchLangButton text={locale === 'en' ? 'RO' : 'EN'} href={pathname} locale={locale === 'en' ? 'ro' : 'en'} />
               </motion.div>
               <div className='w-full h-full pb-6 pt-16 px-6 lg:px-8 flex flex-col justify-end lg:block'>
                     <motion.div className='text-white dark:text-black text-xl lg:text-2xl gap-1 flex items-center lg:hidden mb-6' variants={menuItemVariants}>
-                      <span className='h-6'>[{locale.toUpperCase()}] /</span>
+                      <span className='h-6'>{locale.toUpperCase()} /</span>
                       <SwitchLangButton text={locale === 'en' ? 'RO' : 'EN'} href={pathname} locale={locale === 'en' ? 'ro' : 'en'} />
                     </motion.div>
 
@@ -150,7 +150,7 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
                     </motion.span>
 
                     <motion.span variants={menuItemVariants} className='block relative w-fit' onClick={() => {setOpen(false)}}>
-                      <span className={`absolute text-2xl right-0 top-0 text-white translate-x-full ${loading ? "" : "transition duration-200"} ${currentHoverLink === null || loading ? "" : currentHoverLink === 3 ? "" : "lg:blur-sm"}`}>[{photosetCount}]</span>
+                      <span className={`absolute text-2xl right-0 top-0 text-white translate-x-full ${loading ? "" : "transition duration-200"} ${currentHoverLink === null || loading ? "" : currentHoverLink === 3 ? "" : "lg:blur-sm"}`}>{photosetCount}</span>
                       <Link delay={900} setIsLinkClicked={setIsLinkClicked} href='/projects' className={`w-fit text-[2.5rem] lg:text-[3.5rem] ${loading ? "" : "transition duration-200"} text-white dark:text-black block pb-2 ${currentHoverLink === null || loading ? "" : currentHoverLink === 3 ? "" : "lg:blur-sm"}`} onMouseEnter={() => {setCurrentHoverLink(3)}} onMouseLeave={() => {setCurrentHoverLink(null)}}>{t("link3")}</Link>
                     </motion.span>
 

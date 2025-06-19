@@ -55,9 +55,9 @@ export default function CarousellText({ animate, slide }: CarousellTextProps) {
   return (
     <div className='col-span-1 pl-4 mb-[10rem] h-[40rem]'>
         <motion.h2 className='font-hedwig mb-4 text-2xl' variants={variants} initial="initial" animate={animate}>{text?.title}</motion.h2>
-        <p className='mb-2'>{`[${t("subtitle1")}]`}</p>
+        <p className='mb-2'>{`${t("subtitle1")}`}</p>
         <motion.p className='font-hedwig mb-6' variants={variants} initial="initial" animate={animate}>{text?.description}</motion.p>
-        <p className='mb-2'>{`[${t("subtitle2")}]`}</p>
+        <p className='mb-2'>{`${t("subtitle2")}`}</p>
         <motion.p className='font-hedwig' variants={variants} initial="initial" animate={animate}>{text?.usage}</motion.p>
     </div>
   )

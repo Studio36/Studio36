@@ -16,7 +16,7 @@ export default function BracketButton({ className, disabled, onClick, text, disa
   
   return (
     <div className={`relative ${brackets ? "mx-3" : ""} ${disabled ? "" : "cursor-pointer group"} ${className}`} onClick={() => {if (!disabled && onClick) onClick()}}>
-        {brackets && <span style={{left: bracketDistance}} className={`absolute top-0 ${color} ${isInHeader ? "" : "dark:text-black"} ${textSize} ${disabled && disabledStyle ? 'opacity-25' : ''}`}>[</span>}
+        {brackets && <span style={{left: bracketDistance}} className={`absolute top-0 ${color} ${isInHeader ? "" : "dark:text-black"} ${textSize} ${disabled && disabledStyle ? 'opacity-25' : ''}`}></span>}
         <div className={`relative ${height} overflow-hidden`}>
             <p className={`invisible ${textSize}`}> {text}</p>
             <div className="absolute left-0 top-0 w-full transition duration-300 lg:group-hover:-translate-y-1/2">
@@ -24,7 +24,7 @@ export default function BracketButton({ className, disabled, onClick, text, disa
                 <button className={`${color} ${isInHeader ? "" : "dark:text-black"} ${textSize} ${disabledStyle ? "disabled:opacity-25" : ""}`} disabled={disabled && disabledStyle}>{text}</button>
             </div>
         </div>
-        {brackets && <span style={{right: bracketDistance}} className={`absolute top-0 ${color} ${isInHeader ? "" : "dark:text-black"} ${textSize} ${disabled && disabledStyle ? 'opacity-25' : ''}`}>]</span>}
+        {brackets && <span style={{right: bracketDistance}} className={`absolute top-0 ${color} ${isInHeader ? "" : "dark:text-black"} ${textSize} ${disabled && disabledStyle ? 'opacity-25' : ''}`}></span>}
     </div>
   )
 }

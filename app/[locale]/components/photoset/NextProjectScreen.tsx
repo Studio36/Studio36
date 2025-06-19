@@ -63,7 +63,7 @@ export default function NextProjectScreen({isMobile, nextPhotoset, setIsLinkClic
             { 
                 isMobile && 
                 <div className='lg:col-start-2 col-span-3 lg:col-span-2'>
-                    <p className='mb-4 lg:mb-6 text-sm lg:text-base'>{`[${t('subtitle4')}]`}</p>
+                    <p className='mb-4 lg:mb-6 text-sm lg:text-base'>{`${t('subtitle4')}`}</p>
                     <p className='font-hedwig text-2xl lg:text-[3.5rem]'>{nextPhotoset.title}</p>
                 </div>
             }
@@ -88,7 +88,7 @@ export default function NextProjectScreen({isMobile, nextPhotoset, setIsLinkClic
                 !isMobile &&
                 <div className='col-start-2 col-span-3 lg:col-span-2 flex flex-col justify-between'>
                     <motion.div variants={{nextProject: {transition: {staggerChildren: 0.15, staggerDirection: -1, ease:easeInOutCubic}}}} animate={controls} >
-                        <motion.p transition={{duration: 1, ease:easeInOutCubic}} variants={{nextProject: {opacity: 0, y: 15}}} className='mb-4 lg:mb-6 text-sm lg:text-base'>{`[${t('subtitle4')}]`}</motion.p>
+                        <motion.p transition={{duration: 1, ease:easeInOutCubic}} variants={{nextProject: {opacity: 0, y: 15}}} className='mb-4 lg:mb-6 text-sm lg:text-base'>{`${t('subtitle4')}`}</motion.p>
                         <motion.p transition={{duration: 1, ease:easeInOutCubic}} variants={{nextProject: {opacity: 0, y: 15}}} className='font-hedwig text-2xl lg:leading-none lg:text-[3.5rem]'>{nextPhotoset.title}</motion.p>
                     </motion.div>
 
@@ -107,7 +107,7 @@ export default function NextProjectScreen({isMobile, nextPhotoset, setIsLinkClic
                     </motion.div>
                 </div>
             }
-            <p className='text-sm lg:text-base col-span-3 lg:hidden'>{`[${t('subtitle5')}]`}</p>
+            <p className='text-sm lg:text-base col-span-3 lg:hidden'>{`${t('subtitle5')}`}</p>
         </div>
     </motion.div>
   )
