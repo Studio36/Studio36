@@ -75,7 +75,7 @@ export default function RulesAndBenefits() {
                 <motion.ol className="col-start-1 col-span-3 lg:col-span-2 ml-5 lg:ml-11 lg:mt-12 [&>li]:before:content-['+'] [&>li]:before:-left-5 lg:[&>li]:before:-left-11 [&>li]:before:absolute" whileInView={'animate'} initial={'initial'} variants={textContainerVariants}>
                     {
                       rulesArray.map((value, index) => {
-                        if (index >= 6) return;
+                        if (index >= 5) return;
 
                         return (
                           <Fragment key={index}>

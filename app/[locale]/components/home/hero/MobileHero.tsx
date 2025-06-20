@@ -28,17 +28,17 @@ const StageSection = ({texts, img, number}: StageSectionProps) => {
                 <div className="col-span-1 relative h-6 mt-4 mb-12">
                     <h2 className="font-hedwig text-xl absolute left-0 top-0 whitespace-nowrap">{texts[0]}</h2>
                 </div>
-                <div className="col-span-2 relative">
+                {/* <div className="col-span-2 relative">
                     <div className="absolute w-1/2 overflow-hidden flex justify-end -translate-y-1/2">
                         <span className="font-hedwig text-[12rem] leading-none -mr-7">0</span>
                     </div>
                     <div className="absolute w-1/2 right-0 overflow-hidden flex justify-end -translate-y-1/2">
                         <span className={`font-hedwig text-[12rem] leading-none ${number == "1" ? "-mr-5" : "-mr-9"}`}>{number}</span>
                     </div>
-                </div>
-                <p className="col-start-1 col-span-1 text-sm mb-4">[DESCRIERE]</p>
+                </div> */}
+                <p className="col-start-1 col-span-1 text-sm mb-4">DESCRIERE</p>
                 <p className="col-start-2 col-span-2 font-hedwig text-sm text-justify mb-4">{texts[1]}</p>
-                <p className="col-start-1 col-span-1 text-sm">[UTILIZĂRI]</p>
+                <p className="col-start-1 col-span-1 text-sm">UTILIZĂRI</p>
                 <p className="col-start-2 col-span-2 font-hedwig text-sm text-justify">{texts[2]}</p>
             </div>
         </div>

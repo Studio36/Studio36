@@ -26,6 +26,11 @@
                 "placeholder": "060 12 34 56"
             },
             "2": {
+                "line1": "What services do you need?",
+                "line2": "",
+                "placeholder": "Photo session for a couple."
+            },
+            "3": {
                 "line1": "Thank you for the provided details!",
                 "line2": "We will get back to you as soon as possible.",
                 "placeholder": ""

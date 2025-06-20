@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { AnimationControls } from 'motion/react'
 import { motion } from 'motion/react'
 import { useTranslations } from 'next-intl';
+import NumbersAmination from './NumbersAmination';
 
 interface CarousellTextProps {
     animate: AnimationControls,
-    slide: number
+    slide: number,
+    numbersText: string
 }
 
 interface CarouselText {
@@ -14,7 +16,7 @@ interface CarouselText {
   usage: string
 }
 
-export default function CarousellText({ animate, slide }: CarousellTextProps) {
+export default function CarousellText({ animate, slide, numbersText }: CarousellTextProps) {
   const t = useTranslations('index.hero.carousel');
   const keys = ['first', 'second', 'third', 'fourth'] as const;
   const [text, setText] = useState<CarouselText>({
@@ -54,6 +56,7 @@ export default function CarousellText({ animate, slide }: CarousellTextProps) {
 
   return (
     <div className='col-span-1 pl-4 mb-[10rem] h-[40rem]'>
+        <NumbersAmination text={numbersText} animate={animate}/>
         <motion.h2 className='font-hedwig mb-4 text-2xl' variants={variants} initial="initial" animate={animate}>{text?.title}</motion.h2>
         <p className='mb-2'>{`${t("subtitle1")}`}</p>
         <motion.p className='font-hedwig mb-6' variants={variants} initial="initial" animate={animate}>{text?.description}</motion.p>

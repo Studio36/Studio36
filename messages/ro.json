@@ -27,6 +27,11 @@
                 "placeholder": "060 12 34 56"
             },
             "2": {
+                "line1": "Scrie-ne ce servicii!",
+                "line2": "",
+                "placeholder": "Fotosesie pentru un cuplu."
+            },
+            "3": {
                 "line1": "Mulțumim pentru detaliile oferite!",
                 "line2": "Revenim în cel mai scurt timp posibil.",
                 "placeholder": ""

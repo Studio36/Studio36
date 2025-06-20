@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import StageCard from './StageCard';
 import { useAnimationControls } from 'motion/react';
-import CarousellNumber from './CarousellNumber';
+// import CarousellNumber from './CarousellNumber';
 import CarousellText from './CarousellText';
 import { motion } from 'framer-motion';
 import { carousellNumbers } from '@/app/[locale]/lib/utils';
@@ -132,9 +132,9 @@ export default function StageCarousell({ setIsActive, setCursourText, setCursour
             </motion.div>
         </div> 
 
-        <CarousellText animate={controls} slide={slide}/>
+        {/* <CarousellNumber  text={text} animate={controls} /> */}
+        <CarousellText numbersText={text} animate={controls} slide={slide}/>
  
-        <CarousellNumber text={text} animate={controls} />
 
         <div className={`col-start-7 col-span-1 h-full relative rounded-l-lg overflow-hidden ${loading ? "cursor-default" : "cursor-pointer"}`} onClick={NextSlide} onMouseEnter={() => {setIsActive(true); setCursourText(t('next')); setCursourWidth(locale === 'en' ? "7.7rem" : "7.7rem")}} onMouseLeave={() => {setIsActive(false);setCursourText(t('default')); setCursourWidth(locale === 'en' ? "7rem" : "9.3rem")}}>
             <motion.div className='absolute h-full w-full overflow-hidden top-0 right-0' variants={secondSlideVariants} animate={isLoading ? '' : 'appear'}>
