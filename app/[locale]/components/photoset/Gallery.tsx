@@ -3,6 +3,7 @@
 import { easeInOutCubic } from "@/app/[locale]/lib/utils";
 import { useLenis } from "lenis/react";
 import { motion } from "motion/react";
+import { default as NextImage } from "next/image";
 import { createRef, Fragment, useEffect, useRef, useState } from "react";
 
 interface GalleryProps {
@@ -161,16 +162,20 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: G
                                     }`
                             } overflow-hidden rounded-[1%] relative`}
                         >
-                              <motion.img 
+                            <motion.div
                                 ref={elementsRef.current[index]} 
                                 layout={!isAnimationGoing}
                                 transition={{duration: 1, ease: easeInOutCubic}}
+                                className={`w-full rounded-[1%]`}
+                            >
+                              <NextImage 
                                 src={image} 
                                 alt="woman" 
                                 width={823} 
                                 height={1226} 
-                                className={`w-full rounded-[1%]`}
-                            />
+                                className="w-full h-full object-cover"
+                              />
+                            </motion.div>
                         </motion.div>
                     </motion.div>
                     {(isThird || isSecond && heights[index] <= heights[index - 1]) && index !== images.length - 1 && !gridLayout && <div className="col-span-5 mb-[7.75rem]"></div>}
