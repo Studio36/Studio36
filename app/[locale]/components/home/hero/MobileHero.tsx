@@ -20,7 +20,7 @@ interface StageSectionProps {
     number: string        
 } 
 
-const StageSection = ({texts, img, number}: StageSectionProps) => {
+const StageSection = ({texts, img}: StageSectionProps) => {
     return (
         <div className='col-start-1 col-span-3 layout-grid mb-6'>
             <div className="col-span-3 layout-grid relative">
