@@ -15,7 +15,7 @@ export default function SwitchLang({ text, className, href, locale }: LinkButton
   const params = useParams<{id: string}>();
   
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative hover:opacity-75 transition-opacity duration-500 ${className}`}>
         <div className="relative h-6 lg:h-8 group">
             <Link href={{
               pathname: href,

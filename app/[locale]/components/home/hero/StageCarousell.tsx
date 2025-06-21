@@ -13,7 +13,7 @@ interface StageCarousellProps {
   setIsActive: (isActive: boolean) => void,
   setCursourText: (text: string) => void,
   setCursourWidth: (width: string) => void,
-  isLoading?: boolean
+  isLoading?: boolean 
 }
 
 export default function StageCarousell({ setIsActive, setCursourText, setCursourWidth, isLoading = false }: StageCarousellProps) {

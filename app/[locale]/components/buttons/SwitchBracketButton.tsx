@@ -5,13 +5,13 @@ interface MenuButtonProps {
     disabled: boolean,
     onClick: () => void,
     isSwitchTime: boolean,
-    texts: string[] 
+    texts: string[]  
 }
 
 export default function SwitchBracketButton({ className, disabled, onClick, isSwitchTime, texts }: MenuButtonProps) {
 
   return (
-    <div className={`relative mx-3 group ${disabled ? "" : "cursor-pointer"}`} onClick={() => {if (!disabled) onClick()}}>
+    <div className={`relative hover:opacity-75 transition-opacity duration-500 mx-3 group ${disabled ? "" : "cursor-pointer"}`} onClick={() => {if (!disabled) onClick()}}>
         <span className={`absolute -left-3 top-0 text-white dark:text-black text-xl lg:text-2xl transition-transform duration-200`}></span>
         <div className={`relative h-6 lg:h-8 overflow-hidden transition-all duration-300 ${className}`}>
             <div className="absolute left-0 top-0 w-full transition duration-300" style={{transform: `translateY(${isSwitchTime ? "-50%" : "0%"})`}}>

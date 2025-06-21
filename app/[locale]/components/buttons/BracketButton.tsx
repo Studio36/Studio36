@@ -9,7 +9,7 @@ interface BracketButtonProps {
     color?: string,
     textSize?: string,
     height?: string,
-    bracketDistance?: string  
+    bracketDistance?: string   
 }
 
 export default function BracketButton({ className, disabled, onClick, text, disabledStyle = true, brackets = true, isInHeader = false, color = "text-white", textSize = "text-xl lg:text-2xl" }: BracketButtonProps) {

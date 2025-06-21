@@ -11,7 +11,7 @@ import StageCarousell from './hero/StageCarousell';
 import MobileHero from './hero/MobileHero';
 import Offer from './offer/Offer';
 import MotionWrapper from '../MotionWrapper';
-
+ 
 interface MotionWrapperProps {
     children: React.ReactNode;
 }
