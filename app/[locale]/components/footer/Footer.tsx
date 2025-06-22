@@ -61,6 +61,32 @@ export default function Footer() {
     },
   };
 
+  const sendTelegramMessage = async () => {
+    try {
+      const response = await fetch('/api/send-telegram', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          tel,
+          message,
+        }),
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        console.log('✅ Telegram message sent successfully');
+      } else {
+        console.error('❌ Failed to send Telegram message:', result.error);
+      }
+    } catch (error) {
+      console.error('❌ Error sending Telegram message:', error);
+    }
+  };
+
   const nextSlide = () => {
     if (slide === 0 && name === "") {
       inputControls.start("wrong");
@@ -83,6 +109,9 @@ export default function Footer() {
       setLoading(false);
       setSlide(slide + 1);
       controls.start("animate");
+
+      if (slide === 2) sendTelegramMessage();
+
     }, 600);
   };
 
@@ -146,6 +175,54 @@ export default function Footer() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+
+  // Textarea
+
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const recalculateTextareaHeight = () => {
+  if (!textareaRef.current || slide !== 2) return; // Only recalculate if textarea is visible
+  
+  const target = textareaRef.current;
+  target.style.height = "auto";
+  
+  const lineHeight = parseFloat(getComputedStyle(target).lineHeight);
+  const maxHeight = lineHeight * 2; // Maximum 2 lines
+  
+  if (target.scrollHeight <= maxHeight) {
+    target.style.height = target.scrollHeight + "px";
+  } else {
+    target.style.height = maxHeight + "px";
+  }
+};
+
+  useEffect(() => {
+  if (slide !== 2) return;
+  
+  const handleResize = () => {
+    setTimeout(() => {
+      recalculateTextareaHeight();
+    }, 100);
+  };
+
+  window.addEventListener("resize", handleResize);
+  
+  // Also call it immediately when slide 2 becomes active
+  setTimeout(recalculateTextareaHeight, 100);
+  
+  return () => window.removeEventListener("resize", handleResize);
+}, [slide]); // This effect only runs when slide changes
+
+// Keep your existing useEffect for position calculation
+useEffect(() => {
+  const handleResize = () => {
+    setTimeout(getLastWordPosition, 100);
+  };
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
   return (
     <div
       className='layout-grid col-span-3 lg:col-span-8 mt-[7.75rem] z-10 lg:mt-48 min-h-screen relative before:content-[""] before:absolute before:-left-4 before:top-0 before:w-[calc(100%+2rem)] lg:before:w-[calc(100%+1rem)] before:h-full before:bg-black before:dark:bg-white before:-z-10 before:transition-all before:duration-300'
@@ -188,30 +265,84 @@ export default function Footer() {
               </p>
             )
             : <p className="text-2xl lg:leading-tight lg:text-[3.5rem] text-white dark:text-black font-hedwig">&nbsp;</p>
-          }
+            }
 
             <div
-              className="absolute"
+              className="absolute right-0"
               style={{
               left: t(`lines.${slide}.line2`) !== "" ? `${inputPosition.left + 10}px` : "0",
+              top: t(`lines.${slide}.line2`) !== "" ? `${inputPosition.top}px` : "0",
             }}
             >
-              <div className="relative">
-                <input
-                  size={0}
-                  className={`bg-transparent text-white dark:text-black p-0 m-0 h-fit w-full min-w-[10rem] peer focus:outline-none font-hedwig text-2xl lg:leading-tight lg:text-[3.5rem] placeholder:opacity-25 ${
-                    slide === 3 ? "hidden" : ""
-                  }`}
-                  type="text"
-                  value={slide === 0 ? name : slide === 1 ? tel : message}
-                  onChange={(e) => {
-                    inputControls.set("initial");
-                    if (slide === 0) setName(e.currentTarget.value);
-                    else if (slide === 1 && e.currentTarget.value.length <= 9)
-                      setTel(e.currentTarget.value);
-                    else if (slide === 2) setMessage(e.currentTarget.value);
-                  }}
-                />
+              <div className="relative w-full">
+                {slide === 2 ? (
+                  <textarea
+                    className={` bg-transparent pr-6 text-white dark:text-black p-0 m-0 h-fit w-full min-w-[10rem] peer focus:outline-none font-hedwig text-2xl lg:leading-tight lg:text-[3.5rem] placeholder:opacity-25 resize-none custom-textarea-scrollbar `}
+                    value={message}
+                    onChange={(e) => {
+                      inputControls.set("initial");
+                      setMessage(e.currentTarget.value);
+                    }}
+                    autoFocus={true}
+                    rows={1}
+                    style={{
+                      minHeight: 'auto',
+                      height: 'auto',
+                    }}
+                    onInput={(e) => {
+                      const target = e.target as HTMLTextAreaElement;
+                      
+                      target.style.height = 'auto';
+                      
+                      const lineHeight = parseFloat(getComputedStyle(target).lineHeight);
+                      const maxHeight = lineHeight * 2; // Maximum 2 lines
+                      
+                      if (target.scrollHeight <= maxHeight) {
+                        target.style.height = target.scrollHeight + 'px';
+                      } else {
+                        target.style.height = maxHeight + 'px';
+                      }
+                    }}
+                    onKeyDown={(e) => {
+                      const target = e.target as HTMLTextAreaElement;
+                      const lines = target.value.split('\n').length;
+                      
+                      if (e.key === 'Enter' && lines >= 2) {
+                        e.preventDefault();
+                      }
+                    }}
+                    onWheel={(e) => {
+                      // Stop Lenis from intercepting scroll events on this textarea
+                      e.stopPropagation();
+                      
+                      const target = e.currentTarget;
+                      const { scrollHeight, clientHeight } = target;
+
+                      if (scrollHeight > clientHeight) {
+                        e.preventDefault();
+
+                        const delta = e.deltaY;
+                        target.scrollTop += delta;
+                      }
+                    }}
+                  />
+                ) : (
+                  <input
+                    size={0}
+                    className={`bg-transparent text-white dark:text-black p-0 m-0 h-fit w-full min-w-[10rem] peer focus:outline-none font-hedwig text-2xl lg:leading-tight lg:text-[3.5rem] placeholder:opacity-25 ${
+                      slide === 3 ? "hidden" : ""
+                    }`}
+                    type="text"
+                    value={slide === 0 ? name : tel}
+                    onChange={(e) => {
+                      inputControls.set("initial");
+                      if (slide === 0) setName(e.currentTarget.value);
+                      else if (slide === 1 && e.currentTarget.value.length <= 9)
+                        setTel(e.currentTarget.value);
+                    }}
+                    autoFocus={true}
+                  />
+                )}
                 <motion.div
                   animate={inputControls}
                   variants={{
@@ -219,7 +350,7 @@ export default function Footer() {
                     wrong: { color: "#F42A2A", x: [-7, 7, -7, 7, 0] },
                   }}
                   transition={{ duration: 0.3 }}
-                  className={`left-0 top-0 h-full absolute text-2xl lg:leading-tight lg:text-[3.5rem] font-hedwig text-white opacity-25 pointer-events-none ${
+                  className={`left-0 top-0 h-full text-nowrap line-clamp-1 absolute text-2xl lg:leading-tight lg:text-[3.5rem] font-hedwig text-white dark:text-[#181818] opacity-25 pointer-events-none ${
                     (slide === 0 && name !== "") ||
                     (slide === 1 && tel !== "") ||
                     (slide === 2 && message !== "")

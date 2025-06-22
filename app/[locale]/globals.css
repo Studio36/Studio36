@@ -94,3 +94,17 @@ body::-webkit-scrollbar-thumb
 	border-radius: 7px;
 	background-color: #6b6b6b90;
 }
+
+.custom-textarea-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  cursor: pointer;
+}
+
+.custom-textarea-scrollbar::-webkit-scrollbar-thumb {
+	border-radius: 7px;
+	background-color: #6b6b6b90;
+}
+
+.custom-textarea-scrollbar::-webkit-scrollbar-track {
+  background-color: rgba(241, 241, 241, 0.0);
+}
