@@ -277,6 +277,7 @@ useEffect(() => {
               <div className="relative w-full">
                 {slide === 2 ? (
                   <textarea
+                    ref={textareaRef}
                     className={` bg-transparent pr-6 text-white dark:text-black p-0 m-0 h-fit w-full min-w-[10rem] peer focus:outline-none font-hedwig text-2xl lg:leading-tight lg:text-[3.5rem] placeholder:opacity-25 resize-none custom-textarea-scrollbar `}
                     value={message}
                     onChange={(e) => {
