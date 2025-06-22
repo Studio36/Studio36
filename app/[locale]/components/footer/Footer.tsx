@@ -349,7 +349,7 @@ useEffect(() => {
                     wrong: { color: "#F42A2A", x: [-7, 7, -7, 7, 0] },
                   }}
                   transition={{ duration: 0.3 }}
-                  className={`left-0 top-0 h-full text-nowrap line-clamp-1 absolute text-2xl lg:leading-tight lg:text-[3.5rem] font-hedwig text-white dark:text-[#181818] opacity-25 pointer-events-none ${
+                  className={`left-0 top-0 h-full absolute text-2xl lg:leading-tight lg:text-[3.5rem] font-hedwig text-white dark:text-[#181818] opacity-25 pointer-events-none ${
                     (slide === 0 && name !== "") ||
                     (slide === 1 && tel !== "") ||
                     (slide === 2 && message !== "")
