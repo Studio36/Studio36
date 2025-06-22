@@ -9,7 +9,7 @@ import { useTheme } from 'next-themes';
 import { useTranslations } from 'next-intl';
 const Lottie = dynamic(() => import('react-lottie-player'), { ssr: false });
 import animation from '@/public/animations/logo.json';
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'; 
 
 interface HeaderProps {
   setIsLinkClicked: (isLinkClicked: boolean) => void,
@@ -76,9 +76,9 @@ export default function Header({ setIsLinkClicked, isLinkClicked, hasContact = t
 
   return (
     <>
-      <div className={`col-span-3 lg:col-span-8 layout-grid sticky top-0 z-50 py-4 lg:py-8 mix-blend-difference header`}>
+      <div className={`col-span-3 lg:col-span-8 layout-grid sticky top-0 z-[60] py-4 lg:py-8 mix-blend-difference header pointer-events-none`}>
         
-        <Link href='/' setIsLinkClicked={setIsLinkClicked} className='lg:col-start-2 aspect-[0.82] w-12 lg:w-16'>
+        <Link href='/' setIsLinkClicked={setIsLinkClicked} className={`lg:col-start-2 aspect-[0.82] w-12 lg:w-16 pointer-events-auto`}>
             <Lottie
               ref={lottieRef}
               animationData={animation}
@@ -98,9 +98,9 @@ export default function Header({ setIsLinkClicked, isLinkClicked, hasContact = t
 
         <p className={`text-white text-2xl col-span-2 hidden lg:block`}>{t('title1')} <br/> {t('title2')}</p>
         <div className={`col-start-7 w-fit h-fit ml-auto ${menuActive ? "hidden" : ""}`}>
-            <BracketButton isInHeader disabled={false} className='w-[3.6rem] lg:w-[4.3rem]' onClick={() => {setOpen(!open)}} text='MENU'/>
+            <BracketButton disabledStyle={false} isInHeader disabled={false} className='w-[3.6rem] lg:w-[4.3rem] pointer-events-auto' onClick={() => {setOpen(!open)}} text='MENU'/>
         </div> 
-          <button className='absolute size-4 m-2 rounded-full right-8 top-8 border-2 border-white hidden lg:block' onClick={() => {if(resolvedTheme === 'dark') setTheme('light'); else setTheme('dark')}}>
+          <button className={`absolute size-4 m-2 rounded-full right-8 top-8 border-2 border-white hidden lg:block pointer-events-auto`} onClick={() => {if(resolvedTheme === 'dark') setTheme('light'); else setTheme('dark')}}>
             <div className="absolute w-1/2 h-full rounded-l-full bg-white left-0 top-0"></div>
           </button>
       </div>

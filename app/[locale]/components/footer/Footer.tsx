@@ -284,7 +284,6 @@ useEffect(() => {
                       inputControls.set("initial");
                       setMessage(e.currentTarget.value);
                     }}
-                    autoFocus={true}
                     rows={1}
                     style={{
                       minHeight: 'auto',
@@ -341,7 +340,6 @@ useEffect(() => {
                       else if (slide === 1 && e.currentTarget.value.length <= 9)
                         setTel(e.currentTarget.value);
                     }}
-                    autoFocus={true}
                   />
                 )}
                 <motion.div

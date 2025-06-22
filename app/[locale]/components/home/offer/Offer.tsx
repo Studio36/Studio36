@@ -12,8 +12,8 @@ export default function Offer({ setIsActive }: OfferProps) {
         <p className='col-start-2 lg:col-start-3 mb-4 lg:mb-6 text-sm lg:text-base'>{`${t("subtitle1")}`}</p>
         <p className='col-span-6 text-2xl lg:leading-tight lg:text-[3rem] font-hedwig indent-[33.3%] mb-12 lg:mb-24 text-justify'>{t('content')}</p>
         <p className='col-start-1 col-span-2 mb-6 uppercase text-sm lg:text-base'>{`${t("subtitle2")}`}</p>
-        <ServicesRow setIsActive={setIsActive} service1={t("card.title1")} service2={t('card.title2')} image1="/services/service1.jpg" image2="/services/service2.jpg" className="mb-6"/>
-        <ServicesRow setIsActive={setIsActive} service1={t('card.title3')} service2={t('card.title4')} image1="/services/service3.jpg" image2="/services/service4.jpg"/>
+        <ServicesRow id1={1} id2={2} setIsActive={setIsActive} service1={t("card.title1")} service2={t('card.title2')} image1="/services/service1.jpg" image2="/services/service2.jpg" className="mb-6"/>
+        <ServicesRow id1={3} id2={4} setIsActive={setIsActive} service1={t('card.title3')} service2={t('card.title4')} image1="/services/service3.jpg" image2="/services/service4.jpg"/>
     </div>
   )
 }
