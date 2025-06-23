@@ -21,7 +21,7 @@ export default function SwitchBracketButton({ className, disabled, onClick, isSw
         </div>
         <span className={`absolute -right-3 top-0 text-white dark:text-black text-xl lg:text-2xl transition-transform duration-200`}></span>
 
-        <div className={`bottom-[-0.125rem] h-[1px] duration-500 group-hover:scale-x-0 origin-right transition-transform left-0 right-0 bg-white dark:bg-black absolute ${disabled ? "opacity-25" : "opacity-100"}`}/>
+        <div className={`bottom-[-0.125rem] h-[1px] duration-500 group-hover:scale-x-0 origin-right transition-transform left-0 right-0 bg-white dark:bg-black absolute`}/>
     </div>
   )
 }

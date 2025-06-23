@@ -223,6 +223,22 @@ useEffect(() => {
   return () => window.removeEventListener("resize", handleResize);
 }, []);
 
+const [isLgScreen, setIsLgScreen] = useState(false);
+
+// Add this useEffect to track screen size
+useEffect(() => {
+  const checkScreenSize = () => {
+    setIsLgScreen(window.innerWidth >= 1024);
+  };
+  
+  checkScreenSize();
+  window.addEventListener('resize', checkScreenSize);
+  
+  return () => window.removeEventListener('resize', checkScreenSize);
+}, []);
+
+
+
   return (
     <div
       className='layout-grid col-span-3 lg:col-span-8 mt-[7.75rem] z-10 lg:mt-48 min-h-screen relative before:content-[""] before:absolute before:-left-4 before:top-0 before:w-[calc(100%+2rem)] lg:before:w-[calc(100%+1rem)] before:h-full before:bg-black before:dark:bg-white before:-z-10 before:transition-all before:duration-300'
@@ -272,13 +288,19 @@ useEffect(() => {
               style={{
               left: t(`lines.${slide}.line2`) !== "" ? `${inputPosition.left + 10}px` : "0",
               top: t(`lines.${slide}.line2`) !== "" ? `${inputPosition.top}px` : "0",
+              ...(!isLgScreen && {
+                width: t(`lines.${slide}.line2`) !== "" 
+                  ? `calc(100vw - ${inputPosition.left + 10}px - 42px)` 
+                  : `calc(100vw - 42px)`,
+                right: 'auto'
+              })
             }}
             >
               <div className="relative w-full">
                 {slide === 2 ? (
                   <textarea
                     ref={textareaRef}
-                    className={` bg-transparent pr-6 text-white dark:text-black p-0 m-0 h-fit w-full min-w-[10rem] peer focus:outline-none font-hedwig text-2xl lg:leading-tight lg:text-[3.5rem] placeholder:opacity-25 resize-none custom-textarea-scrollbar `}
+                    className={`bg-transparent pr-6 text-white dark:text-black p-0 m-0 h-fit w-full min-w-[10rem] peer focus:outline-none font-hedwig text-2xl lg:leading-tight lg:text-[3.5rem] placeholder:opacity-25 resize-none custom-textarea-scrollbar `}
                     value={message}
                     onChange={(e) => {
                       inputControls.set("initial");
@@ -349,7 +371,7 @@ useEffect(() => {
                     wrong: { color: "#F42A2A", x: [-7, 7, -7, 7, 0] },
                   }}
                   transition={{ duration: 0.3 }}
-                  className={`left-0 top-0 h-full absolute text-2xl lg:leading-tight lg:text-[3.5rem] font-hedwig text-white dark:text-[#181818] opacity-25 pointer-events-none ${
+                  className={`left-0 top-0 h-full line-clamp-1 text-nowrap absolute text-2xl lg:leading-tight lg:text-[3.5rem] font-hedwig text-white dark:text-[#181818] opacity-25 pointer-events-none ${
                     (slide === 0 && name !== "") ||
                     (slide === 1 && tel !== "") ||
                     (slide === 2 && message !== "")

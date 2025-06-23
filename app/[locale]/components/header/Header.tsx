@@ -3,7 +3,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Menu from '../menu/Menu';
-import BracketButton from '../buttons/BracketButton';
+// import BracketButton from '../buttons/BracketButton';
+import MenuButtonAnimated from '../buttons/MenuButtonAnimated';
 import Link from '../buttons/Link';
 import { useTheme } from 'next-themes';
 import { useTranslations } from 'next-intl';
@@ -14,7 +15,7 @@ import dynamic from 'next/dynamic';
 interface HeaderProps {
   setIsLinkClicked: (isLinkClicked: boolean) => void,
   isLinkClicked: boolean,
-  hasContact?: boolean,
+  hasContact?: boolean, 
 }
 
 export default function Header({ setIsLinkClicked, isLinkClicked, hasContact = true }: HeaderProps) {
@@ -27,7 +28,7 @@ export default function Header({ setIsLinkClicked, isLinkClicked, hasContact = t
   const t = useTranslations('header');
   const lottieRef = useRef<any>(null);
   const [isDesktop, setIsDesktop] = useState(false);
-  
+
     // Check screen size on mount and window resize
     useEffect(() => {
         const checkScreenSize = () => {
@@ -47,9 +48,10 @@ export default function Header({ setIsLinkClicked, isLinkClicked, hasContact = t
   useEffect(() => {
     if (open) {
       clearTimeout(timeoutRef.current);
-      setMenuActive(true);
 
+      setMenuActive(true);
       setLoading(true);
+
       setTimeout(() => {
         setLoading(false);
       }, 800)
@@ -61,6 +63,7 @@ export default function Header({ setIsLinkClicked, isLinkClicked, hasContact = t
       }, 800)
       timeoutRef.current = setTimeout(() => {
         setMenuActive(false);
+        
         setTimeout(() => {
           setIsLinkClicked(false);
         }, 1600)
@@ -98,7 +101,8 @@ export default function Header({ setIsLinkClicked, isLinkClicked, hasContact = t
 
         <p className={`text-white text-2xl col-span-2 hidden lg:block`}>{t('title1')} <br/> {t('title2')}</p>
         <div className={`col-start-7 w-fit h-fit ml-auto ${menuActive ? "hidden" : ""}`}>
-            <BracketButton disabledStyle={false} isInHeader disabled={false} className='w-[3.6rem] lg:w-[4.3rem] pointer-events-auto' onClick={() => {setOpen(!open)}} text='MENU'/>
+          {/* <BracketButton disabledStyle={false} isInHeader disabled={false} className='w-[3.6rem] lg:w-[4.3rem] pointer-events-auto' onClick={() => {setOpen(!open);}} text='MENU'/> */}
+          <MenuButtonAnimated menuOpen={open} menuActive={menuActive} text='MENU' isInHeader onClick={() => {setTimeout(() => setOpen(!open), 300);}} className='w-[3.6rem] lg:w-[4.3rem] pointer-events-auto'/>
         </div> 
           <button className={`absolute size-4 m-2 rounded-full right-8 top-8 border-2 border-white hidden lg:block pointer-events-auto`} onClick={() => {if(resolvedTheme === 'dark') setTheme('light'); else setTheme('dark')}}>
             <div className="absolute w-1/2 h-full rounded-l-full bg-white left-0 top-0"></div>
