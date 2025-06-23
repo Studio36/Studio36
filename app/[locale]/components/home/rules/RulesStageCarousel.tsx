@@ -2,16 +2,18 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, useAnimationControls } from 'framer-motion';
-import StageCard from '../hero/StageCard';
+// import StageCard from '../hero/StageCard';
 import { carousellNumbers } from '@/app/[locale]/lib/utils';
+import RulesStageCard from './RulesStageCard';
 
 
 interface Props { 
     isLoading?: boolean;
+    y: number;
 }
 
 
-const RulesStageCarousel = ({isLoading} : Props) => {
+const RulesStageCarousel = ({isLoading, y} : Props) => {
 
   const [slide, setSlide] = useState(0);
   const [isFirstSlideLoaded, setFirstSlideLoaded] = useState(false);
@@ -92,10 +94,10 @@ const RulesStageCarousel = ({isLoading} : Props) => {
         <motion.div className='absolute h-full w-full overflow-hidden top-0 right-0' variants={slideVariants} animate={isLoading ? '' : 'appear'}>
             <div className="absolute h-full lg:w-[57vw] w-[100vw] top-0 right-0">
                 <div className="h-full w-full relative rounded-lg overflow-hidden">
-                    <StageCard src="/hero-stages/stage4.png" alt="stage1" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={0} className='h-full lg:w-[57vw] w-[100vw] rounded-lg' duration={.9}/>
-                    <StageCard src="/hero-stages/stage1.png" alt="stage2" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={1} className='h-full lg:w-[57vw] w-[100vw] rounded-lg' duration={.9}/>
-                    <StageCard src="/hero-stages/stage2.png" alt="stage3" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={2} className='h-full lg:w-[57vw] w-[100vw] rounded-lg' duration={.9}/>
-                    <StageCard src="/hero-stages/stage3.png" alt="stage4" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={3} className='h-full lg:w-[57vw] w-[100vw] rounded-lg' duration={.9}/>
+                    <RulesStageCard y={y} src="/hero-stages/stage4.png" alt="stage1" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={0} className='h-full lg:w-[57vw] w-[100vw] rounded-lg' duration={.9}/>
+                    <RulesStageCard y={y} src="/hero-stages/stage1.png" alt="stage2" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={1} className='h-full lg:w-[57vw] w-[100vw] rounded-lg' duration={.9}/>
+                    <RulesStageCard y={y} src="/hero-stages/stage2.png" alt="stage3" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={2} className='h-full lg:w-[57vw] w-[100vw] rounded-lg' duration={.9}/>
+                    <RulesStageCard y={y} src="/hero-stages/stage3.png" alt="stage4" slide={slide} nextSlide={slide === carousellNumbers.length - 1 ? 0 : slide + 1} index={3} className='h-full lg:w-[57vw] w-[100vw] rounded-lg' duration={.9}/>
                 </div>
             </div>
         </motion.div>
