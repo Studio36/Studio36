@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useAnimationControls, Variants } from "motion/react";
+import { motion, useAnimationControls, Variants, useInView } from "motion/react";
 import { easeInOutCubic } from "@/app/[locale]/lib/utils";
 import { useLenis } from "lenis/react";
 import BracketButton from "../buttons/BracketButton";
@@ -14,8 +14,6 @@ export default function Footer() {
   const [name, setName] = useState("");
   const [tel, setTel] = useState("");
   const [message, setMessage] = useState("");
-
-  console.log(name, tel, message);
 
   const [slide, setSlide] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -237,7 +235,18 @@ useEffect(() => {
   return () => window.removeEventListener('resize', checkScreenSize);
 }, []);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const isInView = useInView(containerRef, { once: false });
 
+  useEffect(() => {
+    if(isInView) {
+      if(inputRef.current) inputRef.current.focus();
+      if(textareaRef.current) textareaRef.current.focus();
+    }
+  }, [isInView, slide])
+
+  
 
   return (
     <div
@@ -260,8 +269,11 @@ useEffect(() => {
         className="col-span-3 lg:col-span-8 layout-grid"
         variants={parentVariants}
         animate={controls}
+
       >
-        <div className="mt-[8.6rem] lg:mt-[14.875rem] lg:col-start-3 col-span-3 lg:col-span-5 lg:mb-32 mb-12">
+        <div className="mt-[8.6rem] lg:mt-[14.875rem] lg:col-start-3 col-span-3 lg:col-span-5 lg:mb-32 mb-12"
+          ref={containerRef}
+        >
           <p className="text-white dark:text-black  mb-2 lg:mb-6 text-sm lg:text-base">{`${t(
             "subtitle1"
           )}`}</p>
@@ -350,6 +362,7 @@ useEffect(() => {
                   />
                 ) : (
                   <input
+                    ref={inputRef}
                     size={0}
                     className={`bg-transparent text-white dark:text-black p-0 m-0 h-fit w-full min-w-[10rem] peer focus:outline-none font-hedwig text-2xl lg:leading-tight lg:text-[3.5rem] placeholder:opacity-25 ${
                       slide === 3 ? "hidden" : ""
@@ -371,7 +384,7 @@ useEffect(() => {
                     wrong: { color: "#F42A2A", x: [-7, 7, -7, 7, 0] },
                   }}
                   transition={{ duration: 0.3 }}
-                  className={`left-0 top-0 h-full line-clamp-1 text-nowrap absolute text-2xl lg:leading-tight lg:text-[3.5rem] font-hedwig text-white dark:text-[#181818] opacity-25 pointer-events-none ${
+                  className={`left-0 top-0 h-full ${slide !== 2 && 'line-clamp-1 text-nowrap'} absolute text-2xl lg:leading-tight lg:text-[3.5rem] font-hedwig text-white dark:text-[#181818] opacity-25 pointer-events-none ${
                     (slide === 0 && name !== "") ||
                     (slide === 1 && tel !== "") ||
                     (slide === 2 && message !== "")

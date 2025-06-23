@@ -120,8 +120,6 @@ export default function Menu({open, menuActive, loading, currentHoverLink, setCu
     },
   }
 
-  console.log(menuActive)
-
   return (
     <>
       <div className={`header fixed left-0 top-0 layout-grid w-full h-screen z-50  ${menuActive ? "" : "pointer-events-none"}`}>
