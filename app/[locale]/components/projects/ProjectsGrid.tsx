@@ -26,7 +26,7 @@ export default function ProjectsGrid({ setIsActive, setIsLinkClicked }: Projects
     }, []);
 
   return (
-      <div className='grid grid-cols-3 lg:grid-cols-6 col-span-6 gap-y-6 lg:gap-y-12'>
+      <div className='grid grid-cols-3 lg:grid-cols-6 col-span-6 gap-y-10 lg:gap-y-12'>
       {
             photosets ?
           photosets.map((photoset, index) => {
