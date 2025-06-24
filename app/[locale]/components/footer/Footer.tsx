@@ -69,7 +69,7 @@ export default function Footer() {
         body: JSON.stringify({
           name,
           tel,
-          message,
+          message, 
         }),
       });
 
@@ -510,7 +510,7 @@ useEffect(() => {
           </div>
         </div>
       </motion.div>
-      <div className="absolute bottom-4 lg:bottom-8 left-0 flex justify-between w-full px-[7.3%]">
+      <div className="absolute bottom-4 lg:bottom-8 left-0 flex justify-between w-full lg:px-[7.3%]">
         <p className="text-white dark:text-black ">
           © {new Date().getFullYear()}
         </p>
