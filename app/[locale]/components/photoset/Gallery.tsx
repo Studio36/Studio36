@@ -116,7 +116,6 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded, set
         setContainerHeight(container.current ? container.current.clientHeight : 0);
     }, [gridLayout, heights])
 
-    console.log(loadedImages)
 
   return (
     <>
