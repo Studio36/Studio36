@@ -5,6 +5,7 @@ import { easeInOutCubic } from "@/app/[locale]/lib/utils";
 import { default as NextImage } from "next/image";
 import React, { createRef, Fragment, useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
+import { useLenis } from "lenis/react";
 
 interface GalleryProps {
     gridLayout: boolean,
@@ -43,7 +44,12 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded, set
     const [heights, setHeights] = useState<number[]>([]);
     const [isAnimationGoing, setIsAnimationGoing] = useState(true);
     const elementsRef = useRef(images.map(() => createRef<HTMLDivElement>()));
-    // const lenis = useLenis();
+
+    const lenis = useLenis();
+
+    useEffect(() => {
+        lenis?.start()
+    }, [lenis])
 
     let gridImagesOffset = 0;
 
@@ -119,7 +125,7 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded, set
 
   return (
     <>
-        <motion.div className="col-start-3 col-end-8 grid grid-cols-5" animate={{height: containerHeight + 'px'}} transition={{duration: 1 , ease: easeInOutCubic}}>
+        <motion.div className="col-start-3 col-end-8 grid grid-cols-5 min-h-[300vh]" animate={{height: containerHeight + 'px'}} transition={{duration: 0 , ease: easeInOutCubic}}>
             <motion.div  transition={{duration: isAnimationGoing ? 0 : 1 , ease: easeInOutCubic}} className={`h-fit col-span-5 grid grid-cols-5 pb-[7.75rem] ${gridLayout ? "gap-y-6" : "gap-y-0"}`} ref={container}>
             {images.map((image, index) => {
                 const position = ((index + gridImagesOffset) % 3);
