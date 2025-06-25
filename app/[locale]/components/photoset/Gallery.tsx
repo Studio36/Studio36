@@ -42,7 +42,7 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded, set
     const [containerHeight, setContainerHeight] = useState(0);
     const [heights, setHeights] = useState<number[]>([]);
     const [isAnimationGoing, setIsAnimationGoing] = useState(true);
-    const elementsRef = useRef(images.map(() => createRef<HTMLImageElement>()));
+    const elementsRef = useRef(images.map(() => createRef<HTMLDivElement>()));
     const lenis = useLenis();
 
     let gridImagesOffset = 0;
@@ -52,33 +52,35 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded, set
             setContainerHeight(container.current ? container.current.clientHeight : 0);
         });
 
-        const imagePromises = images.map(src => {
-            return new Promise((resolve) => {
-                const img = new Image();
-                img.src = src;
-                img.onload = resolve;
-            });
-        });
+        // const imagePromises = images.map(src => {
+        //     return new Promise((resolve) => {
+        //         const img = new Image();
+        //         img.src = src;
+        //         img.onload = resolve;
+        //         img.onerror = resolve;
+        //     });
+        // });
 
-        lenis?.stop(); 
-        Promise.all(imagePromises).then(() => {
-            measureHeights();
-        });
+        // lenis?.stop(); 
+        // Promise.all(imagePromises).then(() => {
+        //     measureHeights();
+        // });
+        measureHeights();
     }, [])
 
-    useEffect(() => {
-        const imagePromises = images.map(src => {
-            return new Promise((resolve) => {
-                const img = new Image();
-                img.src = src;
-                img.onload = resolve;
-            });
-        });
+    // useEffect(() => {
+    //     const imagePromises = images.map(src => {
+    //         return new Promise((resolve) => {
+    //             const img = new Image();
+    //             img.src = src;
+    //             img.onload = resolve;
+    //         });
+    //     });
 
-        Promise.all(imagePromises).then(() => {
-            measureHeights();
-        });
-    }, [isLoaded])
+    //     Promise.all(imagePromises).then(() => {
+    //         measureHeights();
+    //     });
+    // }, [isLoaded])
 
     const measureHeights = () => {
         const newHeights = elementsRef.current.map(ref => {
@@ -95,6 +97,18 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded, set
         setHeights(newHeights);
     };
 
+    const [loadedImages, setLoadedImages] = useState(new Set<number>());
+
+    const handleImageLoad = (index: number) => {
+        setLoadedImages(prev => new Set(prev).add(index));
+    };
+
+    useEffect(() => {
+        if (loadedImages.size === images.length && images.length > 0) {
+            measureHeights();
+        }
+    }, [loadedImages, images.length]);
+
     useEffect(() => {
         setTimeout(() => {
             setContainerHeight(container.current ? container.current.clientHeight : 0);
@@ -102,11 +116,12 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded, set
         setContainerHeight(container.current ? container.current.clientHeight : 0);
     }, [gridLayout, heights])
 
+    console.log(loadedImages)
 
   return (
     <>
-        <motion.div layout className="col-start-3 col-end-8 grid grid-cols-5" animate={{height: containerHeight + 'px'}} transition={{duration: 1 , ease: easeInOutCubic}}>
-            <motion.div layout transition={{duration: isAnimationGoing ? 0 : 1 , ease: easeInOutCubic}} className={`h-fit col-span-5 grid grid-cols-5 pb-[7.75rem] ${gridLayout ? "gap-y-6" : "gap-y-0"}`} ref={container}>
+        <motion.div className="col-start-3 col-end-8 grid grid-cols-5" animate={{height: containerHeight + 'px'}} transition={{duration: 1 , ease: easeInOutCubic}}>
+            <motion.div  transition={{duration: isAnimationGoing ? 0 : 1 , ease: easeInOutCubic}} className={`h-fit col-span-5 grid grid-cols-5 pb-[7.75rem] ${gridLayout ? "gap-y-6" : "gap-y-0"}`} ref={container}>
             {images.map((image, index) => {
                 const position = ((index + gridImagesOffset) % 3);
                 let isFirst = position === 0;
@@ -166,7 +181,7 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded, set
                                 } overflow-hidden rounded-[1%] relative`}
                             >
                                 <motion.div
-                                    ref={elementsRef.current[index]} 
+                                    ref={elementsRef.current[index]}
                                     layout={!isAnimationGoing}
                                     transition={{duration: 1, ease: easeInOutCubic}}
                                     className={`w-full rounded-[1%]`}
@@ -177,10 +192,12 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded, set
                                     width={823} 
                                     height={1226} 
                                     className="w-full h-full object-cover cursor-pointer"
+                                    loading="eager"
                                     onClick={() => {
                                         setImageIndex(index);
                                         setCarouselOpen(true);
                                     }}
+                                    onLoad={() => handleImageLoad(index)}
                                 />
                                 </motion.div>
                             </motion.div>
