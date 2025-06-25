@@ -92,7 +92,7 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded, set
         setIsLoaded(true);
         setTimeout(() => {
             setIsAnimationGoing(false);
-            lenis?.start();
+            // lenis?.start();
         }, 1400)
         setHeights(newHeights);
     };

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React, { useState, useEffect, KeyboardEvent, useCallback } from 'react'
 import { motion, PanInfo, useMotionValue, useTransform } from 'motion/react';
 import { easeInOutCubic } from "@/app/[locale]/lib/utils";
+import { useLenis } from 'lenis/react';
 
 interface ImagesCarouselInterface {
     setCarouselOpen: (v: boolean) => void,
@@ -18,8 +19,17 @@ export default function ImagesCarousel({setCarouselOpen, images, initialActive =
     const [prevImage, setPrevImage] = useState(initialActive - 1 < 0 ? images.length - 1 : initialActive - 1);
     const [isDragOver, setDragOver] = useState(true);
     const [isDrag, setIsDrag] = useState(false);
+    const lenis = useLenis()
 
     const hasMultipleImages = images.length > 1;
+
+    useEffect(() => {
+        lenis?.stop();
+
+        return () => {
+            lenis?.start();
+        };
+    }, [lenis]);
 
     // Motion values for drag and opacity
     const x = useMotionValue(0);
@@ -155,7 +165,7 @@ export default function ImagesCarousel({setCarouselOpen, images, initialActive =
             aria-modal="true"
             aria-label="Image carousel"
         >
-            <div className="lg:hidden absolute top-4 left-4 z-[10] bg-black/75 text-white px-6 py-2 rounded-3xl font-manrope font-semibold">
+            <div className="lg:hidden absolute top-4 left-4 z-[20] bg-black/75 text-white px-6 py-2 rounded-3xl font-manrope font-semibold">
                 {(activeImage || 0) + 1} / {images.length}
             </div>
             
