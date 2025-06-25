@@ -6,10 +6,12 @@ import Image from "next/image";
 import { useEffect } from "react";
 
 interface MobileGalleryProps {
-    images: string[]
+    images: string[],
+    setCarouselOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    setImageIndex: React.Dispatch<React.SetStateAction<number>>,
 }
 
-export default function MobileGallery({images}: MobileGalleryProps) {
+export default function MobileGallery({images, setImageIndex, setCarouselOpen}: MobileGalleryProps) {
     const lenis = useLenis();
 
     useEffect(() => {
@@ -30,6 +32,10 @@ export default function MobileGallery({images}: MobileGalleryProps) {
                     height={0}
                     sizes="100vw"
                     style={{ width: '100%', height: 'auto' }}
+                    onClick={() => {
+                        setImageIndex(index);
+                        setCarouselOpen(true);
+                    }}
                 />
                 </motion.div>
             )

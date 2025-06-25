@@ -2,15 +2,17 @@
 
 import { easeInOutCubic } from "@/app/[locale]/lib/utils";
 import { useLenis } from "lenis/react";
-import { motion } from "motion/react";
 import { default as NextImage } from "next/image";
-import { createRef, Fragment, useEffect, useRef, useState } from "react";
+import React, { createRef, Fragment, useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
 
 interface GalleryProps {
     gridLayout: boolean,
     images: string[],
     isLoaded: boolean,
     setIsLoaded: (isLoaded: boolean) => void,
+    setCarouselOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    setImageIndex: React.Dispatch<React.SetStateAction<number>>,
 }
 
 const imageVariants = {
@@ -35,7 +37,7 @@ const imageVariants = {
     }
 }
 
-export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: GalleryProps) {
+export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded, setImageIndex, setCarouselOpen }: GalleryProps) {
     const container = useRef<HTMLDivElement>(null);
     const [containerHeight, setContainerHeight] = useState(0);
     const [heights, setHeights] = useState<number[]>([]);
@@ -102,87 +104,93 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded }: G
 
 
   return (
-    <motion.div layout className="col-start-3 col-end-8 grid grid-cols-5" animate={{height: containerHeight + 'px'}} transition={{duration: 1 , ease: easeInOutCubic}}>
-        <motion.div layout transition={{duration: isAnimationGoing ? 0 : 1 , ease: easeInOutCubic}} className={`h-fit col-span-5 grid grid-cols-5 pb-[7.75rem] ${gridLayout ? "gap-y-6" : "gap-y-0"}`} ref={container}>
-        {images.map((image, index) => {
-            const position = ((index + gridImagesOffset) % 3);
-            let isFirst = position === 0;
-            let isSecond = position === 1;
-            let isThird = position === 2;
+    <>
+        <motion.div layout className="col-start-3 col-end-8 grid grid-cols-5" animate={{height: containerHeight + 'px'}} transition={{duration: 1 , ease: easeInOutCubic}}>
+            <motion.div layout transition={{duration: isAnimationGoing ? 0 : 1 , ease: easeInOutCubic}} className={`h-fit col-span-5 grid grid-cols-5 pb-[7.75rem] ${gridLayout ? "gap-y-6" : "gap-y-0"}`} ref={container}>
+            {images.map((image, index) => {
+                const position = ((index + gridImagesOffset) % 3);
+                let isFirst = position === 0;
+                let isSecond = position === 1;
+                let isThird = position === 2;
 
-            if (isThird && heights[index - 1] <= heights[index - 2]) {
-                isFirst = true;
-                isSecond = false;
-                isThird = false;
-                gridImagesOffset++;
-            }
-            
-            return (
-                <Fragment key={`${index}-${isAnimationGoing}`}>
-                    <motion.div 
-                        layout={!isAnimationGoing}
-                        initial={false} 
-                        variants={imageVariants} 
-                        animate={gridLayout 
-                            ? (index + 1) % 5 === 0 
-                                ? "nopadding" 
-                                : "padding"
-                            : isSecond
-                                ? "nopadding"
-                                : "padding"
-                        } 
-                        transition={{duration: 1, ease: easeInOutCubic}} 
-                        className={`${
-                            gridLayout 
-                                ? 'col-span-1' 
-                                : `${
-                                    isFirst 
-                                        ? `${index === images.length - 1 ? "col-span-3 col-start-3" : "col-span-2"}` 
-                                        : isSecond 
-                                            ? 'col-span-3' 
-                                            : 'col-span-2 -mt-[7.75rem]'
-                                }`
-                        } overflow-hidden relative`}
-                    >
-                        <motion.div
-                            initial={isAnimationGoing ? 'initial' : false}
-                            animate={isLoaded ? 'animate' : 'initial'}
+                if (isThird && heights[index - 1] <= heights[index - 2]) {
+                    isFirst = true;
+                    isSecond = false;
+                    isThird = false;
+                    gridImagesOffset++;
+                }
+                
+                return (
+                    <Fragment key={`${index}-${isAnimationGoing}`}>
+                        <motion.div 
                             layout={!isAnimationGoing}
-                            variants={{initial: {clipPath: 'inset(0px 100% 0px 0px)'}, animate: {clipPath: 'inset(0px 0px 0px 0px)', transition: {delay: index === 0 ? 0 : 0.4, duration: 1, ease: easeInOutCubic}}}}
-                            transition={{duration: 1, ease: easeInOutCubic}}
+                            initial={false} 
+                            variants={imageVariants} 
+                            animate={gridLayout 
+                                ? (index + 1) % 5 === 0 
+                                    ? "nopadding" 
+                                    : "padding"
+                                : isSecond
+                                    ? "nopadding"
+                                    : "padding"
+                            } 
+                            transition={{duration: 1, ease: easeInOutCubic}} 
                             className={`${
                                 gridLayout 
-                                    ? 'h-[18vw]' 
+                                    ? 'col-span-1' 
                                     : `${
                                         isFirst 
-                                            ? `${index === 0 ? "h-[calc(100vh-17rem)]" : "h-fit"}` 
+                                            ? `${index === images.length - 1 ? "col-span-3 col-start-3" : "col-span-2"}` 
                                             : isSecond 
-                                                ? 'h-fit' 
-                                                : 'h-fit'
+                                                ? 'col-span-3' 
+                                                : 'col-span-2 -mt-[7.75rem]'
                                     }`
-                            } overflow-hidden rounded-[1%] relative`}
+                            } overflow-hidden relative`}
                         >
                             <motion.div
-                                ref={elementsRef.current[index]} 
+                                initial={isAnimationGoing ? 'initial' : false}
+                                animate={isLoaded ? 'animate' : 'initial'}
                                 layout={!isAnimationGoing}
+                                variants={{initial: {clipPath: 'inset(0px 100% 0px 0px)'}, animate: {clipPath: 'inset(0px 0px 0px 0px)', transition: {delay: index === 0 ? 0 : 0.4, duration: 1, ease: easeInOutCubic}}}}
                                 transition={{duration: 1, ease: easeInOutCubic}}
-                                className={`w-full rounded-[1%]`}
+                                className={`${
+                                    gridLayout 
+                                        ? 'h-[18vw]' 
+                                        : `${
+                                            isFirst 
+                                                ? `${index === 0 ? "h-[calc(100vh-17rem)]" : "h-fit"}` 
+                                                : isSecond 
+                                                    ? 'h-fit' 
+                                                    : 'h-fit'
+                                        }`
+                                } overflow-hidden rounded-[1%] relative`}
                             >
-                              <NextImage 
-                                src={image} 
-                                alt="woman" 
-                                width={823} 
-                                height={1226} 
-                                className="w-full h-full object-cover"
-                              />
+                                <motion.div
+                                    ref={elementsRef.current[index]} 
+                                    layout={!isAnimationGoing}
+                                    transition={{duration: 1, ease: easeInOutCubic}}
+                                    className={`w-full rounded-[1%]`}
+                                >
+                                <NextImage 
+                                    src={image} 
+                                    alt="woman" 
+                                    width={823} 
+                                    height={1226} 
+                                    className="w-full h-full object-cover cursor-pointer"
+                                    onClick={() => {
+                                        setImageIndex(index);
+                                        setCarouselOpen(true);
+                                    }}
+                                />
+                                </motion.div>
                             </motion.div>
                         </motion.div>
-                    </motion.div>
-                    {(isThird || isSecond && heights[index] <= heights[index - 1]) && index !== images.length - 1 && !gridLayout && <div className="col-span-5 mb-[7.75rem]"></div>}
-                </Fragment>
-            );
-        })}
+                        {(isThird || isSecond && heights[index] <= heights[index - 1]) && index !== images.length - 1 && !gridLayout && <div className="col-span-5 mb-[7.75rem]"></div>}
+                    </Fragment>
+                );
+            })}
+            </motion.div>
         </motion.div>
-    </motion.div>
+    </>
   )
 }

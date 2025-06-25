@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import BracketButton from '../../buttons/BracketButton'
+// import BracketButton from '../../buttons/BracketButton'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Photoset, Service } from '@prisma/client'
 import { updatePhotosetData } from '@/app/[locale]/actions/photosetActions'
 import { useTranslations } from 'next-intl'
+import NotInHeaderButton from '../../buttons/NotInHeaderButton'
 
 interface InfoFormProps {
   photoset: Photoset
@@ -32,16 +33,16 @@ export default function InfoForm({photoset}: InfoFormProps) {
 
   return (
     <div className='col-start-2 mt-12 pr-6'>
-        <BracketButton color="text-black dark:text-white" bracketDistance="-0.5rem" height='h-5' textSize='text-base' disabled={!hasChanged} className='w-[3.2rem] lg:w-[4.8rem]' onClick={updatePhotosetInfo} text='MODIFICĂ'/>
-        <Input className='my-5' placeholder='Titlu' value={title} onChange={(e) => {setHasChanged(true); setTitle(e.currentTarget.value)}} />
-        <p className='mt-4 mb-2'>[SERVICIU]</p>
+        <p className='text-base font-[400]'>TITLU PROIECT</p>
+        <Input className='mt-2 bg-transparent text-[1.5rem] py-0 ring-0 outline-none' placeholder='Titlu' value={title} onChange={(e) => {setHasChanged(true); setTitle(e.currentTarget.value)}} />
+        <p className='mt-[2.5rem]'>SERVICIU</p>
         <Select value={service}
           onValueChange={(value) => {
-              setHasChanged(true);
-              setService(value as Service);
+            setHasChanged(true);
+            setService(value as Service);
           }}
         >
-          <SelectTrigger className="max-w-[250px]">
+          <SelectTrigger className="w-full mt-[0.5rem] outline-none ring-0">
             <SelectValue placeholder="Serviciu" />
           </SelectTrigger>
           <SelectContent>
@@ -52,6 +53,7 @@ export default function InfoForm({photoset}: InfoFormProps) {
             }
           </SelectContent>
         </Select>
+        <NotInHeaderButton color={{ light: 'black', dark: 'white' }} bracketDistance="-0.5rem" height='h-5' disabled={!hasChanged} className='w-fit mt-[2.5rem]' onClick={updatePhotosetInfo} text='SALVEAZĂ'/>
     </div>
   )
 }

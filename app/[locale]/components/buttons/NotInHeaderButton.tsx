@@ -6,28 +6,28 @@ interface BracketButtonProps {
 	disabledStyle?: boolean
 	brackets?: boolean
 	isInHeader?: boolean
-	color?: string
+	color?: {
+		dark: string
+		light: string
+	}
 	textSize?: string
 	height?: string
 	bracketDistance?: string
 	isCloseBtn?: boolean
 }
 
-export default function BracketButton({
+export default function NotInHeaderButton({
 	className,
 	disabled,
 	onClick,
 	text,
 	disabledStyle = true,
-	brackets = true,
-	isInHeader = false,
-	color = 'text-white',
 	textSize = 'text-xl lg:text-2xl',
-	isCloseBtn = false
+	color = { dark: 'white', light: 'black' },
 }: BracketButtonProps) {
 	return (
 		<div
-			className={`hover:opacity-75 transition-opacity duration-500 relative h-fit ${brackets ? '' : ''} ${
+			className={`hover:opacity-75 transition-opacity duration-500 relative h-fit ${
 				disabled ? '' : 'cursor-pointer group'
 			} ${className}`}
 			onClick={() => {
@@ -35,7 +35,7 @@ export default function BracketButton({
 			}}
 		>
 			<button
-				className={`transition-opacity duration-500 ${color} ${isInHeader ? 'text-white' : 'dark:text-black text-white'} ${textSize} ${
+				className={`transition-opacity duration-500 dark:text-${color.dark} text-${color.light} ${textSize} ${
 					disabledStyle ? 'disabled:opacity-25' : ''
 				}`}
 				disabled={disabled && disabledStyle}
@@ -44,10 +44,7 @@ export default function BracketButton({
 			</button>
 
 			<div
-				className={`bottom-[-0.125rem] h-[1px] duration-500 group-hover:scale-x-0 ${
-					isCloseBtn ? 'origin-left' : 'origin-right'
-				} transition-all left-0 right-0 ${isInHeader ? 'bg-white' : 'dark:bg-black bg-white'} absolute z-50 ${(disabledStyle && disabled) ? 'opacity-25' : 'opacity-100'}`}
+				className={`bottom-[-0.125rem] origin-right h-[1px] duration-500 group-hover:scale-x-0 transition-all left-0 right-0 dark:bg-${color.dark} bg-${color.light} absolute z-50 ${(disabledStyle && disabled) ? 'opacity-25' : 'opacity-100'}`}
 			/>
 		</div>
-	)
-}
+)}

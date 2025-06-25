@@ -4,15 +4,16 @@ import React, { useEffect, useState } from 'react'
 import AdminNavbar from '../components/admin/AdminNavbar'
 import { createPhotoset, getAllPhotosets } from '@/app/[locale]/actions/photosetActions';
 import { Photoset } from '@prisma/client';
-import BracketButton from '../components/buttons/BracketButton';
+// import BracketButton from '../components/buttons/BracketButton';
 import { easeInOutCubic } from '../lib/utils';
 import { useRouter } from 'next/navigation';
 import { motion } from 'motion/react';
 import ProjectCard from '../components/admin/ProjectCard';
+import NotInHeaderButton from '../components/buttons/NotInHeaderButton';
 
 export default function AdminPage() {
   const [isLinkClicked, setIsLinkClicked] = useState(false);
-  const [photosets, setPhotosets] = useState<Photoset[]>([]);
+  const [photosets, setPhotosets] = useState<Photoset[] | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -33,24 +34,32 @@ export default function AdminPage() {
     <>
       <motion.div initial={false} variants={{initial: {opacity: 0}, animate: {opacity: 100}}} animate={isLinkClicked ? 'initial' : 'animate'} transition={{duration: 0.7, ease: easeInOutCubic}} className="col-span-3 lg:col-span-8 layout-grid [&>*:not(.header)]:z-[2]">
         <AdminNavbar setIsLinkClicked={setIsLinkClicked}/>
-        <div className='col-start-2 col-span-6 grid grid-cols-6 pb-[7.75rem] mt-24 gap-y-6'>
-          <div className='col-span-2 pr-6 flex flex-col'>
-            <div className='flex justify-center items-center border border-black dark:border-white border-dashed rounded-lg flex-1 hover:cursor-pointer group hover:opacity-50 transition duration-200' onClick={createNewPhotoset}>
-              <BracketButton color="text-black dark:text-white" disabled={false} className='w-[3.2rem] lg:w-[12.5rem]' text='ADAUGĂ PROIECT'/>
+        {
+          !photosets ? (
+            <div className='col-start-2 col-span-6 flex justify-center items-center h-[calc(100vh-4rem)]'>
+              <h1 className='text-3xl font-hedwig'>Proiectele se incarca...</h1>
             </div>
-            <div className='mt-4'>
-              <h2 className='text-2xl font-hedwig'>Titlul Proiectului</h2>
-              <p>Tipul Serviciului Prestat</p>
+          ) : (
+            <div className='col-start-2 col-span-6 grid grid-cols-6 pb-[7.75rem] mt-24 gap-y-6'>
+              <div className='col-span-2 pr-6 flex flex-col'>
+                <div className='flex justify-center items-center border border-black dark:border-white border-dashed rounded-lg flex-1 hover:cursor-pointer group hover:opacity-50 transition duration-200' onClick={createNewPhotoset}>
+                  <NotInHeaderButton color={{ dark: "white", light: 'black' }} disabled={false} className='w-[3.2rem] lg:w-[12.5rem]' text='ADAUGĂ PROIECT'/>
+                </div>
+                <div className='mt-4'>
+                  <h2 className='text-2xl font-hedwig'>Titlul Proiectului</h2>
+                  <p>Tipul Serviciului Prestat</p>
+                </div>
+              </div>
+              {
+                photosets.map((photoset, index) => {
+                  return (
+                    <ProjectCard photoset={photoset} key={index}/>
+                  )
+                })
+              }
             </div>
-          </div>
-          {
-            photosets.map((photoset, index) => {
-              return (
-                <ProjectCard photoset={photoset} key={index}/>
-              )
-            })
-          }
-        </div>
+            )
+        }
       </motion.div>
     </>
   )

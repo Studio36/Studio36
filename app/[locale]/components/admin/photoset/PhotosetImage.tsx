@@ -40,9 +40,9 @@ export default function PhotosetImage({onDeleteClick, onReorderToFirst, image, i
                     }}
                 />
                 <div className='absolute left-0 top-0 w-full h-full bg-white bg-opacity-25 flex justify-center items-center opacity-0 group-hover:opacity-100 transition duration-200'>
-                    <button className='text-red text-2xl cursor-pointer' onClick={() => {setDeleteConfirmation(true)}}>[ȘTERGE]</button>
+                    <button className='text-red text-2xl cursor-pointer' onClick={() => {setDeleteConfirmation(true)}}>ȘTERGE</button>
                 </div>
-                <Image src={image} alt='image' width={1000} height={1500} className='rounded-[0.25rem] w-full h-fit max-h-full object-cover' />
+                <Image src={image} alt='image' width={333} height={500} className='rounded-[0.25rem] w-full h-fit max-h-full object-cover' />
             </div>
         </>
     )

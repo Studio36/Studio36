@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
-import BracketButton from "../../buttons/BracketButton";
+// import BracketButton from "../../buttons/BracketButton";
 import { generateUplaodLinks, updatePhotosetImages } from "@/app/[locale]/actions/imageActions";
 import { Photoset } from "@prisma/client";
+import NotInHeaderButton from "../../buttons/NotInHeaderButton";
 
 interface ImageUploadProps {
     photoset: Photoset
@@ -89,11 +90,11 @@ export default function ImageUpload({
     });
 
     return (
-        <div className="border border-black dark:border-white border-dashed rounded-lg flex-1 group hover:opacity-50 transition duration-200">
+        <div className="border border-black dark:border-white border-dashed rounded-[0.25rem] flex-1 group hover:opacity-50 transition duration-200">
             <div {...getRootProps({className: 'dropzone'})} className={`h-full w-full flex justify-center items-center ${isUploading ? "hover:cursor-default" : "hover:cursor-pointer"}`}>
                 <input {...getInputProps()} className="w-full h-full" disabled={isUploading} />
-                <BracketButton 
-                    color="text-black dark:text-white" 
+                <NotInHeaderButton 
+                    color={{ light: 'black', dark: 'white' }}
                     disabled={isUploading} 
                     className='w-[3.2rem] lg:w-[10.2rem]' 
                     text={isUploading ? 'SE ÎNCARCĂ...' : 'ADAUGĂ POZĂ'}

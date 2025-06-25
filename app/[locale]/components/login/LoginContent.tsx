@@ -9,7 +9,8 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import AdminNavbar from '../admin/AdminNavbar';
 import { easeInOutCubic } from '../../lib/utils';
-import BracketButton from '../buttons/BracketButton';
+// import BracketButton from '../buttons/BracketButton';
+import NotInHeaderButton from '../buttons/NotInHeaderButton';
 
 export default function LoginContent() {
     const [isLinkClicked, setIsLinkClicked] = useState(false);
@@ -39,16 +40,16 @@ export default function LoginContent() {
         transition={{duration: 0.7, ease: easeInOutCubic}} 
         className="layout-grid col-span-8 [&>*]:z-[2] flex-1 z-[100]"
       >
-        <div className='absolute right-0 h-full w-[64.24%] top-0'>
-          <Image src='/hero-stages/stage1.jpg' alt='logo' width={1000} height={1500} className='w-full h-full object-cover'/>
+        <div className='absolute right-0 h-full w-[64.24%] top-0 z-[-10]'>
+          <Image src='/hero-stages/stage1.png' alt='logo' width={1230} height={1080} className='w-full h-full object-cover'/>
         </div>
         <form onSubmit={(e) => {e.preventDefault(); logIn();}} className='mt-24 col-start-2'>
-          <p className='text-2xl'>[USERNAME]</p>
-          <Input placeholder='Username' className='mt-2 mb-6' value={username} onChange={(e) => {setUsername(e.currentTarget.value)}}/>
-          <p className='text-2xl'>[PASSWORD]</p>
-          <Input placeholder='Password' className='mt-2 mb-12' value={password} onChange={(e) => {setPassword(e.currentTarget.value)}}/>
-          <BracketButton 
-            color="text-black" 
+          <p className='text-base'>USERNAME</p>
+          <Input placeholder='Username' className='mt-2 mb-10 outline-none border-none bg-transparent text-[1.5rem] py-0' value={username} onChange={(e) => {setUsername(e.currentTarget.value)}}/>
+          <p className='text-base'>PASSWORD</p>
+          <Input placeholder='Password' className='mt-2 mb-12 outline-none border-none bg-transparent text-[1.5rem] py-0' value={password} onChange={(e) => {setPassword(e.currentTarget.value)}}/>
+          <NotInHeaderButton 
+            isInHeader
             disabled={false} 
             className='w-[3.6rem] lg:w-[4.8rem]' 
             onClick={() => {}} 
