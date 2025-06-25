@@ -1,7 +1,7 @@
 'use client'
 
 import { easeInOutCubic } from "@/app/[locale]/lib/utils";
-import { useLenis } from "lenis/react";
+// import { useLenis } from "lenis/react";
 import { default as NextImage } from "next/image";
 import React, { createRef, Fragment, useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
@@ -43,7 +43,7 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded, set
     const [heights, setHeights] = useState<number[]>([]);
     const [isAnimationGoing, setIsAnimationGoing] = useState(true);
     const elementsRef = useRef(images.map(() => createRef<HTMLDivElement>()));
-    const lenis = useLenis();
+    // const lenis = useLenis();
 
     let gridImagesOffset = 0;
 
