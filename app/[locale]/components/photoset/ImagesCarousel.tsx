@@ -165,9 +165,6 @@ export default function ImagesCarousel({setCarouselOpen, images, initialActive =
             aria-modal="true"
             aria-label="Image carousel"
         >
-            <div className="lg:hidden absolute top-4 left-4 z-[20] bg-black/75 text-white px-6 py-2 rounded-3xl font-manrope font-semibold">
-                {(activeImage || 0) + 1} / {images.length}
-            </div>
             
             <motion.div 
                  className='flex-1 relative top-0 lg:relative mb-4 w-full lg:w-[calc(100%-10rem)] max-w-full cursor-grab box-border'
