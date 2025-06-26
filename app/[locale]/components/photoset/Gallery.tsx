@@ -125,7 +125,7 @@ export default function Gallery({ gridLayout, images, setIsLoaded, isLoaded, set
 
   return (
     <>
-        <motion.div className="col-start-3 col-end-8 grid grid-cols-5 min-h-[300vh]" animate={{height: containerHeight + 'px'}} transition={{duration: 1 , ease: easeInOutCubic}}>
+        <motion.div className="col-start-3 col-end-8 grid grid-cols-5 min-h-[300vh]" animate={{height: containerHeight + 'px'}} transition={{duration: !gridLayout ? 0 : 1 , ease: easeInOutCubic}}>
             <motion.div  transition={{duration: isAnimationGoing ? 0 : 1 , ease: easeInOutCubic}} className={`h-fit col-span-5 grid grid-cols-5 pb-[7.75rem] ${gridLayout ? "gap-y-6" : "gap-y-0"}`} ref={container}>
             {images.map((image, index) => {
                 const position = ((index + gridImagesOffset) % 3);
