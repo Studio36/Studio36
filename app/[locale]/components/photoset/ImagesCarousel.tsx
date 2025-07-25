@@ -224,7 +224,7 @@ export default function ImagesCarousel({setCarouselOpen, images, initialActive =
                 onClick={nextSlide}
                 aria-label="Next image"
             >
-                <ArrowRight color='black' className='size-8' strokeWidth={1.5} />
+                <ArrowRight className='size-8 dark:text-white text-black' strokeWidth={1.5} />
             </button>
             
             <button 
@@ -233,7 +233,7 @@ export default function ImagesCarousel({setCarouselOpen, images, initialActive =
                 onClick={prevSlide}
                 aria-label="Previous image"
             >
-                <ArrowLeft color='black' className=' size-8' strokeWidth={1.5} />
+                <ArrowLeft className='size-8 dark:text-white text-black' strokeWidth={1.5} />
             </button>
             
             <button 
@@ -241,7 +241,7 @@ export default function ImagesCarousel({setCarouselOpen, images, initialActive =
                 onClick={closeCarousel}
                 aria-label="Close carousel"
             >
-                <X color='black' className='text-black size-6 lg:size-8' strokeWidth={1.5} />
+                <X className='text-black dark:text-white size-6 lg:size-8' strokeWidth={1.5} />
             </button>
         </motion.div>
     )
