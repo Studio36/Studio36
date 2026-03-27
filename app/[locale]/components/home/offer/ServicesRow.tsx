@@ -39,7 +39,7 @@ const Card: React.FC<CardProps> = ({ image, service, right, setIsActive, id }) =
     return (
             <div 
                 onMouseEnter={() => {setAnimate(true); setIsActive(true)}} onMouseLeave={() => {setAnimate(false); setIsActive(false)}} className={`relative h-[16.5rem] lg:h-[25rem] group transition-all duration-500 ${animate ? "hover:cursor-pointer" : ""} ${right ? `lg:w-1/2 lg:ml-6 ${animate ? "lg:hover:w-2/3" : ""} lg:peer-hover:w-1/3` : "lg:flex-1 peer"}`}>
-                <ParallaxImage src={image} alt="service" className="rounded-lg h-full w-full object-cover"/>
+                <ParallaxImage src={image} alt="service" className="rounded-lg h-full w-full object-cover" sizes="(max-width: 1023px) 100vw, 50vw"/>
                 <div className="flex absolute left-4 lg:left-8 top-4 lg:top-5 gap-3 w-[calc(100%-4rem)]">
                     <h3 className={`${id !== 2 && 'mix-blend-difference'} text-purewhite text-xl lg:text-2xl`}>{service}</h3>
                     <ArrowAnimation animate={animate} mixBlend={id !== 2}/>

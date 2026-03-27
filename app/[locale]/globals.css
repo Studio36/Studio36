@@ -1,12 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
-  font-family: 'Hedvig Letters Sans', sans-serif;
+  font-family: var(--font-hedvig-sans), sans-serif;
   color: #181818;
   background-color: #f1f1f1;  
 }

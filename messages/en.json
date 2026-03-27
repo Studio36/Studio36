@@ -39,8 +39,8 @@
     },
     "index": {
         "meta": {
-            "title": "Index page | Studio 36",
-            "description": "Index page | Studio 36"
+            "title": "Studio 36",
+            "description": "Open space photography and videography studio in Chișinău with 3 furnished zones, a white cyclorama, and professional photo & video services."
         },
         "cursorText": {
             "default": "SEE MORE",
@@ -110,8 +110,8 @@
     },
     "projects": {
         "meta": {
-            "title": "Projects | Studio 36",
-            "description": "Projects | Studio 36"
+            "title": "Projects",
+            "description": "Browse Studio 36's portfolio — commercial photography, personalized photo sessions, music video filming, and podcast recordings created in Chișinău."
         },
         "subtitle": "PORTFOLIO",
         "content": "More than a studio - a space where creativity transforms into image. Discover the works created at Studio 36.",

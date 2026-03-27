@@ -17,7 +17,7 @@ export default {
   		},
   	},
   	fontFamily: {
-  		'hedwig': 'Hedvig Letters Serif'
+  		'hedwig': 'var(--font-hedvig-serif)'
   	},
 	transitionTimingFunction: {
 		'custom': 'cubicBezier(0.65, 0, 0.35, 1)'

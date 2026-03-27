@@ -8,10 +8,11 @@ interface ParallaxImageProps {
     src: string,
     alt: string,
     className?: string,
-    priority?: boolean
+    priority?: boolean,
+    sizes?: string
 }
 
-export default function ParallaxImage({src, alt, className, priority = false}: ParallaxImageProps) {
+export default function ParallaxImage({src, alt, className, priority = false, sizes = "100vw"}: ParallaxImageProps) {
     const ref = useRef(null);
     const [y, setY] = useState(0)
 
@@ -31,10 +32,11 @@ export default function ParallaxImage({src, alt, className, priority = false}: P
             style={{ y: -y + "%", height: "120%", width: "100%" }}
             className="absolute left-0 top-0"
         >
-            <Image 
-                src={src} 
-                alt={alt} 
-                fill 
+            <Image
+                src={src}
+                alt={alt}
+                fill
+                sizes={sizes}
                 quality={priority ? 100 : 80}
                 className="object-cover"
                 priority={priority}

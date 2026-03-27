@@ -24,7 +24,7 @@ const StageSection = ({texts, img}: StageSectionProps) => {
     return (
         <div className='col-start-1 col-span-3 layout-grid mb-6'>
             <div className="col-span-3 layout-grid relative">
-                <ParallaxImage src={img} alt='stage-1' className="col-span-3 rounded-lg h-[15rem] w-full object-cover"/> 
+                <ParallaxImage src={img} alt='stage-1' className="col-span-3 rounded-lg h-[15rem] w-full object-cover" sizes="calc(100vw - 2rem)"/> 
                 <div className="col-span-1 relative h-6 mt-4 mb-12">
                     <h2 className="font-hedwig text-xl absolute left-0 top-0 whitespace-nowrap">{texts[0]}</h2>
                 </div>

@@ -3,12 +3,30 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import ProjectsClientContent from '../components/projects/ProjectsClientContent'
 import { use } from 'react';
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations('projects.meta');
- 
+  const title = t('title');
+  const description = t('description');
+
   return {
-    title: t('title'),
-    description: t('description')
+    title,
+    description,
+    alternates: {
+      canonical: locale === 'ro' ? '/ro/proiecte' : '/en/projects',
+      languages: { en: '/en/projects', ro: '/ro/proiecte' },
+    },
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      siteName: 'Studio 36',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
   };
 }
 
